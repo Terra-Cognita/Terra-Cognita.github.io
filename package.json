@@ -1,0 +1,23 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "Landing page for Terra Cognita",
+  "main": "index.js",
+  "scripts": {
+    "watch:scss":  "node-sass -w assets/css/styles_effect.scss assets/css/styles_effect.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terra-Cognita/landing-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Terra-Cognita/landing-page/issues"
+  },
+  "homepage": "https://github.com/Terra-Cognita/landing-page#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}
