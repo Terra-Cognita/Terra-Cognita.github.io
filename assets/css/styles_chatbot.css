@@ -7,9 +7,9 @@
 }
 
 .chatbox {
-    position: fixed;
-    top: 35vh;
-    left: 3vw;
+    position: absolute;
+    top: 35%;
+    left: 3%;
 }
 
 .chatbox__support {
