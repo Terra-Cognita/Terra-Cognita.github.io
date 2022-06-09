@@ -8,8 +8,8 @@
 
 .chatbox {
     position: absolute;
-    top: 350px;
-    left: 100px;
+    top: 35vh;
+    left: 3vw;
 }
 
 .chatbox__support {
@@ -20,7 +20,7 @@
     z-index: 123456;
     opacity: 0.8;
     transition: all .5s ease-in-out;
-    height: 40vh;
+    height: 50vh;
     width: 40vw;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-top-left-radius: 10px;
@@ -65,6 +65,7 @@
     overflow-y: scroll;
     flex-direction: column-reverse;
     padding: 0 20px;
+    font-size: 0.85rem;
 }
 .messages__item {
     max-width: 60.6%;
