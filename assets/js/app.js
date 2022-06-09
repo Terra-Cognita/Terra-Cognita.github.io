@@ -35,8 +35,8 @@ class Chatbox {
         textField.value = ''
 
         let answer = 'Hello! This is the demo website of Terra-Cognita. \
-                      Keep following our work and soon we will launch the official web page \
-                      where you will be able to interact with our bot and get more information.'
+                      Soon we will launch our <a href="http://www.terracognita.ai/" target="_blank">official webpage</a> where you can interact with our bot and get more information. \
+                      Keep on following our work! :)'
         let chatbotAnswer = { name: this.name, message: answer };
         this.messages.push(chatbotAnswer);
         chattyping.innerHTML = '';
