@@ -23,14 +23,41 @@ body {
   height: 100%;
 }
 
-a:link, a:visited {
-  color: white;
-}
-
 .logo {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 1%;
+  left: 1%;
+  height: 25vh;
+  width: 25vw;
+}
+
+@media (max-width: 1000px) {
+  .hidden-small {
+    display: none;
+  }
+  .chatbox__button {
+    display: flex !important;
+  }
+  .chatbox {
+    top: 17vh !important;
+    left: 3% !important;
+  }
+  .chatbox__support{
+    height: 75vh !important;
+    width: 93vw !important;
+  }
+  .chatbox__heading--header {
+    font-size: 3vw !important;
+  }
+  .chatbox__messages {
+    font-size: 2.5vw !important;
+}
+  .chatbox__footer {
+    font-size: 2.5vw !important;
+  }
+  .send__button {
+    font-size: 2.5vw !important;
+  }
 }
 
 /* Resets */
@@ -41,4 +68,3 @@ a:link, a:visited {
   transition: var(--transition);
   font-family: 'Courier New', monospace;  
 }
-

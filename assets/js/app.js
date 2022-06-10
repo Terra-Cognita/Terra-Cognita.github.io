@@ -1,15 +1,19 @@
 class Chatbox {
     constructor() {
         this.args = {
+            openButton: document.querySelector('.chatbox__button'),
             chatBox: document.querySelector('.chatbox__support'),
             sendButton: document.querySelector('.send__button')
         }
         this.name = 'chatbot';
         this.messages = [];
+        this.state = false;
     }
 
     display() {
-        const {chatBox, sendButton} = this.args;
+        const {openButton, chatBox, sendButton} = this.args
+
+        openButton.addEventListener('click', () => this.toggleState())
 
         sendButton.addEventListener('click', () => this.onSendButton(chatBox))
 
@@ -19,6 +23,17 @@ class Chatbox {
                 this.onSendButton(chatBox)
             }
         })
+    }
+
+    toggleState() {
+        this.state = !this.state;
+
+        // show or hides the box
+        if(this.state) {
+            document.querySelector('.chatbox').classList.add('chatbox--active')
+        } else {
+            document.querySelector('.chatbox').classList.remove('chatbox--active')
+        }
     }
 
     onSendButton(chatbox) {
