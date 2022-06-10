@@ -40,7 +40,7 @@ class Chatbox {
         chattyping.innerHTML = this.getTypingHTML();
 
         // bot answer
-        $.get("http://tcog-chatbot.azurewebsites.net/get", { msg: textInput }).done( answer => {
+        $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput }).done( answer => {
             let chatbotAnswer = { name: this.name, message: answer };
             this.messages.push(chatbotAnswer);
             chattyping.innerHTML = '';
