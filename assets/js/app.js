@@ -22,6 +22,7 @@ class Chatbox {
     }
 
     onSendButton(chatbox) {
+        // html query elements
         const chattyping = document.querySelector('.messages__item--typing');
         var textField = chatbox.querySelector('input');
         let textInput = textField.value
@@ -29,19 +30,22 @@ class Chatbox {
             return;
         }
 
+        // user message
         let user_msg = { name: "User", message: textInput }
         this.messages.push(user_msg);
         this.updateChatText(user_msg)
         textField.value = ''
 
-        let answer = 'Hello! This is the demo website of Terra-Cognita. \
-                      Soon we will launch our <a href="http://www.terracognita.ai/" target="_blank">official webpage</a> where you can interact with our bot and get more information. \
-                      Keep on following our work! :)'
-        let chatbotAnswer = { name: this.name, message: answer };
-        this.messages.push(chatbotAnswer);
-        chattyping.innerHTML = '';
-        this.updateChatText(chatbox)
+        // Waiting for chatbot response
+        chattyping.innerHTML = this.getTypingHTML();
 
+        // bot answer
+        $.get("http://tcog-chatbot.azurewebsites.net/get", { msg: textInput }).done( answer => {
+            let chatbotAnswer = { name: this.name, message: answer };
+            this.messages.push(chatbotAnswer);
+            chattyping.innerHTML = '';
+            this.updateChatText(chatbox)
+        });
     }
 
     updateChatText(chatbox) {
