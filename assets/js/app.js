@@ -55,11 +55,24 @@ class Chatbox {
         chattyping.innerHTML = this.getTypingHTML();
 
         // bot answer
-        $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput }).done( answer => {
+        $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
+        .done( answer => {
             let chatbotAnswer = { name: this.name, message: answer };
             this.messages.push(chatbotAnswer);
-            chattyping.innerHTML = '';
             this.updateChatText(chatbox)
+        })
+        .fail( error => {
+            console.log('>> app.js >> OnSendButton >> get-error:')
+            console.log(error)
+
+            let errorText = "Hey there! I'm sorry, but I cannot chat right now. \
+                            Can you be back in a while? Then I tell you all about this amazing world!";
+            let errorMessage = { name: this.name, message: errorText };
+            this.messages.push(errorMessage);
+            this.updateChatText(chatbox)
+        })
+        .always(function() {
+            chattyping.innerHTML = '';
         });
     }
 
