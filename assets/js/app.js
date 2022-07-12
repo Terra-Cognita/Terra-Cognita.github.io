@@ -1,21 +1,22 @@
 class Chatbox {
     constructor() {
         this.args = {
-            openButton: document.querySelector('.chatbox__button'),
-            chatBox: document.querySelector('.chatbox__support'),
-            sendButton: document.querySelector('.send__button')
+            chatBox: document.querySelector('#chatbox')
         }
         this.name = 'chatbot';
+        this.prefix = 'TC-AI:~$ '
+        this.user = 'user:~$ '
         this.messages = [];
         this.state = false;
     }
 
     display() {
-        const {openButton, chatBox, sendButton} = this.args
+        const {chatBox} = this.args
 
-        openButton.addEventListener('click', () => this.toggleState())
-
-        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
+        let initText = "Welcome to Terra Cognita Magical Land...!";
+        let initMessage = { name: this.name, message: initText };
+        this.messages.push(initMessage);
+        this.updateChatText(chatbox)
 
         const node = chatBox.querySelector('input');
         node.addEventListener("keyup", ({key}) => {
@@ -25,20 +26,8 @@ class Chatbox {
         })
     }
 
-    toggleState() {
-        this.state = !this.state;
-
-        // show or hides the box
-        if(this.state) {
-            document.querySelector('.chatbox').classList.add('chatbox--active')
-        } else {
-            document.querySelector('.chatbox').classList.remove('chatbox--active')
-        }
-    }
-
     onSendButton(chatbox) {
         // html query elements
-        const chattyping = document.querySelector('.messages__item--typing');
         var textField = chatbox.querySelector('input');
         let textInput = textField.value
         if (textInput === "") {
@@ -52,7 +41,7 @@ class Chatbox {
         textField.value = ''
 
         // Waiting for chatbot response
-        chattyping.innerHTML = this.getTypingHTML();
+        // chattyping.innerHTML = this.getTypingHTML();
 
         // bot answer
         $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
@@ -72,24 +61,39 @@ class Chatbox {
             this.updateChatText(chatbox)
         })
         .always(function() {
-            chattyping.innerHTML = '';
+            // chattyping.innerHTML = '';
         });
     }
 
     updateChatText(chatbox) {
-        var html = '';
         let name = this.name;
-        this.messages.slice().reverse().forEach( (m) => {
-            if (m.name === name) {
-                html += '<div class="messages__item messages__item--operator">' + m.message + '</div>'
-            }
-            else {
-                html += '<div class="messages__item messages__item--visitor">' + m.message + '</div>'
-            }
-          });
+        let message = ''
+        let msg = this.messages[this.messages.length - 1]
 
-        const chatmessage = document.querySelector('.chatbox__messages');
-        chatmessage.innerHTML = html;
+        const chatmessages = document.querySelector('.chatbox__messages');
+
+        if (msg.name === name) {
+            message = this.prefix + msg.message
+            chatmessages.innerHTML += '<div class="messages__item message_typing">' + message + '</div>'
+        }
+        else {
+            message = this.user + msg.message
+            chatmessages.innerHTML += '<div class="messages__item">' + message + '</div>'
+        }
+
+        // this.messages.slice().reverse().forEach( (m) => {
+        //     if (m.name === name) {
+        //         message = this.prefix + m.message
+        //         html += '<div class="messages__item">' + message + '</div>'
+        //     }
+        //     else {
+        //         message = this.user + m.message
+        //         html += '<div class="messages__item">' + message + '</div>'
+        //     }
+        //   });
+
+        // const chatmessage = document.querySelector('.chatbox__messages');
+        // chatmessage.innerHTML = html;
     }
 
     getTypingHTML() {

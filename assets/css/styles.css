@@ -1,5 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  transition: var(--transition);
+}
+:root {
+  --transition: 0.4s ease-in;
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Edge, Opera and Firefox */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input {
+  background: none;
+  border: none;
+  outline: none;
+  caret-color: transparent;
+}
+input:focus {
+  outline:none !important;
+  caret-color: transparent;
+}
+textarea {
+  resize: none;
+}
+
+
 #screen {
   position: relative;
   height: 100vh;
@@ -12,85 +49,40 @@
   width: 100vw;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
-
 #scan {
-  opacity: 70%;
+  opacity: 90%;
 }
 
 #logo {
   position: absolute;
-  top: 5%;
-  left: 4%;
   height: 15vh;
   width: 15vw;
+  top: 5%;
+  left: 4%;
 }
 
-/* CSS Variables */
-:root {
-  --normal-font: 400;
-  --bold-font: 600;
-  --bolder-font: 900;
-  --primary-color: #0652dd;
-  --secondary-color: #ea2027;
-  --line-height: 1.7rem;
-  --transition: 0.4s ease-in;
-}
-
-/* Smooth scroll effect */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-weight: 400;
-  font-size: 100%;
-  overflow: hidden;
-  height: 100%;
-}
-
-.logo {
+#chatbox {
   position: absolute;
-  top: 1%;
-  left: 1%;
-  height: 25vh;
-  width: 25vw;
+  top: 20%;
+  left: 4%; 
+  /* transform: translate(-20%,-4%); */
+}
+
+#message {
+  font-family: 'VT323', monospace;
+  color: greenyellow;
+  font-size: 3.2vmin;
+  text-shadow: 1px 1px 2px rgb(153, 170, 127), 0 0 1em rgb(153, 170, 127), 0 0 0.2em rgb(153, 170, 127);
 }
 
 @media (max-width: 1000px) {
-  .hidden-small {
-    display: none;
-  }
-  .chatbox__button {
-    display: flex !important;
-  }
-  .chatbox {
+  #chatbox {
     top: 17vh !important;
     left: 3% !important;
   }
-  .chatbox__support{
-    height: 75vh !important;
-    width: 93vw !important;
-  }
-  .chatbox__heading--header {
-    font-size: 3vw !important;
-  }
   .chatbox__messages {
     font-size: 2.5vw !important;
-}
-  .chatbox__footer {
-    font-size: 2.5vw !important;
   }
-  .send__button {
-    font-size: 2.5vw !important;
-  }
-}
-
-/* Resets */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  transition: var(--transition);
-  font-family: 'Courier New', monospace;  
 }
