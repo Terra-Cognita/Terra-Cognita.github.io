@@ -22,6 +22,15 @@ class Chatbox {
                 this.onSendButton(chatBox)
             }
         })
+
+
+        node.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event
+        resizeInput.call(input); // immediately call the function
+        function resizeInput() {
+            this.style.width = this.value.length + "ch";
+        }
+
+
     }
 
     onSendButton(chatbox) {
@@ -77,7 +86,7 @@ class Chatbox {
         let msg = this.messages[this.messages.length - 1]
 
         // input elements
-        const chatInput = document.querySelector('.chatbox__input');
+        const chatInput = document.querySelector('input');
         const chatmessages = document.querySelector('.chatbox__messages');
         const userID = document.querySelector('#user_id');
         
@@ -87,9 +96,9 @@ class Chatbox {
         else {
             message = this.user + msg.message
             chatmessages.innerHTML += this.getUserMessageHTML(message)
-            userID.innerHTML = ''                                   // clears the user id for the bot answer
-            chatInput.classList.remove("caret");             // clear (hide) caret from input 
-            chatmessages.innerHTML += this.getBotMessageHTML()      // initialize bot answer line
+            userID.innerHTML = ''                               // clears the user id for the bot answer
+            chatInput.classList.remove("caret");                // clear (hide) caret from input 
+            chatmessages.innerHTML += this.getBotMessageHTML()  // initialize bot answer line
         }
     }
 
