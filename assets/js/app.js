@@ -14,11 +14,17 @@ class Chatbox {
     display() {
         const {chatBox} = this.args
 
+        // initialize first bot-message line
+        const chatmessages = document.querySelector('.chatbox__messages');
+        chatmessages.innerHTML += this.getBotMessageHTML()
+
+        // input first bot-message
         let initText = "Welcome to Terra Cognita Magical Land...!";
         let initMessage = { name: this.name, message: initText };
         this.messages.push(initMessage);
         this.updateChatText(chatbox)
 
+        // add user-input listener
         const node = chatBox.querySelector('input');
         node.addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
@@ -41,6 +47,10 @@ class Chatbox {
         this.updateChatText(user_msg)
         textField.value = ''
 
+        this.callBot(textInput)
+    }
+
+    callBot(textInput) {
         // update bot answer
         $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
         .done( answer => {
@@ -67,32 +77,36 @@ class Chatbox {
         let message = ''
         let msg = this.messages[this.messages.length - 1]
 
+        // input elements
+        const chatInput = document.querySelector('.chatbox__input');
         const chatmessages = document.querySelector('.chatbox__messages');
+        const userID = document.querySelector('#user_id');
         
         if (msg.name === name) {
-            chatmessages.innerHTML += this.getBotMessageHTML()
             this.typeBotText(chatbox, msg.message)
         }
         else {
             message = this.user + msg.message
             chatmessages.innerHTML += this.getUserMessageHTML(message)
+            userID.innerHTML = ''                                   // clears the user id for the bot answer
+            chatInput.classList.remove("caret");                    // clear (hide) caret from input 
+            chatmessages.innerHTML += this.getBotMessageHTML()      // initialize bot answer line
         }
     }
 
     typeBotText(chatbox, message) {
         
-        // messages
+        // messages elements
         var botMessages = document.getElementsByClassName("messages__bot");
         var msgIndex = botMessages.length - 1
         var currentMsgContent = botMessages[msgIndex].innerHTML
         
-        // input
+        // input elements
         const chatInput = document.querySelector('.chatbox__input');
         const userID = document.querySelector('#user_id');
-        console.log(userID)
         var userPrefix = this.user
 
-        // type code
+        // typing effect code
         var i = 0, text;
         (function type() {
             text = message.slice(0, ++i);
