@@ -70,7 +70,7 @@ textarea {
   /* transform: translate(-20%,-4%); */
 }
 
-#prompt__text {
+.prompt__text {
   font-family: 'VT323', monospace;
   color: greenyellow;
   font-size: 3.2vmin;

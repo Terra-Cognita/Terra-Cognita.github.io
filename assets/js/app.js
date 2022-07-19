@@ -47,7 +47,6 @@ class Chatbox {
             let chatbotAnswer = { name: this.name, message: answer };
             this.messages.push(chatbotAnswer);
             this.updateChatText(chatbox)
-            this.openUserInput()
         })
         .fail( error => {
             console.log('>> app.js >> OnSendButton >> get-error:')
@@ -89,7 +88,8 @@ class Chatbox {
         
         // input
         const chatInput = document.querySelector('.chatbox__input');
-        var inputContent = chatInput.innerHTML
+        const userID = document.querySelector('#user_id');
+        console.log(userID)
         var userPrefix = this.user
 
         // type code
@@ -104,17 +104,17 @@ class Chatbox {
         // clear bot-caret and open user-input element
         setTimeout(function() {
             botMessages[msgIndex].classList.remove("caret")
-            chatInput.innerHTML = '<span id="prompt__text">' + userPrefix + '</span>' + inputContent
+            userID.innerHTML = userPrefix
             chatInput.classList.add("caret");
         }, this.userInputDelay);
     }
 
     getBotMessageHTML() {
-        return '<div id="prompt__text" class="messages__item messages__bot caret">' + this.prefix + '</div>'
+        return '<div class="prompt__text messages__item messages__bot caret">' + this.prefix + '</div>'
     }
 
     getUserMessageHTML(message) {
-        return '<div id="prompt__text" class="messages__item">' + message + '</div>'
+        return '<div class="prompt__text messages__item">' + message + '</div>'
     }
 }
 
