@@ -14,35 +14,28 @@
     padding: 0 20px;
 } */
 .messages__item {
-    margin: 0;
-    margin-right: auto;
-    /* white-space: nowrap;
+    /* margin: 0; */
+    /* margin-right: auto; */
+    /* float: left; */
+    min-width: 0px;
     overflow: hidden;
-    animation: type 5s steps(50, end), caret-blink .8s ease infinite;
-    border-right: 10px solid greenyellow; */
-}
-.message__typing {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: type 5s steps(50, end), caret-blink .8s ease infinite;
-    border-right: 10px solid greenyellow;
-}
-.chatbox__input {
-    margin: 0;
-    margin-right: auto;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: caret-blink .8s ease infinite;
-    border-right: 10px solid greenyellow;
+    /* display: inline-block; */
+    width:fit-content;
 }
 
-@keyframes type {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100;
-    }
+/* .chatbox__input {
+    margin: 0;
+    margin-right: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 0px;
+    overflow: hidden;
+    display: inline-block;
+    width:fit-content;
+} */
+.caret {
+    border-right: 10px solid greenyellow;
+    animation: caret-blink .8s ease infinite;
 }
 
 @keyframes caret-blink {

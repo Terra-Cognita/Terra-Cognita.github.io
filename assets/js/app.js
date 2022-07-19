@@ -8,6 +8,7 @@ class Chatbox {
         this.user = 'user:~$ '
         this.messages = [];
         this.state = false;
+        this.userInputDelay = 4500;
     }
 
     display() {
@@ -34,21 +35,19 @@ class Chatbox {
             return;
         }
 
-        // user message
+        // update user message
         let user_msg = { name: "User", message: textInput }
         this.messages.push(user_msg);
         this.updateChatText(user_msg)
         textField.value = ''
 
-        // Waiting for chatbot response
-        // chattyping.innerHTML = this.getTypingHTML();
-
-        // bot answer
+        // update bot answer
         $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
         .done( answer => {
             let chatbotAnswer = { name: this.name, message: answer };
             this.messages.push(chatbotAnswer);
             this.updateChatText(chatbox)
+            this.openUserInput()
         })
         .fail( error => {
             console.log('>> app.js >> OnSendButton >> get-error:')
@@ -59,10 +58,9 @@ class Chatbox {
             let errorMessage = { name: this.name, message: errorText };
             this.messages.push(errorMessage);
             this.updateChatText(chatbox)
-        })
-        .always(function() {
-            // chattyping.innerHTML = '';
         });
+        // .always(function() {
+        // });
     }
 
     updateChatText(chatbox) {
@@ -71,41 +69,54 @@ class Chatbox {
         let msg = this.messages[this.messages.length - 1]
 
         const chatmessages = document.querySelector('.chatbox__messages');
-
+        
         if (msg.name === name) {
-            message = this.prefix + msg.message
-            chatmessages.innerHTML += '<div class="messages__item message_typing">' + message + '</div>'
+            chatmessages.innerHTML += this.getBotMessageHTML()
+            this.typeBotText(chatbox, msg.message)
         }
         else {
             message = this.user + msg.message
-            chatmessages.innerHTML += '<div class="messages__item">' + message + '</div>'
+            chatmessages.innerHTML += this.getUserMessageHTML(message)
         }
-
-        // this.messages.slice().reverse().forEach( (m) => {
-        //     if (m.name === name) {
-        //         message = this.prefix + m.message
-        //         html += '<div class="messages__item">' + message + '</div>'
-        //     }
-        //     else {
-        //         message = this.user + m.message
-        //         html += '<div class="messages__item">' + message + '</div>'
-        //     }
-        //   });
-
-        // const chatmessage = document.querySelector('.chatbox__messages');
-        // chatmessage.innerHTML = html;
     }
 
-    getTypingHTML() {
-        return '<spam>Terra-Cognita is typing</spam> \
-                <div class="typingIndicatorBubble"> \
-                    <div class="typingIndicatorBubbleDot"></div> \
-                    <div class="typingIndicatorBubbleDot"></div> \
-                    <div class="typingIndicatorBubbleDot"></div> \
-                </div>'
+    typeBotText(chatbox, message) {
+        
+        // messages
+        var botMessages = document.getElementsByClassName("messages__bot");
+        var msgIndex = botMessages.length - 1
+        var currentMsgContent = botMessages[msgIndex].innerHTML
+        
+        // input
+        const chatInput = document.querySelector('.chatbox__input');
+        var inputContent = chatInput.innerHTML
+        var userPrefix = this.user
+
+        // type code
+        var i = 0, text;
+        (function type() {
+            text = message.slice(0, ++i);
+            botMessages[msgIndex].innerHTML = currentMsgContent + text;
+            setTimeout(type, 60);
+            if (text === message) return;
+        })();
+
+        // clear bot-caret and open user-input element
+        setTimeout(function() {
+            botMessages[msgIndex].classList.remove("caret")
+            chatInput.innerHTML = '<span id="prompt__text">' + userPrefix + '</span>' + inputContent
+            chatInput.classList.add("caret");
+        }, this.userInputDelay);
+    }
+
+    getBotMessageHTML() {
+        return '<div id="prompt__text" class="messages__item messages__bot caret">' + this.prefix + '</div>'
+    }
+
+    getUserMessageHTML(message) {
+        return '<div id="prompt__text" class="messages__item">' + message + '</div>'
     }
 }
-
 
 const chatbox = new Chatbox();
 chatbox.display();

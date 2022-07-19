@@ -29,7 +29,7 @@ input {
   caret-color: transparent;
 }
 input:focus {
-  outline:none !important;
+  outline: none !important;
   caret-color: transparent;
 }
 textarea {
@@ -70,7 +70,7 @@ textarea {
   /* transform: translate(-20%,-4%); */
 }
 
-#message {
+#prompt__text {
   font-family: 'VT323', monospace;
   color: greenyellow;
   font-size: 3.2vmin;
