@@ -7,22 +7,13 @@ class Chatbox {
         this.prefix = 'TC-AI:~$ '
         this.user = 'user:~$ '
         this.messages = [];
-        this.state = false;
-        this.userInputDelay = 4500;
+        this.userInputDelay = 3500;
     }
 
     display() {
         const {chatBox} = this.args
 
-        // initialize first bot-message line
-        const chatmessages = document.querySelector('.chatbox__messages');
-        chatmessages.innerHTML += this.getBotMessageHTML()
-
-        // input first bot-message
-        let initText = "Welcome to Terra Cognita Magical Land...!";
-        let initMessage = { name: this.name, message: initText };
-        this.messages.push(initMessage);
-        this.updateChatText(chatbox)
+        this.initPrompt()
 
         // add user-input listener
         const node = chatBox.querySelector('input');
@@ -40,18 +31,26 @@ class Chatbox {
         if (textInput === "") {
             return;
         }
+        // if (textInput === "clear") {
+        //     // clears the user input line
+        //     textField.value = '';
+        //     document.querySelector('#user_id').innerHTML = ''
+        //     document.querySelector('.chatbox__input').classList.remove("caret");    // hide input caret
+        //     this.clearPrompt();
+        //     return;
+        // }
+        this.pushUserMsg(chatbox, textInput)
+        this.pushBotAnswer(textInput)
+    }
 
-        // update user message
+    pushUserMsg(chatbox , textInput) {
         let user_msg = { name: "User", message: textInput }
         this.messages.push(user_msg);
         this.updateChatText(user_msg)
-        textField.value = ''
-
-        this.callBot(textInput)
+        chatbox.querySelector('input').value = ''
     }
 
-    callBot(textInput) {
-        // update bot answer
+    pushBotAnswer(textInput) {
         $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
         .done( answer => {
             let chatbotAnswer = { name: this.name, message: answer };
@@ -89,7 +88,7 @@ class Chatbox {
             message = this.user + msg.message
             chatmessages.innerHTML += this.getUserMessageHTML(message)
             userID.innerHTML = ''                                   // clears the user id for the bot answer
-            chatInput.classList.remove("caret");                    // clear (hide) caret from input 
+            chatInput.classList.remove("caret");             // clear (hide) caret from input 
             chatmessages.innerHTML += this.getBotMessageHTML()      // initialize bot answer line
         }
     }
@@ -102,7 +101,7 @@ class Chatbox {
         var currentMsgContent = botMessages[msgIndex].innerHTML
         
         // input elements
-        const chatInput = document.querySelector('.chatbox__input');
+        const chatInput = document.querySelector('input');
         const userID = document.querySelector('#user_id');
         var userPrefix = this.user
 
@@ -130,6 +129,24 @@ class Chatbox {
     getUserMessageHTML(message) {
         return '<div class="prompt__text messages__item">' + message + '</div>'
     }
+
+    initPrompt() {
+        // initialize first bot-message line
+        const chatmessages = document.querySelector('.chatbox__messages');
+        chatmessages.innerHTML = this.getBotMessageHTML()
+
+        // input first bot-message
+        let initText = "Welcome to Terra Cognita Magical Land...!";
+        let initMessage = { name: this.name, message: initText };
+        this.messages.push(initMessage);
+        this.updateChatText(chatbox)
+    }
+
+    // clearPrompt() {
+    //     this.messages = [];
+    //     document.querySelector('.chatbox__messages').innerHTML = '<div></div>'        
+    //     this.display()
+    // }
 }
 
 const chatbox = new Chatbox();
