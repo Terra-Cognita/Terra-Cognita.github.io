@@ -1,119 +1,109 @@
-class Chatbox {
+class TerraCognitaLP {
     constructor() {
-        this.args = {
+        this.components = {
             chatBox: document.querySelector('#chatbox')
         }
         this.name = 'chatbot';
         this.prefix = 'TC-AI:~$ '
         this.user = 'user:~$ '
-        this.messages = [];
-        this.userInputDelay = 3500;
+        this.initMessage = "Welcome to Terra Cognita Magical Land...!";
+        this.errorText = "Hey there! I'm sorry, but I cannot chat right now. Can you be back in a while? Then I tell you all about this amazing world!";
+        this.messages = [
+            { name: this.name, message: this.initMessage }
+        ];
     }
 
     display() {
-        const {chatBox} = this.args
+        const {chatBox} = this.components
 
-        this.initPrompt()
+        this.activateBot(chatBox)     
+        this.updateChatBox(chatBox)
 
         // add user-input listener
-        const node = chatBox.querySelector('input');
-        node.addEventListener("keyup", ({key}) => {
+        var input = chatBox.querySelector('input');
+        input.addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
                 this.onSendButton(chatBox)
             }
         })
-
-
-        node.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event
-        resizeInput.call(input); // immediately call the function
+        input.addEventListener('input', resizeInput);   // bind the "resizeInput" callback on "input" event
+        resizeInput.call(input);                        // immediately call the function
         function resizeInput() {
             this.style.width = this.value.length + "ch";
         }
-
-
     }
 
-    onSendButton(chatbox) {
-        // html query elements
-        var textField = chatbox.querySelector('input');
+    onSendButton(chatBox) {
+        var textField = chatBox.querySelector('#chatbox__input-user_message');
         let textInput = textField.value
-        if (textInput === "") {
-            return;
-        }
+        if (textInput === "") { return; }
         // if (textInput === "clear") {
-        //     // clears the user input line
-        //     textField.value = '';
-        //     document.querySelector('#user_id').innerHTML = ''
-        //     document.querySelector('.chatbox__input').classList.remove("caret");    // hide input caret
         //     this.clearPrompt();
         //     return;
         // }
-        this.pushUserMsg(chatbox, textInput)
-        this.pushBotAnswer(textInput)
+        this.pushUserMsg(chatBox, textInput)
+        this.pushBotAnswer(chatBox, textInput)
     }
-
-    pushUserMsg(chatbox , textInput) {
+    
+    pushUserMsg(chatBox , textInput) {
         let user_msg = { name: "User", message: textInput }
         this.messages.push(user_msg);
-        this.updateChatText(user_msg)
-        chatbox.querySelector('input').value = ''
+        chatBox.querySelector('#chatbox__input-user_message').value = ''
+        this.updateChatBox(chatBox)
     }
 
-    pushBotAnswer(textInput) {
+    pushBotAnswer(chatBox, textInput) {
+        this.activateBot(chatBox)   
         $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
         .done( answer => {
-            let chatbotAnswer = { name: this.name, message: answer };
-            this.messages.push(chatbotAnswer);
-            this.updateChatText(chatbox)
+            this.messages.push( { name: this.name, message: answer } );
         })
         .fail( error => {
-            console.log('>> app.js >> OnSendButton >> get-error:')
+            console.log('>> app.js >> pushBotAnswer >> get-error:')
             console.log(error)
-
-            let errorText = "Hey there! I'm sorry, but I cannot chat right now. \
-                            Can you be back in a while? Then I tell you all about this amazing world!";
-            let errorMessage = { name: this.name, message: errorText };
-            this.messages.push(errorMessage);
-            this.updateChatText(chatbox)
+            this.messages.push( { name: this.name, message: this.errorText } );
+        })
+        .always( () => {
+            this.updateChatBox(chatBox)
         });
-        // .always(function() {
-        // });
     }
 
-    updateChatText(chatbox) {
-        let name = this.name;
-        let message = ''
-        let msg = this.messages[this.messages.length - 1]
+    updateChatBox(chatBox) {
+        // let name = this.name;
+        // let message = ''
+        let latestMessage = this.messages[this.messages.length - 1]
 
         // input elements
-        const chatInput = document.querySelector('input');
-        const chatmessages = document.querySelector('.chatbox__messages');
-        const userID = document.querySelector('#user_id');
+        // const chatInput = chatBox.querySelector('#chatbox__input-user_message');
+        // const chatmessages = chatBox.querySelector('.chatbox__messages');
+        // const userID = chatBox.querySelector('#chatbox__input-user_id');
         
-        if (msg.name === name) {
-            this.typeBotText(chatbox, msg.message)
+        // type Bot answer
+        if (latestMessage.name === this.name) {
+            this.typeBotText(latestMessage.message)
+            .then( () => {
+                this.deactivateBot(chatBox);
+                this.activateUserInput(chatBox);
+            });
         }
+        // update user-inputed message to the chat
         else {
-            message = this.user + msg.message
-            chatmessages.innerHTML += this.getUserMessageHTML(message)
-            userID.innerHTML = ''                               // clears the user id for the bot answer
-            chatInput.classList.remove("caret");                // clear (hide) caret from input 
-            chatmessages.innerHTML += this.getBotMessageHTML()  // initialize bot answer line
+            // let message = this.user + latestMessage.message
+            chatBox.querySelector('.chatbox__messages').innerHTML += this.getUserMessageHTML(latestMessage.message)
+            // userID.innerHTML = ''                               // clears the user id for the bot answer
+            // chatInput.classList.remove("caret");                // clear (hide) caret from input 
+            // chatmessages.innerHTML += this.getBotMessageHTML()  // initialize bot answer line
+            this.deactivateUser(chatBox)
         }
     }
 
-    typeBotText(chatbox, message) {
+    async typeBotText(message) {
         
         // messages elements
         var botMessages = document.getElementsByClassName("messages__bot");
         var msgIndex = botMessages.length - 1
         var currentMsgContent = botMessages[msgIndex].innerHTML
         
-        // input elements
-        const chatInput = document.querySelector('input');
-        const userID = document.querySelector('#user_id');
-        var userPrefix = this.user
-
         // typing effect code
         var i = 0, text;
         (function type() {
@@ -122,13 +112,33 @@ class Chatbox {
             setTimeout(type, 60);
             if (text === message) return;
         })();
+        return true;
+    }
 
-        // clear bot-caret and open user-input element
-        setTimeout(function() {
-            botMessages[msgIndex].classList.remove("caret")
-            userID.innerHTML = userPrefix
-            chatInput.classList.add("caret");
-        }, this.userInputDelay);
+    activateBot(chatBox) {
+        // initialize bot-message line-id
+        chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML() 
+    }
+
+    deactivateBot(chatBox) {
+        // removes blinking-caret from Bot last message
+        var botMessages = chatBox.getElementsByClassName("messages__bot");
+        botMessages[botMessages.length - 1].classList.remove("caret")
+    }
+
+    activateUserInput(chatBox) {        
+        // activates user-id and blinking caret on user-input line
+        chatBox.querySelector('#chatbox__input-user_id').innerHTML = this.user;   
+        chatBox.querySelector('input').classList.add("caret") 
+        // set input-tag size back to 1 character-size
+        chatBox.querySelector("input").style.width = "1ch";
+    }
+
+    deactivateUser(chatBox) {
+        // clears the user-id for the bot answer
+        chatBox.querySelector('#chatbox__input-user_id').innerHTML = ''
+        // clear (hide) blinking-caret from input line
+        chatBox.querySelector('#chatbox__input-user_message').classList.remove("caret");    
     }
 
     getBotMessageHTML() {
@@ -136,19 +146,7 @@ class Chatbox {
     }
 
     getUserMessageHTML(message) {
-        return '<div class="prompt__text messages__item">' + message + '</div>'
-    }
-
-    initPrompt() {
-        // initialize first bot-message line
-        const chatmessages = document.querySelector('.chatbox__messages');
-        chatmessages.innerHTML = this.getBotMessageHTML()
-
-        // input first bot-message
-        let initText = "Welcome to Terra Cognita Magical Land...!";
-        let initMessage = { name: this.name, message: initText };
-        this.messages.push(initMessage);
-        this.updateChatText(chatbox)
+        return '<div class="prompt__text messages__item">' + this.user + message + '</div>'
     }
 
     // clearPrompt() {
@@ -158,5 +156,5 @@ class Chatbox {
     // }
 }
 
-const chatbox = new Chatbox();
-chatbox.display();
+const tc = new TerraCognitaLP();
+tc.display();
