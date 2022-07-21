@@ -23,16 +23,6 @@
     width:fit-content;
 }
 
-/* .chatbox__input {
-    margin: 0;
-    margin-right: auto;
-    white-space: nowrap;
-    overflow: hidden;
-    min-width: 0px;
-    overflow: hidden;
-    display: inline-block;
-    width:fit-content;
-} */
 .caret {
     border-right: 10px solid greenyellow;
     animation: caret-blink .8s ease infinite;

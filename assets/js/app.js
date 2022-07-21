@@ -17,8 +17,9 @@ class TerraCognitaLP {
         const {chatBox} = this.components
 
         this.activateBot(chatBox)     
-        this.updateChatBox(chatBox)
-
+        
+        this.activateUserInput(chatBox);
+        
         // add user-input listener
         var input = chatBox.querySelector('input');
         input.addEventListener("keyup", ({key}) => {
@@ -69,55 +70,44 @@ class TerraCognitaLP {
     }
 
     updateChatBox(chatBox) {
-        // let name = this.name;
-        // let message = ''
         let latestMessage = this.messages[this.messages.length - 1]
-
-        // input elements
-        // const chatInput = chatBox.querySelector('#chatbox__input-user_message');
-        // const chatmessages = chatBox.querySelector('.chatbox__messages');
-        // const userID = chatBox.querySelector('#chatbox__input-user_id');
         
         // type Bot answer
         if (latestMessage.name === this.name) {
-            this.typeBotText(latestMessage.message)
-            .then( () => {
-                this.deactivateBot(chatBox);
-                this.activateUserInput(chatBox);
-            });
+            
+
+            let allBotMessages = chatBox.getElementsByClassName("messages__bot");
+            let curentBotLine = allBotMessages[allBotMessages.length - 1]
+            let currentMsgContent = curentBotLine.innerHTML
+
+            this.typeBotText(curentBotLine, currentMsgContent, latestMessage.message)
         }
         // update user-inputed message to the chat
         else {
-            // let message = this.user + latestMessage.message
             chatBox.querySelector('.chatbox__messages').innerHTML += this.getUserMessageHTML(latestMessage.message)
-            // userID.innerHTML = ''                               // clears the user id for the bot answer
-            // chatInput.classList.remove("caret");                // clear (hide) caret from input 
-            // chatmessages.innerHTML += this.getBotMessageHTML()  // initialize bot answer line
             this.deactivateUser(chatBox)
         }
+        this.deactivateBot(chatBox)
     }
 
-    async typeBotText(message) {
+    typeBotText(curentBotLine, currentMsgContent, fullContent) {
+        // ref for typing effect: https://codepen.io/tjezidzic/pen/LLWoLw
+        let i = 0;
+        let text = '';
         
-        // messages elements
-        var botMessages = document.getElementsByClassName("messages__bot");
-        var msgIndex = botMessages.length - 1
-        var currentMsgContent = botMessages[msgIndex].innerHTML
-        
-        // typing effect code
-        var i = 0, text;
-        (function type() {
-            text = message.slice(0, ++i);
-            botMessages[msgIndex].innerHTML = currentMsgContent + text;
+        ( function type() {
+            text = fullContent.slice(0, ++i);
+            curentBotLine.innerHTML = currentMsgContent + text;
             setTimeout(type, 60);
-            if (text === message) return;
-        })();
-        return true;
+            if (text === fullContent) return 
+        })()
+        return
     }
 
     activateBot(chatBox) {
-        // initialize bot-message line-id
-        chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML() 
+        // initialize bot-message line-id and push first message
+        chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML()
+        this.updateChatBox(chatBox)
     }
 
     deactivateBot(chatBox) {

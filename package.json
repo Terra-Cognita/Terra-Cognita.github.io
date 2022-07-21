@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Terra-Cognita/landing-page.git"
+    "url": "git+https://github.com/Terra-Cognita/Terra-Cognita.github.io"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Terra-Cognita/landing-page/issues"
+    "url": "https://github.com/Terra-Cognita/Terra-Cognita.github.io/issues"
   },
-  "homepage": "https://github.com/Terra-Cognita/landing-page#readme",
+  "homepage": "https://github.com/Terra-Cognita/Terra-Cognita.github.io#readme",
   "dependencies": {
     "node-sass": "^7.0.1"
   }
