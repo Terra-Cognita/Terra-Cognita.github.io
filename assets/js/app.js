@@ -6,18 +6,16 @@ class TerraCognitaLP {
         this.name = 'chatbot';
         this.prefix = 'TC-AI:~$ '
         this.user = 'user:~$ '
-        this.initMessage = "Welcome to Terra Cognita Magical Land...! aaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ddddddddddddd ooooooooooooooooooooo hhhhhhhhhhhhhhhhh iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
+        this.initMessage = "Welcome to Terra Cognita Magical Land...!";
         this.errorText = "Hey there! I'm sorry, but I cannot chat right now. Can you be back in a while? Then I tell you all about this amazing world!";
-        this.messages = [
-            { name: this.name, message: this.initMessage }
-        ];
+        this.messages = [];
     }
 
-    display() {
+    displayChatBox() {
         const {chatBox} = this.components
 
-        this.activateBot(chatBox)     
-        
+        this.openBotLine(chatBox)   
+        this.pushBotMsg(chatBox, this.initMessage)
         this.activateUserInput(chatBox);
         
         // add user-input listener
@@ -37,36 +35,97 @@ class TerraCognitaLP {
     onSendButton(chatBox) {
         var textField = chatBox.querySelector('#chatbox__input-user_message');
         let textInput = textField.value
+
         if (textInput === "") { return; }
+        
         // if (textInput === "clear") {
         //     this.clearPrompt();
         //     return;
         // }
+
+        // push messages to chat area
+        this.deactivateUserInput(chatBox)
+
         this.pushUserMsg(chatBox, textInput)
-        this.pushBotAnswer(chatBox, textInput)
+
+        let botAnswer = this.fetchBotMsg(chatBox, textInput)
+        this.pushBotMsg(chatBox, botAnswer)
+        
+        this.activateUserInput(chatBox);
     }
     
-    pushUserMsg(chatBox , textInput) {
-        let user_msg = { name: "User", message: textInput }
-        this.messages.push(user_msg);
-        chatBox.querySelector('#chatbox__input-user_message').value = ''
-        this.updateChatBox(chatBox)
+    pushUserMsg(chatBox , message) {
+        // let user_msg = { name: "User", message: textInput };
+        // this.messages.push(user_msg);
+        this.saveMsg("User", message);
+
+        // this.updateChatBox(chatBox)
+        chatBox.querySelector('.chatbox__messages').innerHTML += this.getUserMessageHTML(message)
     }
 
-    pushBotAnswer(chatBox, textInput) {
-        this.activateBot(chatBox)   
-        $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
-        .done( answer => {
-            this.messages.push( { name: this.name, message: answer } );
-        })
-        .fail( error => {
-            console.log('>> app.js >> pushBotAnswer >> get-error:')
-            console.log(error)
-            this.messages.push( { name: this.name, message: this.errorText } );
-        })
-        .always( () => {
-            this.updateChatBox(chatBox)
+    pushBotMsg(chatBox, textMessage) {
+        
+        // let latestMessage = this.messages[this.messages.length - 1]
+        let allBotMessages = chatBox.getElementsByClassName("messages__bot");
+        let curentBotLine = allBotMessages[allBotMessages.length - 1]
+        let currentMsgContent = curentBotLine.innerHTML
+
+        if(textMessage === 'error'){
+            this.saveMsg("error", this.errorText);
+            this.typeBotText(curentBotLine, currentMsgContent, this.errorText)
+        } else {
+            this.saveMsg(this.name, textMessage);
+            this.typeBotText(curentBotLine, currentMsgContent, textMessage)
+        }
+        this.closeBotLine(chatBox)
+    }
+
+    fetchBotMsg(chatBox, textInput) {
+
+        this.openBotLine(chatBox)   
+
+        var result = null;
+        $.ajax("https://tcog-chatbot.azurewebsites.net/get",
+        {
+            type: "get", 
+            data: { msg: textInput },
+            async: false,
+            success: (answer) => {
+                result = answer;
+            },
+            error: (error) => {
+                console.log(error)
+                result = 'error'
+            },
         });
+        return result
+        // $.get("https://tcog-chatbot.azurewebsites.net/get", { msg: textInput })
+        // .done( answer => {
+        //     // this.messages.push( { name: this.name, message: answer } );
+        //     this.saveMsg(this.name, answer)
+        // })
+        // .fail( error => {
+        //     console.log('>> app.js >> fetchBotMsg >> get-error:')
+        //     console.log(error)
+        //     // this.messages.push( { name: this.name, message: this.errorText } );
+        //     this.saveMsg(this.name, this.errorText)
+        // })
+        // .always( () => {
+        //     // this.updateChatBox(chatBox)
+            
+        //     // let latestMessage = this.messages[this.messages.length - 1]
+        //     // let allBotMessages = chatBox.getElementsByClassName("messages__bot");
+        //     // let curentBotLine = allBotMessages[allBotMessages.length - 1]
+        //     // let currentMsgContent = curentBotLine.innerHTML
+
+        //     // this.typeBotText(curentBotLine, currentMsgContent, latestMessage.message)
+        //     return this.messages[this.messages.length - 1]
+        // });
+    }
+
+    saveMsg(idName, textInput){
+        let msg = { name: idName, message: textInput }
+        this.messages.push(msg);
     }
 
     updateChatBox(chatBox) {
@@ -81,15 +140,18 @@ class TerraCognitaLP {
             let currentMsgContent = curentBotLine.innerHTML
 
             this.typeBotText(curentBotLine, currentMsgContent, latestMessage.message)
+            // this.typeBotText(chatBox, latestMessage.message)
+            this.closeBotLine(chatBox)
+            this.activateUserInput(chatBox);
         }
         // update user-inputed message to the chat
         else {
             chatBox.querySelector('.chatbox__messages').innerHTML += this.getUserMessageHTML(latestMessage.message)
-            this.deactivateUser(chatBox)
+            this.deactivateUserInput(chatBox)
         }
-        this.deactivateBot(chatBox)
     }
 
+    // typeBotText(chatBox, fullContent) {
     typeBotText(curentBotLine, currentMsgContent, fullContent) {
         // ref for typing effect: https://codepen.io/tjezidzic/pen/LLWoLw
         let i = 0;
@@ -104,13 +166,13 @@ class TerraCognitaLP {
         return
     }
 
-    activateBot(chatBox) {
+    openBotLine(chatBox) {
         // initialize bot-message line-id and push first message
         chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML()
-        this.updateChatBox(chatBox)
+        // this.updateChatBox(chatBox)
     }
 
-    deactivateBot(chatBox) {
+    closeBotLine(chatBox) {
         // removes blinking-caret from Bot last message
         var botMessages = chatBox.getElementsByClassName("messages__bot");
         botMessages[botMessages.length - 1].classList.remove("caret")
@@ -124,11 +186,10 @@ class TerraCognitaLP {
         chatBox.querySelector("input").style.width = "1ch";
     }
 
-    deactivateUser(chatBox) {
-        // clears the user-id for the bot answer
-        chatBox.querySelector('#chatbox__input-user_id').innerHTML = ''
-        // clear (hide) blinking-caret from input line
-        chatBox.querySelector('#chatbox__input-user_message').classList.remove("caret");    
+    deactivateUserInput(chatBox) {
+        chatBox.querySelector('#chatbox__input-user_message').value = ''    // clears input text
+        chatBox.querySelector('#chatbox__input-user_id').innerHTML = ''     // clears the user-id for the bot answer
+        chatBox.querySelector('#chatbox__input-user_message').classList.remove("caret");    // clear (hide) blinking-caret from input line
     }
 
     getBotMessageHTML() {
@@ -147,4 +208,4 @@ class TerraCognitaLP {
 }
 
 const tc = new TerraCognitaLP();
-tc.display();
+tc.displayChatBox();
