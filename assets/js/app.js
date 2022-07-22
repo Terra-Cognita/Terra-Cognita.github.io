@@ -6,7 +6,7 @@ class TerraCognitaLP {
         this.name = 'chatbot';
         this.prefix = 'TC-AI:~$ '
         this.user = 'user:~$ '
-        this.initMessage = "Welcome to Terra Cognita Magical Land...!";
+        this.initMessage = "Welcome to Terra Cognita Magical Land...! aaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb ddddddddddddd ooooooooooooooooooooo hhhhhhhhhhhhhhhhh iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
         this.errorText = "Hey there! I'm sorry, but I cannot chat right now. Can you be back in a while? Then I tell you all about this amazing world!";
         this.messages = [
             { name: this.name, message: this.initMessage }
@@ -21,7 +21,7 @@ class TerraCognitaLP {
         this.activateUserInput(chatBox);
         
         // add user-input listener
-        var input = chatBox.querySelector('input');
+        var input = chatBox.querySelector('#chatbox__input-user_message');
         input.addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
                 this.onSendButton(chatBox)
