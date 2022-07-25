@@ -18,22 +18,27 @@ class TerraCognitaLP {
         this.openBotLine(chatBox)   
         this.pushBotMsg(chatBox, this.initMessage)
         
-        // add user-input listener
+        // listener: user input text
         var input = chatBox.querySelector('#chatbox__input-user_message');
         input.addEventListener("keyup", ({key}) => {
             if (key === "Enter") {
                 this.onSendButton(chatBox)
             }
         })
+
+        // listener: resize user-input element
         input.addEventListener('input', resizeInput);   // bind the "resizeInput" callback on "input" event
         resizeInput.call(input);                        // immediately call the function
         function resizeInput() {
             this.style.width = this.value.length + "ch";
         }
 
-        chatBox.addEventListener("scroll", () => {
-            chatBox.scrollTop = chatBox.scrollHeight;
-        })
+        // listener: adjust scrolling given element size change
+        const resize_ob = new ResizeObserver(function(entries) {
+            let messagesEl = entries[0].target;     // observe single element (first element in entries array)
+            messagesEl.scrollIntoView(false)
+        });
+        resize_ob.observe(document.querySelector("#chatbox__messages")); // start observing for resize
     }
 
     async onSendButton(chatBox) {
@@ -121,9 +126,9 @@ class TerraCognitaLP {
     }
 
     openBotLine(chatBox) {
+        chatBox.scrollTop = chatBox.scrollHeight;
+        chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML()   // initialize bot-message line-id and push first message
         return new Promise( (resolve, reject) => {
-            chatBox.scrollTop = chatBox.scrollHeight;
-            chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML()   // initialize bot-message line-id and push first message
             setTimeout(() => {
                 resolve()
             }, 500);    // lets line blinking for setTimeOut ms before resolving
@@ -141,11 +146,11 @@ class TerraCognitaLP {
         })
     }
 
-    activateUserInput(chatBox) {  
-        chatBox.scrollTop = chatBox.scrollHeight;      
+    activateUserInput(chatBox) {   
         chatBox.querySelector('#chatbox__input-user_id').innerHTML = this.user;     // activates user-id and blinking caret on user-input line
         chatBox.querySelector('input').classList.add("caret") 
         chatBox.querySelector("input").style.width = "1ch";                         // set input-tag size back to 1 character-size
+        chatBox.querySelector("#chatbox__input").scrollIntoView(false)
     }
 
     deactivateUserInput(chatBox) {

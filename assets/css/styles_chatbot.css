@@ -1,16 +1,14 @@
 
 .chatbox__messages {
-    margin-top: auto;
     display: flex;
     flex-direction: column;
 }
 
 .messages__item {
-    min-width: 0px;
-    word-break: break-all;
-    overflow-x: hidden;
     display: inline-block;
+    min-width: 0ch;
     width:fit-content;
+    word-break: break-all;
 }
 
 .caret {
