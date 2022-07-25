@@ -1,25 +1,15 @@
 
-/* .chatbox__support {
-    transform: translateY(-40px);
+.chatbox__messages {
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-} */
+}
 
-/* MESSAGES */
-/* .chatbox__messages {
-    margin-top: auto;
-    display: flex; */
-    /* overflow-y: scroll; */
-    /* flex-direction: column-reverse;
-    padding: 0 20px;
-} */
 .messages__item {
-    /* margin: 0; */
-    /* margin-right: auto; */
-    /* float: left; */
     min-width: 0px;
-    overflow: hidden;
-    /* display: inline-block; */
+    word-break: break-all;
+    overflow-x: hidden;
+    display: inline-block;
     width:fit-content;
 }
 

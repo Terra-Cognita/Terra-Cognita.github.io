@@ -32,7 +32,7 @@ class TerraCognitaLP {
         }
     }
 
-    onSendButton(chatBox) {
+    async onSendButton(chatBox) {
         var textField = chatBox.querySelector('#chatbox__input-user_message');
         let textInput = textField.value
 
@@ -47,7 +47,7 @@ class TerraCognitaLP {
         this.deactivateUserInput(chatBox)
         this.pushUserMsg(chatBox, textInput)
 
-        this.openBotLine(chatBox)   
+        await this.openBotLine(chatBox)   
         let botAnswer = this.fetchBotMsg(textInput)
         this.pushBotMsg(chatBox, botAnswer)
     }
@@ -58,6 +58,7 @@ class TerraCognitaLP {
     }
 
     pushBotMsg(chatBox, textMessage) {
+        console.log("pushBotMsg")
         if(textMessage === 'error'){
             this.saveMsg("error", this.errorText);
             this.typeBotText(chatBox, this.errorText)
@@ -68,6 +69,7 @@ class TerraCognitaLP {
     }
 
     fetchBotMsg(textInput) {
+        console.log("fetchBotMsg")
         var result = null;
         $.ajax("https://tcog-chatbot.azurewebsites.net/get",
         {
@@ -117,7 +119,13 @@ class TerraCognitaLP {
     }
 
     openBotLine(chatBox) {
-        chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML()   // initialize bot-message line-id and push first message
+        return new Promise( (resolve, reject) => {
+            chatBox.scrollTop = chatBox.scrollHeight;
+            chatBox.querySelector('.chatbox__messages').innerHTML += this.getBotMessageHTML()   // initialize bot-message line-id and push first message
+            setTimeout(() => {
+                resolve()
+            }, 500);    // lets line blinking for setTimeOut ms before resolving
+        })
     }
 
     closeBotLine(chatBox) {
@@ -127,11 +135,12 @@ class TerraCognitaLP {
             setTimeout(() => {
                 botMessages[botMessages.length - 1].classList.remove("caret")
                 resolve()
-            }, 2000);
+            }, 1500);
         })
     }
 
-    activateUserInput(chatBox) {        
+    activateUserInput(chatBox) {  
+        chatBox.scrollTop = chatBox.scrollHeight;      
         chatBox.querySelector('#chatbox__input-user_id').innerHTML = this.user;     // activates user-id and blinking caret on user-input line
         chatBox.querySelector('input').classList.add("caret") 
         chatBox.querySelector("input").style.width = "1ch";                         // set input-tag size back to 1 character-size

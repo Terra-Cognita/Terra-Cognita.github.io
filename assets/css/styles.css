@@ -70,8 +70,8 @@ input:focus {
   left: 4%; 
   width: 90vw;
   max-width: 90vw;
-  word-break: break-all;
-  /* transform: translate(-20%,-4%); */
+  overflow-y: auto;
+  max-height: 15vh;
 }
 
 .prompt__text {
