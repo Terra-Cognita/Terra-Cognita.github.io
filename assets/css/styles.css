@@ -68,10 +68,23 @@ input:focus {
   position: absolute;
   top: 17vh;
   left: 4%; 
-  width: 90vw;
-  max-width: 90vw;
-  overflow-y: auto;
-  max-height: 15vh;
+  width: 92vw;
+  max-width: 92vw;
+  height: 72vh;
+  max-height: 72vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 1vmin;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px greenyellow;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(172, 255, 47, 0.247);
+  border-radius: 10px;
 }
 
 .prompt__text {

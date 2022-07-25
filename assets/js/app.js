@@ -30,6 +30,10 @@ class TerraCognitaLP {
         function resizeInput() {
             this.style.width = this.value.length + "ch";
         }
+
+        chatBox.addEventListener("scroll", () => {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        })
     }
 
     async onSendButton(chatBox) {
@@ -58,7 +62,6 @@ class TerraCognitaLP {
     }
 
     pushBotMsg(chatBox, textMessage) {
-        console.log("pushBotMsg")
         if(textMessage === 'error'){
             this.saveMsg("error", this.errorText);
             this.typeBotText(chatBox, this.errorText)
@@ -69,7 +72,6 @@ class TerraCognitaLP {
     }
 
     fetchBotMsg(textInput) {
-        console.log("fetchBotMsg")
         var result = null;
         $.ajax("https://tcog-chatbot.azurewebsites.net/get",
         {
