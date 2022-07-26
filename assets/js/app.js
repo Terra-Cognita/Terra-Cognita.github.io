@@ -44,12 +44,12 @@ class TerraCognitaLP {
         var textField = chatBox.querySelector('#chatbox__input-user_message');
         let textInput = textField.value
 
-        if (textInput === "") { return; }
+        if (textInput === "") { return; }   // empty input
         
-        // if (textInput === "clear") {
-        //     this.clearPrompt();
-        //     return;
-        // }
+        if (textInput === "clear") {        // clear command
+            this.clearPrompt(chatBox);
+            return;
+        }
 
         // push messages to chat area
         this.pushUserMsg(chatBox, textInput);
@@ -178,11 +178,11 @@ class TerraCognitaLP {
         return '<div class="prompt__text messages__item">' + this.user + message + '</div>'
     }
 
-    // clearPrompt() {
-    //     this.messages = [];
-    //     document.querySelector('.chatbox__messages').innerHTML = '<div></div>'        
-    //     this.display()
-    // }
+    clearPrompt(chatBox) {
+        this.deactivateUserInput(chatBox)
+        chatBox.querySelector("#chatbox__messages").innerHTML = '<div></div>'
+        this.activateUserInput(chatBox)
+    }
 }
 
 const tc = new TerraCognitaLP();
