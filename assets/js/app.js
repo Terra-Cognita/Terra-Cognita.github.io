@@ -15,8 +15,7 @@ class TerraCognitaLP {
         const {chatBox} = this.components
 
         // initial page message
-        this.openBotLine(chatBox)   
-        this.pushBotMsg(chatBox, this.initMessage)
+        this.pushBotMsg(chatBox, this.initMessage, fetch=false)
         
         // listener: user input text
         var input = chatBox.querySelector('#chatbox__input-user_message');
@@ -41,7 +40,7 @@ class TerraCognitaLP {
         resize_ob.observe(document.querySelector("#chatbox__messages")); // start observing for resize
     }
 
-    async onSendButton(chatBox) {
+    onSendButton(chatBox) {
         var textField = chatBox.querySelector('#chatbox__input-user_message');
         let textInput = textField.value
 
@@ -53,27 +52,36 @@ class TerraCognitaLP {
         // }
 
         // push messages to chat area
-        this.deactivateUserInput(chatBox)
-        this.pushUserMsg(chatBox, textInput)
-
-        await this.openBotLine(chatBox)   
-        let botAnswer = this.fetchBotMsg(textInput)
-        this.pushBotMsg(chatBox, botAnswer)
+        this.pushUserMsg(chatBox, textInput);
+        this.pushBotMsg(chatBox);
     }
     
     pushUserMsg(chatBox , message) {
+        this.deactivateUserInput(chatBox);
         this.saveMsg("User", message);
         chatBox.querySelector('.chatbox__messages').innerHTML += this.getUserMessageHTML(message)   // update page with formatted user-input html
     }
 
-    pushBotMsg(chatBox, textMessage) {
-        if(textMessage === 'error'){
-            this.saveMsg("error", this.errorText);
-            this.typeBotText(chatBox, this.errorText)
-        } else {
-            this.saveMsg(this.name, textMessage);
-            this.typeBotText(chatBox, textMessage)
+    async pushBotMsg(chatBox, textInput, fetch=true) {
+        await this.openBotLine(chatBox);
+        
+        let botAnswer;
+        if (!fetch) { botAnswer = textInput}
+        else {
+            botAnswer = await this.fetchBotMsg(textInput); 
         }
+        
+        let name, text;
+        if(botAnswer === 'error'){
+            name = 'error';
+            text = this.errorText;
+        } else {
+            name = this.name;
+            text = botAnswer;
+        }
+        this.saveMsg(name, text);
+        await this.typeBotText(chatBox, text);
+        this.activateUserInput(chatBox);
     }
 
     fetchBotMsg(textInput) {
@@ -88,7 +96,7 @@ class TerraCognitaLP {
             },
             error: (error) => {
                 console.log(error)
-                result = 'error'
+                result = 'error';
             },
         });
         return result
@@ -121,7 +129,6 @@ class TerraCognitaLP {
         }) 
         await typing;
         await this.closeBotLine(chatBox)
-        this.activateUserInput(chatBox);
         return
     }
 
@@ -147,16 +154,20 @@ class TerraCognitaLP {
     }
 
     activateUserInput(chatBox) {   
-        chatBox.querySelector('#chatbox__input-user_id').innerHTML = this.user;     // activates user-id and blinking caret on user-input line
-        chatBox.querySelector('input').classList.add("caret") 
-        chatBox.querySelector("input").style.width = "1ch";                         // set input-tag size back to 1 character-size
+        chatBox.querySelector('#chatbox__input-user_id').innerHTML = this.user;     // activates user-id
+        const inputEl = chatBox.querySelector('#chatbox__input-user_message')
+        inputEl.style.width = "1ch";    // set input-tag size back to 1 character-size
+        inputEl.classList.add("caret")  // set blinking caret on user-input line
+        inputEl.focus()                 // set element on focus
         chatBox.querySelector("#chatbox__input").scrollIntoView(false)
     }
 
     deactivateUserInput(chatBox) {
-        chatBox.querySelector('#chatbox__input-user_message').value = ''    // clears input text
+        const inputEl = chatBox.querySelector('#chatbox__input-user_message')
+        inputEl.value = ''                  // clears input text
+        inputEl.classList.remove("caret");  // clear (hide) blinking-caret from input line
+        inputEl.blur()                      // remove element focus
         chatBox.querySelector('#chatbox__input-user_id').innerHTML = ''     // clears the user-id for the bot answer
-        chatBox.querySelector('#chatbox__input-user_message').classList.remove("caret");    // clear (hide) blinking-caret from input line
     }
 
     getBotMessageHTML() {
