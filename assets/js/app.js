@@ -9,6 +9,7 @@ class TerraCognitaLP {
         this.initMessage = "Welcome to Terra Cognita Magical Land...!";
         this.errorText = "Hey there! I'm sorry, but I cannot chat right now. Can you be back in a while? Then I tell you all about this amazing world!";
         this.messages = [];
+        this.inputBlur = false
     }
 
     displayChatBox() {
@@ -32,6 +33,12 @@ class TerraCognitaLP {
             this.style.width = this.value.length + "ch";
         }
 
+        input.addEventListener("blur", () => {
+            if (!this.inputBlur) {
+                input.focus()
+            }
+        })
+
         // listener: adjust scrolling given element size change
         const resize_ob = new ResizeObserver(function(entries) {
             let messagesEl = entries[0].target;     // observe single element (first element in entries array)
@@ -44,8 +51,11 @@ class TerraCognitaLP {
         var textField = chatBox.querySelector('#chatbox__input-user_message');
         let textInput = textField.value
 
-        if (textInput === "") { return; }   // empty input
-        
+        if (textInput === "") {             // empty input
+            this.pushUserMsg(chatBox, textInput, false);
+            this.activateUserInput(chatBox)
+            return; 
+        }
         if (textInput === "clear") {        // clear command
             this.clearPrompt(chatBox);
             return;
@@ -56,9 +66,9 @@ class TerraCognitaLP {
         this.pushBotMsg(chatBox);
     }
     
-    pushUserMsg(chatBox , message) {
+    pushUserMsg(chatBox, message, save=true) {
         this.deactivateUserInput(chatBox);
-        this.saveMsg("User", message);
+        if (save) { this.saveMsg("User", message); }
         chatBox.querySelector('.chatbox__messages').innerHTML += this.getUserMessageHTML(message)   // update page with formatted user-input html
     }
 
@@ -159,15 +169,17 @@ class TerraCognitaLP {
         inputEl.style.width = "1ch";    // set input-tag size back to 1 character-size
         inputEl.classList.add("caret")  // set blinking caret on user-input line
         inputEl.focus()                 // set element on focus
+        this.inputBlur = false;
         chatBox.querySelector("#chatbox__input").scrollIntoView(false)
     }
 
     deactivateUserInput(chatBox) {
-        const inputEl = chatBox.querySelector('#chatbox__input-user_message')
-        inputEl.value = ''                  // clears input text
+        const inputEl = chatBox.querySelector('#chatbox__input-user_message');
+        inputEl.value = '';                 // clears input text
         inputEl.classList.remove("caret");  // clear (hide) blinking-caret from input line
-        inputEl.blur()                      // remove element focus
-        chatBox.querySelector('#chatbox__input-user_id').innerHTML = ''     // clears the user-id for the bot answer
+        this.inputBlur = true;
+        inputEl.blur();                     // remove element focus
+        chatBox.querySelector('#chatbox__input-user_id').innerHTML = '';    // clears the user-id for the bot answer
     }
 
     getBotMessageHTML() {
