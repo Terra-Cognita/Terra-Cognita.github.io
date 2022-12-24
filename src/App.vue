@@ -53,41 +53,32 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer has-background-grey pb-5">
-      <div class="container is-size-5 ml-4">
-        <div class="columns">
+    <footer id="footer" class="footer has-background-grey">
+      <div class="mx-4 columns is-multiline">
 
-          <div class="column is-half has-text-left">
+          <div class="column is-one-quarter has-text-left p-0">
             <p>Powered by</p>
             <img id="logo-cardano-img" src="./assets/logos/Cardano-RGB_Logo-Full-White.svg" alt="Cardano">
           </div>
-          
-          <div class="column is-half has-text-right">
+
+          <div class="column is-three-quarters has-text-right-tablet p-0">
             <p>Withdrawl Policy Privacy Terms of Conditions Imprint</p>
             <div id="social-media-icons" class="my-3">
-              <a class="mx-2" href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
+              <a class="icon mr-5" href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
                 <o-icon pack="mdi" icon="github" size="large" variant="dark"></o-icon>
               </a>
-              <a class="mx-2" href="https://twitter.com/AimCardano" target="_blank">
+              <a class="icon mr-4" href="https://twitter.com/AimCardano" target="_blank">
                 <o-icon pack="mdi" icon="twitter" size="large" variant="dark"></o-icon>
               </a>
-              <a class="mx-2" href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
+              <a class="icon" href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
                 <o-icon pack="mdi" icon="telegram" size="large" variant="dark"></o-icon>
               </a>
             </div>
-            <!-- <o-button
-              label="Feedback"
-              variant="dark"
-              icon-left="message-reply-text"
-              tag="a"
-              target="_blank"
-              href="https://forms.gle/BUFPVPetPvetpQB5A"
-              >
-            </o-button> -->
           </div>
-        </div>
-        <p class="has-text-left">AdaQuest PolicyID:</p>
-        
+
+          <div class="column is-full p-0"> 
+            <p class="has-text-left">AdaQuest PolicyID:</p>
+          </div> 
       </div>
     </footer>
   </div>
@@ -135,9 +126,9 @@ export default {
     text-align: center;
     position: absolute;
     bottom: 3%;
-    right: 5%;
-    width: 4vw;
-    height: 4vw;
+    right: 1%;
+    width: 3em;
+    height: 3em;
 }
 .chatbox__button button,
 .chatbox__button button:focus,
@@ -160,9 +151,11 @@ export default {
   padding-right: 0;
 }
 #logo-cardano-img {
-  width:20vw;
+  width:15em;
   height:auto;
+  opacity: 0.3;
 }
+
 /* .logo-img {
   width:8vw;
   height:5vh;
