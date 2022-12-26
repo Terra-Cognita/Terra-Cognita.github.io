@@ -46,9 +46,9 @@
 
     <div id="main-view" class="has-navbar-fixed-top">
       <router-view ></router-view>
-      <!-- <chatbot></chatbot> -->
+      <chatbot v-if="isChatOpen" @close="isChatOpen = false">></chatbot>
       <div class="chatbox__button">
-        <button><img src="./assets/logos/terra-cognita_symbol.png" style="max-width:100%;height:auto;" /></button>
+        <button @click="openChatBot()"><img id="chatbox__button-img" src="./assets/logos/terra-cognita_symbol.png" draggable="false" class="not-draggable-fig" /></button>
       </div>
     </div>
 
@@ -94,6 +94,7 @@ export default {
   },
   data(){
     return {
+      isChatOpen: false
     }
   },
   computed: {
@@ -105,6 +106,9 @@ export default {
     }
   },
   methods: {
+    openChatBot() {
+      this.isChatOpen = !this.isChatOpen
+    },
     goto(routerName) {
       this.$router.push({name: routerName})
       this.closeNavLinks()
@@ -122,28 +126,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.chatbox__button {
-    text-align: center;
-    position: absolute;
-    bottom: 3%;
-    right: 1%;
-    width: 3em;
-    height: 3em;
-}
-.chatbox__button button,
-.chatbox__button button:focus,
-.chatbox__button button:visited {
-    padding: 10px;
-    background: whitesmoke;
-    border: none;
-    outline: none;
-    opacity: 0.8;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 1);
-    cursor: pointer;
-}
 #nav-logo-item {
   padding-top: 0;
   padding-bottom: 0;
@@ -155,16 +137,31 @@ export default {
   height:auto;
   opacity: 0.3;
 }
-
-/* .logo-img {
-  width:8vw;
-  height:5vh;
-  will-change: filter;
-} */
-/* .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.chatbox__button {
+  text-align: center;
+  position: absolute;
+  bottom: 3%;
+  right: 1%;
+  width: 3em;
+  height: 3em;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-} */
+.chatbox__button button,
+.chatbox__button button:focus,
+.chatbox__button button:visited {
+  padding: 10px;
+  background: whitesmoke;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+#chatbox__button-img {
+  max-width:100%;
+  height:auto;
+}
+
 </style>

@@ -2,197 +2,70 @@
 </script>
 
 <template>
-  <div class="container">
-
-    <div class="chatbox hidden-small">
-      <div class="chatbox__support">
-        <div class="chatbox__header">
-          <div class="chatbox__content--header">
-              <h4 class="chatbox__heading--header hero glitch layers"
-                  data-text="Welcome to Terra-Cognita land! How can I help?">
-                  Welcome to Terra-Cognita land! How can I help?
-              </h4>
-              <!-- <p class="chatbox__description--header">How can I help?</p> -->
-          </div>
-        </div>
-        <div class="chatbox__messages">
-            <div></div> <!-- '<div class="messages__item messages__item--(operator/visitor)">' -->
-        </div>
-        <div class="messages__item--typing">
-          <div></div>
-        </div>
-        <div class="chatbox__footer">
-          <input type="text" placeholder="Write a message..." >
-          <button class="send__button" >Send</button>
+  <div id="chatbox">
+    <div class="chatbox__element">
+      <div class="chatbox__header">
+        <div class="chatbox__content--header">
+          <h4 class="chatbox__heading--header hero glitch layers"
+            data-text="Welcome to Terra-Cognita land! How can I help?">
+            Welcome to Terra-Cognita land! How can I help?
+          </h4>
         </div>
       </div>
+      <div class="chatbox__messages">
+        <div></div> <!-- '<div class="messages__item messages__item--(operator/visitor)">' -->
+      </div>
+      <div class="messages__item--typing">
+        <div></div>
+      </div>
+      <div class="chatbox__footer">
+        <input type="text" placeholder="Write a message..." >
+        <button>Send</button>
+      </div>
     </div>
-
-    <div class="chatbox__button">
-      <button><img src="../assets/logos/terra-cognita_symbol.png" style="max-width:100%;height:auto;" /></button>
-    </div>
-
   </div>
-
 </template>
 
 <style lang="scss" scoped>
-.chatbox {
-    position: absolute;
-    top: 35%;
-    left: 3%;
-}
-
-.chatbox__button {
-    text-align: center;
-    position: absolute;
-    bottom: 3%;
-    left: 47%;
-    width: 7vw;
-    height: 7vw;
-    display: none;
-}
-.chatbox__button button,
-.chatbox__button button:focus,
-.chatbox__button button:visited {
-    padding: 10px;
-    background: whitesmoke;
-    border: none;
-    outline: none;
-    opacity: 0.8;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 1);
-    cursor: pointer;
-}
-
-.chatbox--active {
-    display: flex !important;
-}
-
-.chatbox__support {
-    transform: translateY(-40px);
-    display: flex;
-    flex-direction: column;
-    background: rgb(204, 203, 203);
-    z-index: 123456;
-    opacity: 0.8;
-    transition: all .5s ease-in-out;
-    height: 50vh;
-    width: 40vw;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-/* HEADER */
-.chatbox__header {
-    position: sticky;
-    top: 0;
-    background: var(--primaryGradient);
-    box-shadow: var(--primaryBoxShadow);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-/* .chatbox__image--header {
-    margin-right: 10px;
-} */
-
-.chatbox__heading--header {
-    font-size: 1.3vw;
-    color: white;
-}
-
-/* .chatbox__description--header { 
-    font-size: .9rem;
-    color: white;
-} */
-
-/* MESSAGES */
 .chatbox__messages {
-    margin-top: auto;
-    display: flex;
-    overflow-y: scroll;
-    flex-direction: column-reverse;
-    padding: 0 20px;
-    font-size: 0.85vw;
+  margin-top: auto;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column-reverse;
+  padding: 0 20px;
+  font-size: 0.85vw;
 }
 .messages__item {
-    max-width: 60.6%;
-    width: fit-content;
-    margin-top: 10px;
-    padding: 8px 12px;
-    max-width: 70%;
-    opacity: 0.9;
+  max-width: 60.6%;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 8px 12px;
+  max-width: 70%;
+  opacity: 0.9;
 }
 .messages__item--operator {
-    margin-left: auto;
-    background: var(--primary);
-    color: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+  margin-left: auto;
+  background: var(--primary);
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .messages__item--visitor {
-    margin-right: auto;
-    background: grey;
-    color: black;
+  margin-right: auto;
+  background: grey;
+  color: black;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
-.messages__item--visitor {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
 .messages__item--typing {
-    display: flex;
-    font-size: 70%;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: 18px;
-}
-
-/* FOOTER */
-.chatbox__footer {
-    position: sticky;
-    bottom: 0;
-    display: flex;
-    font-size:0.8vw;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px;
-    background: var(--secondaryGradient);
-    box-shadow: var(--secondaryBoxShadow);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-.chatbox__footer input {
-    width: 80%;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 30px;
-    text-align: left;
-}
-.send__button {
-    padding: 6px;
-    font-size:0.8vw;
-    text-align: center;
-    background: transparent;
-    border: double;
-    outline: none;
-    cursor: pointer;
-    color: white;
+  display: flex;
+  font-size: 70%;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: 18px;
 }
 
 /* 
@@ -211,362 +84,361 @@ EFFECT : https://codepen.io/mattgrosswork/pen/VwprebG
     position: relative; 
 } */
 
-.chatbox__support:hover .layers::before,
-.chatbox__support:hover .layers::after {
+.chatbox__element:hover .layers::before,
+.chatbox__element:hover .layers::after {
     content: attr(data-text);
     position: absolute;
     width: 110%;
     z-index: -1;
 }
 
-.chatbox__support:hover .layers::before {
+.chatbox__element:hover .layers::before {
     top: 10px;
     left: 15px;
     color: #e0287d;
 }
 
-.chatbox__support:hover .layers::after {
+.chatbox__element:hover .layers::after {
     top: 5px;
     left: -10px;
     color: #1bc7fb;
 }
 
-
 .single-path {
-    clip-path: polygon(
-        0% 12%,
-        53% 12%,
-        53% 26%,
-        25% 26%,
-        25% 86%,
-        31% 86%,
-        31% 0%,
-        53% 0%,
-        53% 84%,
-        92% 84%,
-        92% 82%,
-        70% 82%,
-        70% 29%,
-        78% 29%,
-        78% 65%,
-        69% 65%,
-        69% 66%,
-        77% 66%,
-        77% 45%,
-        85% 45%,
-        85% 26%,
-        97% 26%,
-        97% 28%,
-        84% 28%,
-        84% 34%,
-        54% 34%,
-        54% 89%,
-        30% 89%,
-        30% 58%,
-        83% 58%,
-        83% 5%,
-        68% 5%,
-        68% 36%,
-        62% 36%,
-        62% 1%,
-        12% 1%,
-        12% 34%,
-        60% 34%,
-        60% 57%,
-        98% 57%,
-        98% 83%,
-        1% 83%,
-        1% 53%,
-        91% 53%,
-        91% 84%,
-        8% 84%,
-        8% 83%,
-        4% 83%
-    );
+  clip-path: polygon(
+    0% 12%,
+    53% 12%,
+    53% 26%,
+    25% 26%,
+    25% 86%,
+    31% 86%,
+    31% 0%,
+    53% 0%,
+    53% 84%,
+    92% 84%,
+    92% 82%,
+    70% 82%,
+    70% 29%,
+    78% 29%,
+    78% 65%,
+    69% 65%,
+    69% 66%,
+    77% 66%,
+    77% 45%,
+    85% 45%,
+    85% 26%,
+    97% 26%,
+    97% 28%,
+    84% 28%,
+    84% 34%,
+    54% 34%,
+    54% 89%,
+    30% 89%,
+    30% 58%,
+    83% 58%,
+    83% 5%,
+    68% 5%,
+    68% 36%,
+    62% 36%,
+    62% 1%,
+    12% 1%,
+    12% 34%,
+    60% 34%,
+    60% 57%,
+    98% 57%,
+    98% 83%,
+    1% 83%,
+    1% 53%,
+    91% 53%,
+    91% 84%,
+    8% 84%,
+    8% 83%,
+    4% 83%
+  );
 }
 
 .paths {
-    animation: paths 5s step-end infinite;
+  animation: paths 5s step-end infinite;
 }
 
 @keyframes paths {
-    0% {
-        clip-path: polygon(
-        0% 43%,
-        83% 43%,
-        83% 22%,
-        23% 22%,
-        23% 24%,
-        91% 24%,
-        91% 26%,
-        18% 26%,
-        18% 83%,
-        29% 83%,
-        29% 17%,
-        41% 17%,
-        41% 39%,
-        18% 39%,
-        18% 82%,
-        54% 82%,
-        54% 88%,
-        19% 88%,
-        19% 4%,
-        39% 4%,
-        39% 14%,
-        76% 14%,
-        76% 52%,
-        23% 52%,
-        23% 35%,
-        19% 35%,
-        19% 8%,
-        36% 8%,
-        36% 31%,
-        73% 31%,
-        73% 16%,
-        1% 16%,
-        1% 56%,
-        50% 56%,
-        50% 8%
-    );
+  0% {
+    clip-path: polygon(
+    0% 43%,
+    83% 43%,
+    83% 22%,
+    23% 22%,
+    23% 24%,
+    91% 24%,
+    91% 26%,
+    18% 26%,
+    18% 83%,
+    29% 83%,
+    29% 17%,
+    41% 17%,
+    41% 39%,
+    18% 39%,
+    18% 82%,
+    54% 82%,
+    54% 88%,
+    19% 88%,
+    19% 4%,
+    39% 4%,
+    39% 14%,
+    76% 14%,
+    76% 52%,
+    23% 52%,
+    23% 35%,
+    19% 35%,
+    19% 8%,
+    36% 8%,
+    36% 31%,
+    73% 31%,
+    73% 16%,
+    1% 16%,
+    1% 56%,
+    50% 56%,
+    50% 8%
+  );
 }
 
 5% {
-    clip-path: polygon(
-        0% 29%,
-        44% 29%,
-        44% 83%,
-        94% 83%,
-        94% 56%,
-        11% 56%,
-        11% 64%,
-        94% 64%,
-        94% 70%,
-        88% 70%,
-        88% 32%,
-        18% 32%,
-        18% 96%,
-        10% 96%,
-        10% 62%,
-        9% 62%,
-        9% 84%,
-        68% 84%,
-        68% 50%,
-        52% 50%,
-        52% 55%,
-        35% 55%,
-        35% 87%,
-        25% 87%,
-        25% 39%,
-        15% 39%,
-        15% 88%,
-        52% 88%
-    );
+  clip-path: polygon(
+    0% 29%,
+    44% 29%,
+    44% 83%,
+    94% 83%,
+    94% 56%,
+    11% 56%,
+    11% 64%,
+    94% 64%,
+    94% 70%,
+    88% 70%,
+    88% 32%,
+    18% 32%,
+    18% 96%,
+    10% 96%,
+    10% 62%,
+    9% 62%,
+    9% 84%,
+    68% 84%,
+    68% 50%,
+    52% 50%,
+    52% 55%,
+    35% 55%,
+    35% 87%,
+    25% 87%,
+    25% 39%,
+    15% 39%,
+    15% 88%,
+    52% 88%
+  );
 }
 
 30% {
-    clip-path: polygon(
-        0% 53%,
-        93% 53%,
-        93% 62%,
-        68% 62%,
-        68% 37%,
-        97% 37%,
-        97% 89%,
-        13% 89%,
-        13% 45%,
-        51% 45%,
-        51% 88%,
-        17% 88%,
-        17% 54%,
-        81% 54%,
-        81% 75%,
-        79% 75%,
-        79% 76%,
-        38% 76%,
-        38% 28%,
-        61% 28%,
-        61% 12%,
-        55% 12%,
-        55% 62%,
-        68% 62%,
-        68% 51%,
-        0% 51%,
-        0% 92%,
-        63% 92%,
-        63% 4%,
-        65% 4%
-    );
+  clip-path: polygon(
+    0% 53%,
+    93% 53%,
+    93% 62%,
+    68% 62%,
+    68% 37%,
+    97% 37%,
+    97% 89%,
+    13% 89%,
+    13% 45%,
+    51% 45%,
+    51% 88%,
+    17% 88%,
+    17% 54%,
+    81% 54%,
+    81% 75%,
+    79% 75%,
+    79% 76%,
+    38% 76%,
+    38% 28%,
+    61% 28%,
+    61% 12%,
+    55% 12%,
+    55% 62%,
+    68% 62%,
+    68% 51%,
+    0% 51%,
+    0% 92%,
+    63% 92%,
+    63% 4%,
+    65% 4%
+  );
 }
 
 45% {
-    clip-path: polygon(
-        0% 33%,
-        2% 33%,
-        2% 69%,
-        58% 69%,
-        58% 94%,
-        55% 94%,
-        55% 25%,
-        33% 25%,
-        33% 85%,
-        16% 85%,
-        16% 19%,
-        5% 19%,
-        5% 20%,
-        79% 20%,
-        79% 96%,
-        93% 96%,
-        93% 50%,
-        5% 50%,
-        5% 74%,
-        55% 74%,
-        55% 57%,
-        96% 57%,
-        96% 59%,
-        87% 59%,
-        87% 65%,
-        82% 65%,
-        82% 39%,
-        63% 39%,
-        63% 92%,
-        4% 92%,
-        4% 36%,
-        24% 36%,
-        24% 70%,
-        1% 70%,
-        1% 43%,
-        15% 43%,
-        15% 28%,
-        23% 28%,
-        23% 71%,
-        90% 71%,
-        90% 86%,
-        97% 86%,
-        97% 1%,
-        60% 1%,
-        60% 67%,
-        71% 67%,
-        71% 91%,
-        17% 91%,
-        17% 14%,
-        39% 14%,
-        39% 30%,
-        58% 30%,
-        58% 11%,
-        52% 11%,
-        52% 83%,
-        68% 83%
-    );
+  clip-path: polygon(
+    0% 33%,
+    2% 33%,
+    2% 69%,
+    58% 69%,
+    58% 94%,
+    55% 94%,
+    55% 25%,
+    33% 25%,
+    33% 85%,
+    16% 85%,
+    16% 19%,
+    5% 19%,
+    5% 20%,
+    79% 20%,
+    79% 96%,
+    93% 96%,
+    93% 50%,
+    5% 50%,
+    5% 74%,
+    55% 74%,
+    55% 57%,
+    96% 57%,
+    96% 59%,
+    87% 59%,
+    87% 65%,
+    82% 65%,
+    82% 39%,
+    63% 39%,
+    63% 92%,
+    4% 92%,
+    4% 36%,
+    24% 36%,
+    24% 70%,
+    1% 70%,
+    1% 43%,
+    15% 43%,
+    15% 28%,
+    23% 28%,
+    23% 71%,
+    90% 71%,
+    90% 86%,
+    97% 86%,
+    97% 1%,
+    60% 1%,
+    60% 67%,
+    71% 67%,
+    71% 91%,
+    17% 91%,
+    17% 14%,
+    39% 14%,
+    39% 30%,
+    58% 30%,
+    58% 11%,
+    52% 11%,
+    52% 83%,
+    68% 83%
+  );
 }
 
 76% {
-    clip-path: polygon(
-        0% 26%,
-        15% 26%,
-        15% 73%,
-        72% 73%,
-        72% 70%,
-        77% 70%,
-        77% 75%,
-        8% 75%,
-        8% 42%,
-        4% 42%,
-        4% 61%,
-        17% 61%,
-        17% 12%,
-        26% 12%,
-        26% 63%,
-        73% 63%,
-        73% 43%,
-        90% 43%,
-        90% 67%,
-        50% 67%,
-        50% 41%,
-        42% 41%,
-        42% 46%,
-        50% 46%,
-        50% 84%,
-        96% 84%,
-        96% 78%,
-        49% 78%,
-        49% 25%,
-        63% 25%,
-        63% 14%
-    );
+  clip-path: polygon(
+    0% 26%,
+    15% 26%,
+    15% 73%,
+    72% 73%,
+    72% 70%,
+    77% 70%,
+    77% 75%,
+    8% 75%,
+    8% 42%,
+    4% 42%,
+    4% 61%,
+    17% 61%,
+    17% 12%,
+    26% 12%,
+    26% 63%,
+    73% 63%,
+    73% 43%,
+    90% 43%,
+    90% 67%,
+    50% 67%,
+    50% 41%,
+    42% 41%,
+    42% 46%,
+    50% 46%,
+    50% 84%,
+    96% 84%,
+    96% 78%,
+    49% 78%,
+    49% 25%,
+    63% 25%,
+    63% 14%
+  );
 }
 
 90% {
-    clip-path: polygon(
-        0% 41%,
-        13% 41%,
-        13% 6%,
-        87% 6%,
-        87% 93%,
-        10% 93%,
-        10% 13%,
-        89% 13%,
-        89% 6%,
-        3% 6%,
-        3% 8%,
-        16% 8%,
-        16% 79%,
-        0% 79%,
-        0% 99%,
-        92% 99%,
-        92% 90%,
-        5% 90%,
-        5% 60%,
-        0% 60%,
-        0% 48%,
-        89% 48%,
-        89% 13%,
-        80% 13%,
-        80% 43%,
-        95% 43%,
-        95% 19%,
-        80% 19%,
-        80% 85%,
-        38% 85%,
-        38% 62%
-    );
+  clip-path: polygon(
+    0% 41%,
+    13% 41%,
+    13% 6%,
+    87% 6%,
+    87% 93%,
+    10% 93%,
+    10% 13%,
+    89% 13%,
+    89% 6%,
+    3% 6%,
+    3% 8%,
+    16% 8%,
+    16% 79%,
+    0% 79%,
+    0% 99%,
+    92% 99%,
+    92% 90%,
+    5% 90%,
+    5% 60%,
+    0% 60%,
+    0% 48%,
+    89% 48%,
+    89% 13%,
+    80% 13%,
+    80% 43%,
+    95% 43%,
+    95% 19%,
+    80% 19%,
+    80% 85%,
+    38% 85%,
+    38% 62%
+  );
 }
 
 1%, 7%, 33%, 47%, 78%, 93% {
-    clip-path: none;
-    }
+  clip-path: none;
+  }
 } /*end oh paths*/
 
 .movement {
-    /* Normally this position would be absolute & on the layers, set to relative here so we can see it on the div */
-    position: relative;
-    animation: movement 8s step-end infinite;
+  /* Normally this position would be absolute & on the layers, set to relative here so we can see it on the div */
+  position: relative;
+  animation: movement 8s step-end infinite;
 }
 
 @keyframes movement {
-    0% {
-        top: 0px;
-        left: -20px;
-    }
+  0% {
+    top: 0px;
+    left: -20px;
+  }
 
-    15% {
-        top: 10px;
-        left: 10px;
-    }
+  15% {
+    top: 10px;
+    left: 10px;
+  }
 
-    60% {
-        top: 5px;
-        left: -10px;
-    }
+  60% {
+    top: 5px;
+    left: -10px;
+  }
 
-    75% {
-        top: -5px;
-        left: 20px;
-    }
+  75% {
+    top: -5px;
+    left: 20px;
+  }
 
-    100% {
-        top: 10px;
-        left: 5px;
-    }
+  100% {
+    top: 10px;
+    left: 5px;
+  }
 }
 
 .opacity {
@@ -574,85 +446,83 @@ EFFECT : https://codepen.io/mattgrosswork/pen/VwprebG
 }
 
 @keyframes opacity {
-    0% {
-        opacity: 0.1;
-    }
+  0% {
+    opacity: 0.1;
+  }
 
-    5% {
-        opacity: 0.7;
-    }
+  5% {
+    opacity: 0.7;
+  }
 
-    30% {
-        opacity: 0.4;
-    }
+  30% {
+    opacity: 0.4;
+  }
 
-    45% {
-        opacity: 0.6;
-    }
+  45% {
+    opacity: 0.6;
+  }
 
-    76% {
-        opacity: 0.4;
-    }
+  76% {
+    opacity: 0.4;
+  }
 
-    90% {
-        opacity: 0.8;
-    }
+  90% {
+    opacity: 0.8;
+  }
 
-    1%, 7%, 33%, 47%, 78%, 93% {
-        opacity: 0;
-    }
+  1%, 7%, 33%, 47%, 78%, 93% {
+    opacity: 0;
+  }
 }
 
 .font {
-    animation: font 7s step-end infinite;
+  animation: font 7s step-end infinite;
 }
 
 @keyframes font {
 0% {
-    font-weight: 100;
-    color: #e0287d;
-    filter: blur(3px);
+  font-weight: 100;
+  color: #e0287d;
+  filter: blur(3px);
 }
 
 20% {
-    font-weight: 500;
-    color: #fff;
-    filter: blur(0);
+  font-weight: 500;
+  color: #fff;
+  filter: blur(0);
 }
 
 50% {
-    font-weight: 300;
-    color: #1bc7fb;
-    filter: blur(2px);
+  font-weight: 300;
+  color: #1bc7fb;
+  filter: blur(2px);
 }
 
 60% {
-    font-weight: 700;
-    color: #fff;
-    filter: blur(0);
+  font-weight: 700;
+  color: #fff;
+  filter: blur(0);
 }
 
 90% {
-    font-weight: 500;
-    color: #e0287d;
-    filter: blur(6px);
+  font-weight: 500;
+  color: #e0287d;
+  filter: blur(6px);
 }
 }
 
-.chatbox__support:hover .glitch span {
-    animation: paths 5s step-end infinite;
+.chatbox__element:hover .glitch span {
+  animation: paths 5s step-end infinite;
 }
 
-.chatbox__support:hover .glitch::before {
-    animation: paths 5s step-end infinite, opacity 5s step-end infinite,
-    font 8s step-end infinite, movement 10s step-end infinite;
+.chatbox__element:hover .glitch::before {
+  animation: paths 5s step-end infinite, opacity 5s step-end infinite,
+  font 8s step-end infinite, movement 10s step-end infinite;
 }
 
-.chatbox__support:hover .glitch::after {
-    animation: paths 5s step-end infinite, opacity 5s step-end infinite,
-    font 7s step-end infinite, movement 8s step-end infinite;
+.chatbox__element:hover .glitch::after {
+  animation: paths 5s step-end infinite, opacity 5s step-end infinite,
+  font 7s step-end infinite, movement 8s step-end infinite;
 }
 
-/* .chatbox__support:hover {
-} */
 </style>
