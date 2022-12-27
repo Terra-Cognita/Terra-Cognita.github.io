@@ -1,24 +1,41 @@
 <script setup>
 import { ref } from 'vue'
 
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+
+  <carousel></carousel>
 
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
+    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
   </div>
 </template>
+
+<script>
+import Carousel from "../components/HomeCarousel.vue"
+
+export default {
+  name: "Home",
+  components: {
+    Carousel
+  },
+  data(){
+    return {
+    }
+  },
+}
+</script>
+
 
 <style scoped>
 .read-the-docs {

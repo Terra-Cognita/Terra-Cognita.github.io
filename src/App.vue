@@ -139,9 +139,9 @@ export default {
 }
 .chatbox__button {
   text-align: center;
-  position: absolute;
+  position: sticky;
   bottom: 3%;
-  right: 1%;
+  margin-left: calc(92vw - 3em);
   width: 3em;
   height: 3em;
 }

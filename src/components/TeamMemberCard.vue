@@ -8,6 +8,7 @@ import { ref } from 'vue'
     <img class="team-member_avatar" src="../assets/images/avatar.png">
     <p><b>{{member.name}}</b></p>
     <p><b>{{member.function}}</b></p>
+    <p><small><em>{{member.msg}}</em></small></p>
   </div>
 </template>
 
