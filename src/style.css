@@ -116,6 +116,7 @@ button:focus-visible {
 }
 
 #footer {
+  margin-top: 1em;
   padding-top: 4em;
   padding-bottom: 7em;
   padding-left: 2em;
@@ -133,22 +134,16 @@ button:focus-visible {
 /*     CHATBOT.VUE CONFIGS    */
 /* ========================== */
 
-#chatbox {
-  position: absolute;
-  bottom: 3%;
-  right: 6%;
-}
 .chatbox__element {
-  transform: translateY(-40px);
   display: flex;
   flex-direction: column;
   background: rgb(204, 203, 203);
   z-index: 123456;
   opacity: 0.8;
   transition: all .5s ease-in-out;
-  height: 35em;
-  width: 40em;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+  box-shadow: 7px 7px 30px 10px rgba(0, 0, 0, 0.767);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -157,46 +152,41 @@ button:focus-visible {
 .chatbox__header {
   position: sticky;
   top: 0;
-  background: var(--primaryGradient);
-  box-shadow: var(--primaryBoxShadow);
+  background: rgba(0, 0, 0, 0.424);
+  box-shadow: 1px 2px 15px 10px rgba(0, 0, 0, 0.424);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px;
+  padding: 3% 1%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 .chatbox__heading--header {
-  font-size: 1.3vw;
+  font-size: 1.1rem;
   color: white;
 }
-
-/* FOOTER */
 .chatbox__footer {
   position: sticky;
   bottom: 0;
   display: flex;
-  font-size:0.8vw;
   flex-direction: row;
+  font-size:0.8rem;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 20px;
-  background: var(--secondaryGradient);
-  box-shadow: var(--secondaryBoxShadow);
+  padding: 4% 3%;
+  background: inherit;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 .chatbox__footer input {
   width: 80%;
   border: none;
-  padding: 10px 10px;
+  padding: 2% 3%;
   border-radius: 30px;
   text-align: left;
 }
 .chatbox__footer button {
-  padding: 6px;
-  font-size:0.8vw;
+  margin-left: 1em;
   text-align: center;
   background: transparent;
   border: double;

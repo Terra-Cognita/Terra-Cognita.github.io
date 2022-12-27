@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div id="chatbox">
+  <!-- <div id="chatbox"> -->
     <div class="chatbox__element">
       <div class="chatbox__header">
         <div class="chatbox__content--header">
@@ -23,7 +23,7 @@
         <button>Send</button>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <style lang="scss" scoped>
@@ -84,21 +84,21 @@ EFFECT : https://codepen.io/mattgrosswork/pen/VwprebG
     position: relative; 
 } */
 
-.chatbox__element:hover .layers::before,
-.chatbox__element:hover .layers::after {
+.chatbox__element .layers::before,
+.chatbox__element .layers::after {
     content: attr(data-text);
     position: absolute;
     width: 110%;
     z-index: -1;
 }
 
-.chatbox__element:hover .layers::before {
+.chatbox__element .layers::before {
     top: 10px;
     left: 15px;
     color: #e0287d;
 }
 
-.chatbox__element:hover .layers::after {
+.chatbox__element .layers::after {
     top: 5px;
     left: -10px;
     color: #1bc7fb;
@@ -511,16 +511,16 @@ EFFECT : https://codepen.io/mattgrosswork/pen/VwprebG
 }
 }
 
-.chatbox__element:hover .glitch span {
+.chatbox__element .glitch span {
   animation: paths 5s step-end infinite;
 }
 
-.chatbox__element:hover .glitch::before {
+.chatbox__element .glitch::before {
   animation: paths 5s step-end infinite, opacity 5s step-end infinite,
   font 8s step-end infinite, movement 10s step-end infinite;
 }
 
-.chatbox__element:hover .glitch::after {
+.chatbox__element .glitch::after {
   animation: paths 5s step-end infinite, opacity 5s step-end infinite,
   font 7s step-end infinite, movement 8s step-end infinite;
 }

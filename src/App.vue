@@ -46,10 +46,12 @@
 
     <div id="main-view" class="has-navbar-fixed-top">
       <router-view ></router-view>
+    </div>
+    <div id="chatbox">
       <chatbot v-if="isChatOpen" @close="isChatOpen = false">></chatbot>
-      <div class="chatbox__button">
-        <button @click="openChatBot()"><img id="chatbox__button-img" src="./assets/logos/terra-cognita_symbol.png" draggable="false" class="not-draggable-fig" /></button>
-      </div>
+    </div>
+    <div class="chatbox__button">
+      <button @click="openChatBot()"><img id="chatbox__button-img" src="./assets/logos/terra-cognita_symbol.png" draggable="false" class="not-draggable-fig" /></button>
     </div>
 
     <!-- FOOTER -->
@@ -137,11 +139,19 @@ export default {
   height:auto;
   opacity: 0.3;
 }
+#chatbox {
+  position: sticky;
+  height: 40em;
+  width: 30em;
+  bottom: 7%;
+  margin-left: calc(97vw - 30em);
+}
 .chatbox__button {
   text-align: center;
   position: sticky;
   bottom: 3%;
-  margin-left: calc(92vw - 3em);
+  margin-top: 0.7em;
+  margin-left: calc(97vw - 3em);
   width: 3em;
   height: 3em;
 }
