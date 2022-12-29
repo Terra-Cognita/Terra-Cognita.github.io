@@ -2,87 +2,101 @@
 </script>
 
 <template>
-  <div id="app">
-
-    <nav class="navbar is-dark is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
-
-      <div class="navbar-brand">
-        <a id="nav-logo-item" class="navbar-item" href="/">
-          <img id="logo-img" src="./assets/logos/terra-cognita_white.png" alt="Terra Cognita Game">
-        </a>
-        <a role="button" id="burger" class="navbar-burger" @click="clickNavBurger()" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      
-      <div id="nav-links" class="navbar-menu">
-        <div class="navbar-start">
+  <div id="app" class="hero">
+    
+    <!-- NAVBAR -->
+    <div class="hero-head">
+      <nav id="navbar" class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <!-- Brand & Burger -->
+        <div class="navbar-brand">
+          <a id="nav-logo-item" class="navbar-item" href="/">
+            <img id="nav-logo-img" src="./assets/logos/terra-cognita_black.png" alt="Terra Cognita Game" draggable="false" class="not-draggable-fig">
+          </a>
+          <a role="button" id="burger" class="navbar-burger" @click="clickNavBurger()" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div class="navbar-end">
-          <a role="button" class="navbar-item" @click="goto('home')">  About TC Game </a>
-          <a role="button" class="navbar-item" @click="goto('team')"> Team </a>
-          <a role="button" class="navbar-item" @click="goto('lore')"> Lore </a>
-          <a role="button" class="navbar-item" @click="goto('dev')">  Develop Env </a>          
-          <!-- <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                 More #1 
-              </a>
-              <a class="navbar-item">
-                More #2
-              </a>
-            </div>
-          </div> -->
+        <!-- Menu Links -->
+        <div id="nav-links" class="navbar-menu">
+          <div class="navbar-start">
+          </div>
+          <div class="navbar-end">
+            <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('home')">About</o-button>
+            <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('team')">Team</o-button>
+            <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('lore')">Lore</o-button>
+          </div>
+        </div>
+      </nav>
+    </div>
 
+    <!-- MAIN VIEW -->
+    <div id="main-view" class="hero-body">
+      <div class="columns"> 
+        <div id="router-view" class="column is-6">
+          <router-view></router-view>
+        </div>
+        <div id="chatbox-view" class="column">
+          <!-- <chatbot v-if="isChatOpen"></chatbot> -->
         </div>
       </div>
 
-    </nav>
-
-    <div id="main-view" class="has-navbar-fixed-top">
-      <router-view ></router-view>
+      <div id="chatbox__button" class="button is-floating" @click="openChatBot()">
+        <p>Ask<br/>Orimbu</p>
+      </div>
     </div>
-    <div id="chatbox">
-      <chatbot v-if="isChatOpen" @close="isChatOpen = false">></chatbot>
-    </div>
-    <div class="chatbox__button">
-      <button @click="openChatBot()"><img id="chatbox__button-img" src="./assets/logos/terra-cognita_symbol.png" draggable="false" class="not-draggable-fig" /></button>
-    </div>
-
+    
     <!-- FOOTER -->
-    <footer id="footer" class="footer has-background-grey">
-      <div class="mx-4 columns is-multiline">
-
-          <div class="column is-one-quarter has-text-left p-0">
-            <p>Powered by</p>
-            <img id="logo-cardano-img" src="./assets/logos/Cardano-RGB_Logo-Full-White.svg" alt="Cardano">
+    <div class="hero-foot">
+      <nav id="footer" class="level is-mobile is-fixed-bottom">
+        <div class="level-left">
+          <div class="level-item m-0">
+            <p><strong>Powered by &nbsp;</strong></p>
           </div>
-
-          <div class="column is-three-quarters has-text-right-tablet p-0">
-            <p>Withdrawl Policy Privacy Terms of Conditions Imprint</p>
-            <div id="social-media-icons" class="my-3">
-              <a class="icon mr-5" href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
-                <o-icon pack="mdi" icon="github" size="large" variant="dark"></o-icon>
-              </a>
-              <a class="icon mr-4" href="https://twitter.com/AimCardano" target="_blank">
-                <o-icon pack="mdi" icon="twitter" size="large" variant="dark"></o-icon>
-              </a>
-              <a class="icon" href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
-                <o-icon pack="mdi" icon="telegram" size="large" variant="dark"></o-icon>
-              </a>
-            </div>
+          <div class="level-item">
+            <img id="footer-logo-cardano-img" src="./assets/logos/Cardano-RGB_Logo-Full-White.svg" alt="Cardano" draggable="false" class="not-draggable-fig">
           </div>
-
-          <div class="column is-full p-0"> 
-            <p class="has-text-left">AdaQuest PolicyID:</p>
-          </div> 
-      </div>
-    </footer>
+        </div>
+        <!-- Right side: Default -->
+        <div id="footer-links" class="level-right is-hidden-mobile">
+          <p class="level-item">
+            <a class="footer-icon" href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
+              <o-icon pack="mdi" icon="github" variant="primary" size="medium"></o-icon>
+            </a>
+          </p>
+          <p class="level-item">
+            <a class="footer-icon" href="https://twitter.com/AimCardano" target="_blank">
+              <o-icon pack="mdi" icon="twitter" variant="primary" size="medium"></o-icon>
+            </a>
+          </p>
+          <p class="level-item">
+            <a class=" footer-icon" href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
+              <o-icon pack="mdi" icon="telegram" variant="primary" size="medium"></o-icon>
+            </a>
+          </p>
+        </div>
+        <!-- Right side: Mobile -->
+        <div id="footer-links-mobile" class="level-right is-hidden-tablet">
+          <p class="level-item">
+            <a class="footer-icon" href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
+              <o-icon pack="mdi" icon="github" variant="primary"></o-icon>
+            </a>
+          </p>
+          <p class="level-item">
+            <a class="footer-icon" href="https://twitter.com/AimCardano" target="_blank">
+              <o-icon pack="mdi" icon="twitter" variant="primary"></o-icon>
+            </a>
+          </p>
+          <p class="level-item">
+            <a class="footer-icon" href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
+              <o-icon pack="mdi" icon="telegram" variant="primary"></o-icon>
+            </a>
+          </p>
+        </div>
+      </nav> 
+    </div>
+    
   </div>
 </template>
 
@@ -105,11 +119,15 @@ export default {
     },
     navbarMenu() {
       return document.querySelector('#nav-links')
+    }, 
+    routerView() {
+      return document.querySelector('#router-view')
     }
   },
   methods: {
     openChatBot() {
       this.isChatOpen = !this.isChatOpen
+      this.routerView.classList.toggle('is-hidden-mobile')
     },
     goto(routerName) {
       this.$router.push({name: routerName})
@@ -128,50 +146,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#nav-logo-item {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 2 !important;
-  padding-right: 0;
-}
-#logo-cardano-img {
-  width:15em;
-  height:auto;
-  opacity: 0.3;
-}
-#chatbox {
-  position: sticky;
-  height: 40em;
-  width: 30em;
-  bottom: 7%;
-  margin-left: calc(97vw - 30em);
-}
-.chatbox__button {
-  text-align: center;
-  position: sticky;
-  bottom: 3%;
-  margin-top: 0.7em;
-  margin-left: calc(97vw - 3em);
-  width: 3em;
+
+#chatbox__button.button.is-floating {
+  font-size: 1rem;
+  width: 5em;
   height: 3em;
-}
-.chatbox__button button,
-.chatbox__button button:focus,
-.chatbox__button button:visited {
-  padding: 10px;
-  background: whitesmoke;
+  margin: 0.5em;
+  line-height: 1em;
+  color: black;
+  background: rgba(74, 179, 238, 1);
+  opacity: 0.85;
   border: none;
   outline: none;
-  opacity: 0.8;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 3px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 1);
   cursor: pointer;
-}
-#chatbox__button-img {
-  max-width:100%;
-  height:auto;
+  bottom: 4rem;
+  right: 3rem;
 }
 
 </style>

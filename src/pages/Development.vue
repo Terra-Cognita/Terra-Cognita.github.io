@@ -4,13 +4,11 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <h1>THIS IS THE DEV-NEWS PAGE</h1>
+  <section>
+    <div class="title">{{ $t('dev.TITLE') }}</div>
 
-  <div class="card">
-    <p>
-      Insert here the page content
-    </p>
-  </div>
+    <div class="subtitle mt-5" v-html="$t('dev.GENERAL_MSG')"></div>
+  </section>
 </template>
 
 <style scoped>

@@ -1,7 +1,7 @@
 @import "bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #263560;
+$primary: rgba(45, 140, 195, 0.8);
 $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
@@ -77,6 +77,7 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 @import "bulma/bulma";
+@import 'bulma-floating-button/dist/css/bulma-floating-button.min.css';
 @import '@oruga-ui/theme-bulma/dist/scss/bulma';
 @import '@oruga-ui/oruga-next/dist/oruga-full-vars.css';
 // @import '@oruga-ui/oruga-next/src/scss/oruga-full-vars';

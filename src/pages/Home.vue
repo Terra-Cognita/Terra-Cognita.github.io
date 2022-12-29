@@ -4,30 +4,18 @@ import { ref } from 'vue'
 </script>
 
 <template>
+  <section>
+    <div class="title">{{ $t('home.TITLE') }}</div>
 
-  <carousel></carousel>
-
-  <div class="card">
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-    <p> Edit <code>components/HelloWorld.vue</code> to test HMR</p>
-  </div>
+    <div class="subtitle mt-5" v-html="$t('home.GENERAL_MSG')"></div>
+  </section>
 </template>
 
 <script>
-import Carousel from "../components/HomeCarousel.vue"
 
 export default {
   name: "Home",
   components: {
-    Carousel
   },
   data(){
     return {
@@ -38,7 +26,4 @@ export default {
 
 
 <style scoped>
-.read-the-docs {
-  color: #888;
-}
 </style>

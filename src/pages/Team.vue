@@ -10,20 +10,21 @@
 </script>
 
 <template>
-  <h1>ABOUT US</h1>
+  <section>
+    <div class="title">{{ $t('team.TITLE') }}</div>
 
-  <div class="my-5" v-html="$t('team.GENERAL_MSG')"></div>
-
-  <div id="members" class="columns is-multiline">
-    <div class="column is-one-quarter"
-      v-for="member in teamMembers" :key="`ass-${member.name}`">
-      <team-member 
-        v-bind:id="`member-${member.name}`" 
-        :member="member"
-      />
+    <div class="subtitle mt-5" v-html="$t('team.GENERAL_MSG')"></div>
+    
+    <div id="members" class="columns is-multiline">
+      <div class="column is-full"
+        v-for="member in teamMembers" :key="`ass-${member.name}`">
+        <team-member 
+          v-bind:id="`member-${member.name}`" 
+          :member="member"
+        />
+      </div>
     </div>
-  </div>
-
+  </section>
 </template>
 
 <script>

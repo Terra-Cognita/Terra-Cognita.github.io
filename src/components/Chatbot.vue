@@ -2,7 +2,6 @@
 </script>
 
 <template>
-  <!-- <div id="chatbox"> -->
     <div class="chatbox__element">
       <div class="chatbox__header">
         <div class="chatbox__content--header">
@@ -23,10 +22,69 @@
         <button>Send</button>
       </div>
     </div>
-  <!-- </div> -->
 </template>
 
 <style lang="scss" scoped>
+.chatbox__element {
+  display: flex;
+  flex-direction: column;
+  background: rgb(204, 203, 203);
+  z-index: 123456;
+  opacity: 0.8;
+  transition: all .5s ease-in-out;
+  height: 100%;
+  width: 100%;
+  box-shadow: 7px 7px 30px 10px rgba(0, 0, 0, 0.767);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.chatbox__header {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.424);
+  box-shadow: 1px 2px 15px 10px rgba(0, 0, 0, 0.424);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3% 1%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.chatbox__heading--header {
+  font-size: 1.1rem;
+  color: white;
+}
+.chatbox__footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  font-size:0.8rem;
+  align-items: center;
+  padding: 4% 3%;
+  background: inherit;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.chatbox__footer input {
+  width: 80%;
+  border: none;
+  padding: 2% 3%;
+  border-radius: 30px;
+  text-align: left;
+}
+.chatbox__footer button {
+  margin-left: 1em;
+  text-align: center;
+  background: transparent;
+  border: double;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}
 .chatbox__messages {
   margin-top: auto;
   display: flex;

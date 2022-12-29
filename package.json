@@ -12,6 +12,7 @@
     "@oruga-ui/oruga-next": "^0.5.9",
     "@oruga-ui/theme-bulma": "^0.2.8",
     "bulma": "^0.9.4",
+    "bulma-floating-button": "^1.0.3",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
