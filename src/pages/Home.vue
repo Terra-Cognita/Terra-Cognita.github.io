@@ -1,8 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-
-</script>
-
 <template>
   <section>
     <div class="title">{{ $t('home.TITLE') }}</div>
@@ -15,12 +10,9 @@ import { ref } from 'vue'
 
 export default {
   name: "Home",
-  components: {
-  },
-  data(){
-    return {
-    }
-  },
+  setup() {
+    return {}
+  }
 }
 </script>
 

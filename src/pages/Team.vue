@@ -1,5 +1,4 @@
 <script setup>
-  import { ref } from 'vue'
 
   const teamMembers = [
     {name: 'Member1', function: 'Creator', msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat mauris vitae enim tincidunt pulvinar. Nam non turpis maximus, tincidunt purus et, varius metus. Pellentesque nec massa et nulla dignissim tempor. Suspendisse potenti. Proin quis quam auctor, posuere nulla ut, facilisis dolor. Vivamus vitae libero nisi. Nullam mattis suscipit elit."},
@@ -32,13 +31,11 @@ import TeamMember from '../components/TeamMemberCard.vue'
 
 export default {
   name: "TeamMember",
-  props: ['member'],
   components: {
     TeamMember
   },
-  data(){
-    return {
-    }
+  setup() {
+    return {}
   }
 }
 </script>

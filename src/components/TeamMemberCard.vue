@@ -20,9 +20,8 @@ import { ref } from 'vue'
 export default {
   name: "TeamMember",
   props: ['member'],
-  data(){
-    return {
-    }
+  setup() {
+    return {}
   }
 }
 </script>
