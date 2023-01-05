@@ -162,7 +162,8 @@ button:focus-visible {
 #router-view {
   padding: 1rem;
   background-color: rgba(74, 179, 238, 0.7);
-  max-height: calc(100vh - 12rem - 5rem); /* #main-view top&bottom padding*/
+  box-shadow: 4px 6px 4px 0px rgba(0, 0, 0, 0.35);
+  max-height: calc(100vh - 15rem - 5rem); /* #main-view top&bottom padding*/
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -179,7 +180,10 @@ button:focus-visible {
 }
 #chatbox-view {
   margin: 0 2rem;
-  padding: 1rem;
+  padding: 0 1rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
 }
 
 /* App Responsiveness */

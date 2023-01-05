@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, defineCustomElement } from 'vue'
 import App from './App.vue'
 
 import { createWebHistory } from 'vue-router'
@@ -7,8 +7,8 @@ import createRouter from './router/index.js'
 import Oruga from '@oruga-ui/oruga-next'
 import { bulmaConfig } from '@oruga-ui/theme-bulma'
 
-// import { createPinia } from 'pinia'
-// import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import { createI18n } from 'vue-i18n'
 import messages from './locales/messages/index.js'
@@ -17,10 +17,15 @@ import messages from './locales/messages/index.js'
 import './assets/sass/main.scss'
 import './style.css'
 
+// For custom elements  
+// import ChatboxMessage from './components/ChatboxMessage.ce.vue'
+// const ChatboxMessageElement = defineCustomElement(ChatboxMessage)
+// customElements.define('chatbox-message', ChatboxMessageElement)
+
 const router = createRouter(createWebHistory())
 
-// const store = createPinia()
-// store.use(piniaPluginPersistedstate)
+const store = createPinia()
+store.use(piniaPluginPersistedstate)
 
 const i18n = createI18n({
   locale: 'en',
@@ -32,9 +37,14 @@ const i18n = createI18n({
   // fallbackWarn: false,
 })
 
-createApp(App)
-  // .use(store)
+const app = createApp(App)
+  .use(store)
   .use(Oruga, bulmaConfig)
   .use(router)
   .use(i18n)
-  .mount('#app')
+  
+app.directive("focus", (el, binding) => {
+  if(binding.value) { el.focus() }
+})
+
+app.mount('#app')

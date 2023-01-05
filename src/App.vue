@@ -38,7 +38,7 @@
           <router-view></router-view>
         </div>
         <div id="chatbox-view" class="column">
-          <!-- <chatbot v-if="isChatOpen"></chatbot> -->
+          <chatbox v-if="isChatOpen"></chatbox>
         </div>
       </div>
 
@@ -61,7 +61,7 @@
         <!-- Right side: Default -->
         <div id="footer-links" class="level-right is-hidden-mobile">
           <p class="level-item">
-            <a class="footer-icon" href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
+            <a class="footer-icon" href="https://github.com/Terra-Cognita" target="_blank">
               <o-icon pack="mdi" icon="github" variant="primary" size="medium"></o-icon>
             </a>
           </p>
@@ -101,12 +101,12 @@
 </template>
 
 <script>
-import Chatbot from "./components/Chatbot.vue"
+import Chatbox from "./components/Chatbox.vue"
 
 export default {
   name: "App",
   components: {
-    Chatbot
+    Chatbox
   },
   data(){
     return {
