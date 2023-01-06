@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { ref, computed } from "vue";
 
 function generateMessageFromText(id, sender, text) {
   return {
@@ -25,7 +24,6 @@ export const useChatHistoryStore = defineStore( 'chatHistory', {
     },
     resetState() {
       this.messages_history.length = 0;
-      console.log('reseted chatHistory')
     }
   },
 })

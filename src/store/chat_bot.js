@@ -13,10 +13,7 @@ export const useChatBotStore = defineStore(
 
     const isHearingBot = ref(false);
 
-    async function requestAnswer(text) {
-      console.log('>> chatBot.FetchAnswer')
-      console.log('-> user message: ', text)
-      
+    async function requestAnswer(text) {      
       isHearingBot.value = true;
       let answer = await new Promise(resolve => { 
         setTimeout(() => 

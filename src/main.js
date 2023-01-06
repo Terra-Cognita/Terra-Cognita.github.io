@@ -17,11 +17,6 @@ import messages from './locales/messages/index.js'
 import './assets/sass/main.scss'
 import './style.css'
 
-// For custom elements  
-// import ChatboxMessage from './components/ChatboxMessage.ce.vue'
-// const ChatboxMessageElement = defineCustomElement(ChatboxMessage)
-// customElements.define('chatbox-message', ChatboxMessageElement)
-
 const router = createRouter(createWebHistory())
 
 const store = createPinia()
