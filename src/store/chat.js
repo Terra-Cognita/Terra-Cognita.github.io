@@ -12,18 +12,16 @@ export const useChatStore = defineStore(
     const chatHistoryStore = useChatHistoryStore();
     const chatBotStore = useChatBotStore();
 
-    // reactive messages' history
-    const messagesHistory = ref([])
-    messagesHistory.value = chatHistoryStore.messages_history
-    watch(chatHistoryStore.history, ()=> {
-      messagesHistory.value = chatHistoryStore.history
-    }, { immediate: true })
-    
     // binding data
     const isHearingBot = computed(() => chatBotStore.isHearingBot);
-    const chatHistory = computed(() => [...messagesHistory.value].reverse());
-
-    // data manipulation functions
+    const chatHistory = ref([])   // reactive chat history
+    chatHistory.value = chatHistoryStore.history
+    
+    watch(chatHistoryStore.history, ()=> {
+      chatHistory.value = chatHistoryStore.history
+    }, { immediate: true })
+    
+    // functions: chat dynamics
     function sendNewMessage(text) {
       chatHistoryStore.pushToHistory( 'user', text )
       callChatBot(text)
@@ -38,7 +36,6 @@ export const useChatStore = defineStore(
     }
     function log() {
       console.log('chatHistory: ', chatHistory.value)
-      console.log('chat messagesHistory.value: ', messagesHistory.value)
       console.log('storeHistory: ', chatHistoryStore.history)
     }
     // ==============================

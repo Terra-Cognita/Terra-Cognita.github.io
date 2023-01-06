@@ -1,7 +1,9 @@
 <template>
-  <section :class="messageClass">
-    <div><slot /></div>
-  </section>
+  <div :class="messageClass">
+    <div class="list-item-content">
+      <div class="list-item-description"><slot /></div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -16,7 +18,7 @@
   ? typeClass='message__item--user' 
   : typeClass='message__item--bot'
 
-  const messageClass = ref(`message__item ${typeClass}`)
+  const messageClass = ref(`list-item message__item ${typeClass}`)
 
 </script>
 

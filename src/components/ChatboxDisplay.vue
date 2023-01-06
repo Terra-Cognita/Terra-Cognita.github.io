@@ -1,8 +1,11 @@
 <template>
   <section id="chatbox__display">
     <div id="chatbox__messages">
-      <div id="chatbox__history" v-for="message in chatHistory" :key="message.id">
-        <chatbox-message :type="message.sender">{{message.text}}</chatbox-message>
+      <div id="chatbox__history" class="list">
+        <chatbox-message  v-for="message in chatHistory" :key="message.id"
+          :type="message.sender">
+            {{message.text}}
+        </chatbox-message>
       </div>
     </div>
     
