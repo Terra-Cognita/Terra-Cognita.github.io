@@ -4,9 +4,15 @@
       <div id="chatbox__history" v-for="message in chatHistory" :key="message.id">
         <chatbox-message :type="message.sender">{{message.text}}</chatbox-message>
       </div>
-      <div id="message__item--typing">
-      </div>
     </div>
+    
+    <input id="message__item--typing" v-if="isHearingBot"
+      class="input" type="text" 
+      value="Orimbu is typing..." readonly>
+    <input id="message__item--typing" v-if="!isHearingBot"
+      class="input" type="text" 
+      value="" readonly>
+
   </section>
 </template>
 
@@ -24,9 +30,14 @@ export default {
   },
   setup() {
     const chatStore = useChatStore()
-    const { chatHistory } = storeToRefs(chatStore);
+    const { chatHistory, isHearingBot } = storeToRefs(chatStore);
 
-    return {chatHistory}
+    const isTypingMsg = computed(() => {
+      if( isHearingBot ) { return "Orimbu is typing..." }
+      else { return "" }
+    })
+
+    return {chatHistory, isHearingBot, isTypingMsg}
   }
 }
 </script>
@@ -47,20 +58,18 @@ export default {
   width: 1vmin;
 }
 #chatbox__messages::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(74, 178, 238);
+  box-shadow: inset 0 0 5px rgba(244, 246, 246, 0.719);
   border-radius: 10px;
 }
 #chatbox__messages::-webkit-scrollbar-thumb {
-  background: rgba(43, 122, 168, 0.719);
+  background: rgba(214, 216, 218, 0.719);
   border-radius: 10px;
 }
 #message__item--typing {
-  position: relative;
-  display: flex;
-  font-size: 70%;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  margin-left: auto;
-  margin-right: 18px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 60%;
+  margin-left: 0.5em;
 }
 </style>
