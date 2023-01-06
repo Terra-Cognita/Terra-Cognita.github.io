@@ -3,13 +3,14 @@
 
     <chatbox-display></chatbox-display>
     
-    <input id="chatbox__user-input" type="text"
-      class="message__item"
+    <textarea id="chatbox__user-input" rows="2"
+      class="textarea is-small has-fixed-size message__item" 
       v-model="userInputMsg"
       :disabled="isHearingBot"
       v-focus="!isHearingBot"
       @keyup.enter="onEnterMessage()"
-    >
+    />
+
     <!-- <button @click="reset()">{{isHearingBot}}</button>
     <button @click="log()">LOG</button> -->
 
@@ -76,7 +77,6 @@ export default {
   // max-height: calc(100vh - 12rem - 5rem); /* #main-view top&bottom padding*/
 }
 #chatbox__user-input {
-  margin-top: 1em;
   width: 80%;
   border-radius: 9px;
   font-family: inherit;
@@ -88,5 +88,17 @@ export default {
 #chatbox__user-input:focus {
   outline: none;
   background: rgba(71, 239, 229, 1);
+}
+// scroll bar formatting
+#chatbox__user-input::-webkit-scrollbar {
+  width: 1vmin;
+}
+#chatbox__user-input::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(71, 239, 229, 1);
+  border-radius: 10px;
+}
+#chatbox__user-input::-webkit-scrollbar-thumb {
+  background: rgba(37, 153, 145, 0.267);
+  border-radius: 10px;
 }
 </style>
