@@ -10,7 +10,7 @@
         <!-- Brand & Burger -->
         <div class="navbar-brand">
           <a id="nav-logo-item" class="navbar-item" href="/">
-            <img id="nav-logo-img" src="./assets/logos/terra-cognita_black.png" alt="Terra Cognita Game" draggable="false" class="not-draggable-fig">
+            <img id="nav-logo-img" src="./assets/logos/terra-cognita_Logo2_Tela-5K.png" alt="Terra Cognita Game" draggable="false" class="not-draggable-fig">
           </a>
           <a role="button" id="burger" class="navbar-burger" @click="clickNavBurger()" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
@@ -21,6 +21,7 @@
         <!-- Menu Links -->
         <div id="nav-links" class="navbar-menu">
           <div class="navbar-start">
+            <player></player>
           </div>
           <div class="navbar-end">
             <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('home')">About</o-button>
@@ -102,11 +103,13 @@
 
 <script>
 import Chatbox from "./components/Chatbox.vue"
+import Player from "./components/Player.vue"
 
 export default {
   name: "App",
   components: {
-    Chatbox
+    Chatbox,
+    Player
   },
   data(){
     return {
@@ -166,6 +169,11 @@ export default {
   cursor: pointer;
   bottom: 4rem;
   right: 3rem;
+}
+
+#nav-logo-item {
+  width: 20rem;
+  height: auto;
 }
 
 </style>
