@@ -124,6 +124,11 @@ button:focus-visible {
 #nav-logo-img {
   max-height: 100% !important;
 }
+.navbar-item {
+  align-items: flex-start;
+  margin: 1rem;
+  width: 10rem;
+}
 .nav-button span {
   color: black;
 }

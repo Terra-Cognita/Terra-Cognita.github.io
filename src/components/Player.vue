@@ -1,18 +1,27 @@
+<!-- 
+
+  Submitted to Autoplay policies
+    - This file uses howler.js audio library, which defaults to Web Audio API and falls back to HTML5 Audio.
+    - This module assumes the minimum required user engagement to address Autoplay policies
+      Chrome Policy: (https://developer.chrome.com/blog/autoplay/#audiovideo-elements)
+    - Additional code development is required to assure proper functioning without user-engagement assumption
+
+-->
 <template>
   <section id="player-control" class="level p-2">
 
-    <a id="player-button-control" class="level-item mr-4" @click="soundControl()">
-      <o-icon pack="mdi" :icon="buttonControlIcon" variant="dark"></o-icon>
+    <a id="player-button-play" class="level-item mr-4" @click="isPlaying ? sound.pause() : sound.play()">
+      <o-icon pack="mdi" :icon="buttonPlayIcon" variant="dark"></o-icon>
     </a>
     
     <div id="player-volume-control" class="level-item">
       <o-tooltip label="Mute">
-        <a id="player-button-mute" class="mr-2" @click="soundControl()">
-          <o-icon pack="mdi" :icon="volumeControlIcon" variant="dark"></o-icon>
+        <a id="player-button-mute" class="mr-2" @click="sound.mute(toMute)">
+          <o-icon pack="mdi" :icon="buttonMuteIcon" variant="dark"></o-icon>
         </a>
       </o-tooltip>
       <o-slider id="player-slider-volume" 
-        v-model="volumeOutput"
+        v-model="volumeLevel"
         :min="0" :max="1" :step="0.1" 
         size="small" variant="dark" 
         :tooltip="false" rounded>
@@ -23,63 +32,61 @@
 </template>
 
 <script>
-import { computed, ref, watchEffect } from 'vue';
+import { computed, ref, toRef, watch, watchEffect } from 'vue';
 import {Howl, Howler} from 'howler';
 
 export default {
   name: "Player",
   setup() {
-    
-    const volumeOutput = ref(0.5);
 
-    const files = ['src/assets/sounds/WelcomeToTerraCognita_PortScoretest.mp3']
-    var sound = new Howl({
-      src: files,
+    const musicFiles = ['src/assets/sounds/WelcomeToTerraCognita_PortScoretest.mp3']
+    
+    // refs
+    const isPlaying = ref(false);
+    const toMute = ref(true)
+    
+    const sound = ref()
+    sound.value = new Howl({
+      src: musicFiles,
       autoplay: true,
       loop: true,
-      volume: volumeOutput.value,
-      onload: function() {
-        console.log('>> onLoad')
-        console.log('sound.state()', sound.state())
+      volume: 0.5,
+      onplay: function() {
+        isPlaying.value = true;
       },
-      onend: function() {
-        console.log('Finished!');
+      onpause: function() {
+        isPlaying.value = false; 
+      },
+      onmute: function() {
+        toMute.value = !toMute.value
       }
     });
-    console.log('sound.state()', sound.state())
 
-    // sound.once('load', function(){
-    //   sound.play();
-    // });
-    
-    const isPlaying = computed(() => sound.playing());
-    const buttonControlIcon = computed(() => {
-      console.log('buttonControlIcon: ', isPlaying.value)
-      return isPlaying.value ? 'pause-circle' : 'play-circle'
-    })
-    const volumeControlIcon = computed(() => {
-      console.log('volumeControlIcon: ')
-      return 'volume-medium' // 'volume-high', 'volume-low', 'volume-off', 'volume-mute'
+    // computed
+    const volumeLevel = computed({
+      get: () => sound.value.volume(),
+      set: (val) => { sound.value.volume(val) }
     })
 
+    const buttonPlayIcon = computed(() => isPlaying.value ? 'pause-circle' : 'play-circle')
+    const buttonMuteIcon = computed(() => !toMute.value ? 'volume-mute' : getVolumeLevelIcon(volumeLevel.value))
 
-    console.log('isPlaying.value', isPlaying.value)
-    watchEffect(() => {
-      console.log('watchEffect')
-      isPlaying.value = sound.playing()
-      console.log('isPlaying.value', isPlaying.value)
-    })
-
-    function soundControl() {
-      if(isPlaying.value) {
-        sound.pause()
-      }
-      else if(!isPlaying.value) {
-        sound.play()
-      }
+    // functions
+    function getVolumeLevelIcon(index) {
+      if (index === 0) { return 'volume-off' }
+      else if (index < 0.35) { return 'volume-low' }
+      else if (index < 0.70) { return 'volume-medium' }
+      else if (index >= 0.70) { return 'volume-high' }
     }
 
-    return { buttonControlIcon, volumeControlIcon, volumeOutput, soundControl}
+    return { 
+      isPlaying,
+      toMute,
+      volumeLevel, 
+      buttonPlayIcon, 
+      buttonMuteIcon,
+      sound
+    }
   }
 }
 </script>
@@ -90,7 +97,7 @@ export default {
   flex-basis: content;
   flex-grow: 3;
 }
-#player-button-control {
+#player-button-play {
   justify-content: left;
   flex-basis: content;
   flex-grow: 0;
