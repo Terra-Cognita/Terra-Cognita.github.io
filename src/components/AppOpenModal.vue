@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import { computed, ref, watch, watchEffect } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 export default {
   name: "AppOpenModal",
   setup() {
-    return {}
+    const router = useRouter()
+    router.push({ path: '/'})
   }
 }
 </script>
