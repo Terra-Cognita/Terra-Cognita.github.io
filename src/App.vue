@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div id="app" class="hero">
+  <div id="app" class="hero" @mouseover="hasUserInteraction">
     
     <!-- NAVBAR -->
     <div class="hero-head">
@@ -100,8 +100,10 @@
 </template>
 
 <script>
-import Chatbox from "./components/Chatbox.vue"
-import Player from "./components/Player.vue"
+import { computed, ref, watchEffect } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import Chatbox from "./components/Chatbox.vue";
+import Player from "./components/Player.vue";
 
 export default {
   name: "App",
@@ -109,38 +111,43 @@ export default {
     Chatbox,
     Player
   },
-  data(){
-    return {
-      isChatOpen: false
+  setup() {
+
+    const router = useRouter()
+    const route = useRoute()
+
+    const isChatOpen = ref(false)
+
+    const burgerIcon = computed( () => document.querySelector('#burger'))
+    const navbarMenu = computed( () => document.querySelector('#nav-links'))
+    const routerView = computed( () => document.querySelector('#router-view'))
+
+    function openChatBot() {
+      isChatOpen.value = !isChatOpen.value
+      routerView.value.classList.toggle('is-hidden-mobile')
     }
-  },
-  computed: {
-    burgerIcon() {
-      return document.querySelector('#burger')
-    },
-    navbarMenu() {
-      return document.querySelector('#nav-links')
-    }, 
-    routerView() {
-      return document.querySelector('#router-view')
+    
+    function goto(routerName) {
+      router.push({name: routerName})
+      closeNavLinks()
     }
-  },
-  methods: {
-    openChatBot() {
-      this.isChatOpen = !this.isChatOpen
-      this.routerView.classList.toggle('is-hidden-mobile')
-    },
-    goto(routerName) {
-      this.$router.push({name: routerName})
-      this.closeNavLinks()
-    },
-    clickNavBurger() {
-      this.navbarMenu.classList.toggle('is-active')
-      this.burgerIcon.classList.toggle('is-active')
-    },
-    closeNavLinks() {
-      this.navbarMenu.classList.remove('is-active')
-      this.burgerIcon.classList.remove('is-active')
+
+    function clickNavBurger() {
+      navbarMenu.value.classList.toggle('is-active')
+      burgerIcon.value.classList.toggle('is-active')
+    }
+
+    function closeNavLinks() {
+      navbarMenu.value.classList.remove('is-active')
+      burgerIcon.value.classList.remove('is-active')
+    }
+
+    return { 
+      isChatOpen, 
+      openChatBot, 
+      goto, 
+      clickNavBurger,
+      
     }
   }
 }
