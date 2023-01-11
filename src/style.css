@@ -41,6 +41,17 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+body::-webkit-scrollbar {
+  width: 0;
+}
+body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.561);
+  width: 0;
+}
+body::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
 
 h1 {
   font-size: 3.2em;
