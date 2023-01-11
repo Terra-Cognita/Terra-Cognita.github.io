@@ -20,13 +20,11 @@
         </div>
         <!-- Menu Links -->
         <div id="nav-links" class="navbar-menu">
-          <div class="navbar-start">
-            <player></player>
-          </div>
           <div class="navbar-end">
             <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('home')">About</o-button>
             <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('team')">Team</o-button>
             <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('lore')">Lore</o-button>
+            <div id="nav-player" class="navbar-item"><player></player></div>
           </div>
         </div>
       </nav>
@@ -176,4 +174,9 @@ export default {
   height: auto;
 }
 
+.navbar-item {
+  align-items: flex-start;
+  margin: 1rem;
+  width: 10rem;
+}
 </style>
