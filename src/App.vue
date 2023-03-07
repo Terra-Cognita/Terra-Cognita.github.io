@@ -4,9 +4,6 @@
 <template>
   <div id="app" class="hero">
 
-    <!-- OPEN MODAL -->
-    <open-modal @click="activateContent"></open-modal>
-
     <div id="page-content" v-if="isPageContentActive">
 
       <!-- NAVBAR -->
@@ -29,7 +26,7 @@
               <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('home')">About</o-button>
               <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('team')">Team</o-button>
               <o-button class="navbar-item nav-button" variant="primary" size="large" @click="goto('lore')">Lore</o-button>
-              <div id="nav-player" class="navbar-item"><player></player></div>
+              <!-- <div id="nav-player" class="navbar-item"><player></player></div> -->
             </div>
           </div>
         </nav>
@@ -108,16 +105,12 @@
 <script>
 import { computed, ref, watch, watchEffect } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import OpenModal from "./components/AppOpenModal.vue";
 import Chatbox from "./components/Chatbox.vue";
-import Player from "./components/Player.vue";
 
 export default {
   name: "App",
   components: {
-    OpenModal,
     Chatbox,
-    Player
   },
   setup() {
     
@@ -125,7 +118,7 @@ export default {
     const route = useRoute()
 
     // refs
-    const isPageContentActive = ref(false)
+    const isPageContentActive = ref(true)
     const isChatOpen = ref(false)
 
     // computed
@@ -134,11 +127,6 @@ export default {
     const routerView = computed( () => document.querySelector('#router-view'))
 
     // functions
-    function activateContent(event) {
-      event.target.parentNode.classList.remove('is-active')
-      isPageContentActive.value = true
-    }
-
     function openChatBot() {
       isChatOpen.value = !isChatOpen.value
       routerView.value.classList.toggle('is-hidden-mobile')
@@ -162,7 +150,6 @@ export default {
     return { 
       isPageContentActive,
       isChatOpen,
-      activateContent,
       openChatBot, 
       goto, 
       clickNavBurger,

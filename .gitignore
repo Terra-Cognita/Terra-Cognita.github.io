@@ -1,5 +1,7 @@
 # tc art
 src/assets/home_screen/
+# code archieve
+src/_code_archive/
 
 .vscode/
 .env
