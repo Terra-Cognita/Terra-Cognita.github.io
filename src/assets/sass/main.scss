@@ -1,4 +1,5 @@
 @import "bulma/sass/utilities/_all";
+@import "./variables.scss";
 
 // Set your colors
 $primary: rgba(45, 140, 195, 0.8);
@@ -14,61 +15,133 @@ $custom-shades: null !default;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: mergeColorMaps(
-    (
-        "white": (
-            $white,
-            $black,
-        ),
-        "black": (
-            $black,
-            $white,
-        ),
-        "light": (
-            $light,
-            $light-invert,
-        ),
-        "dark": (
-            $dark,
-            $dark-invert,
-        ),
-        "primary": (
-            $primary,
-            $primary-invert,
-            $primary-light,
-            $primary-dark,
-        ),
-        "link": (
-            $link,
-            $link-invert,
-            $link-light,
-            $link-dark,
-        ),
-        "info": (
-            $info,
-            $info-invert,
-            $info-light,
-            $info-dark,
-        ),
-        "success": (
-            $success,
-            $success-invert,
-            $success-light,
-            $success-dark,
-        ),
-        "warning": (
-            $warning,
-            $warning-invert,
-            $warning-light,
-            $warning-dark,
-        ),
-        "danger": (
-            $danger,
-            $danger-invert,
-            $danger-light,
-            $danger-dark,
-        ),
+  (
+    "sand-1": (
+      $sand-1,
+      $sand-1,
     ),
-    $custom-colors
+    "sand-2": (
+      $sand-2,
+      $sand-2,
+    ),
+    "sand-3": (
+      $sand-3,
+      $sand-3,
+    ),
+    "earth-1": (
+      $earth-1,
+      $earth-1,
+    ),
+    "earth-2": (
+      $earth-2,
+      $earth-2,
+    ),
+    "earth-3": (
+      $earth-3,
+      $earth-3,
+    ),
+    "forest-1": (
+      $forest-1,
+      $forest-1,
+    ),
+    "forest-2": (
+      $forest-2,
+      $forest-2,
+    ),
+    "forest-3": (
+      $forest-3,
+      $forest-3,
+    ),
+    "sky-1": (
+      $sky-1,
+      $sky-1,
+    ),
+    "sky-2": (
+      $sky-2,
+      $sky-2,
+    ),
+    "sky-3": (
+      $sky-3,
+      $sky-3,
+    ),
+    "sky-4": (
+      $sky-4,
+      $sky-4,
+    ),
+    "sky-5": (
+      $sky-5,
+      $sky-5,
+    ),
+    "magic-sand": (
+      $magic-sand,
+      $magic-sand,
+    ),
+    "magic-earth": (
+      $magic-earth,
+      $magic-earth,
+    ),
+    "magic-forest": (
+      $magic-forest,
+      $magic-forest,
+    ),
+    "magic-sky": (
+      $magic-sky,
+      $magic-sky,
+    ),
+    "white": (
+        $white,
+        $black,
+    ),
+    "black": (
+        $black,
+        $white,
+    ),
+    "light": (
+        $light,
+        $light-invert,
+    ),
+    "dark": (
+        $dark,
+        $dark-invert,
+    ),
+    "primary": (
+        $primary,
+        $primary-invert,
+        $primary-light,
+        $primary-dark,
+    ),
+    "link": (
+        $link,
+        $link-invert,
+        $link-light,
+        $link-dark,
+    ),
+    "info": (
+        $info,
+        $info-invert,
+        $info-light,
+        $info-dark,
+    ),
+    "success": (
+        $success,
+        $success-invert,
+        $success-light,
+        $success-dark,
+    ),
+    "warning": (
+        $warning,
+        $warning-invert,
+        $warning-light,
+        $warning-dark,
+    ),
+    "danger": (
+        $danger,
+        $danger-invert,
+        $danger-light,
+        $danger-dark,
+    ),
+  ),
+  $custom-colors
 );
 
 // Links
