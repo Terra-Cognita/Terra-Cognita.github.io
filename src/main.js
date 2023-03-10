@@ -15,7 +15,7 @@ import messages from './locales/messages/index.js'
 
 // import '@oruga-ui/theme-bulma/dist/bulma.css'
 import './assets/sass/main.scss'
-import './style.css'
+import './style.scss'
 
 const router = createRouter(createWebHistory())
 

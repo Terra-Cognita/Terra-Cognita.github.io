@@ -1,8 +1,9 @@
 import {createRouter} from 'vue-router';
-import Home from '../pages/Home.vue';
-import Dev from '../pages/Development.vue';
-import Lore from '../pages/Lore.vue';
-import Team from '../pages/Team.vue';
+import Home from '../sections/HomeSection.vue';
+import Introduction from '../sections/IntroductionSection.vue';
+import Welcome from '../sections/WelcomeSection.vue'
+import Gameplay from '../sections/GameplaySection.vue';
+import Team from '../sections/TeamSection.vue';
 
 const routes = [
   {
@@ -11,19 +12,24 @@ const routes = [
     component: Home,
   },
   {
+    path: "/intro",
+    name: "intro",
+    component: Introduction,
+  },
+  {
+    path: "/welcome",
+    name: "welcome",
+    component: Welcome,
+  },
+  {
+    path: "/gameplay",
+    name: "gameplay",
+    component: Gameplay,
+  },
+  {
     path: "/team",
     name: "team",
     component: Team,
-  },
-  {
-    path: "/dev",
-    name: "dev",
-    component: Dev,
-  },
-  {
-    path: "/lore",
-    name: "lore",
-    component: Lore,
   },
 ]
 
