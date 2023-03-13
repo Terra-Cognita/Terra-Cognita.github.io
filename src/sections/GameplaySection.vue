@@ -1,7 +1,7 @@
 <template>
-  <section id="gameplay-section" class="hero is-forest-3">
+  <section id="gameplay" class="hero is-forest-3">
     <div class="hero-body">
-      <section-naming>A new world</section-naming>
+      <section-naming>Gameplay</section-naming>
       <div class="title">
         {{ $t('gameplay.TITLE') }}
       </div>

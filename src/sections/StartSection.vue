@@ -1,5 +1,5 @@
 <template>
-  <section id="home-section">
+  <section id="tc-start">
     <banner-crystal></banner-crystal>
   </section>
 </template>
@@ -9,7 +9,7 @@ import { ref, reactive } from 'vue';
 import BannerCrystal from "../banners/BannerCrystal.vue"
 
 export default {
-  name: "HomeSection",
+  name: "StartSection",
   components: {
     BannerCrystal
   },

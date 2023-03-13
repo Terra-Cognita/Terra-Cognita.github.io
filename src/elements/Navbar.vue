@@ -3,9 +3,9 @@
   <nav id="navbar" class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
     <!-- Brand & Burger -->
     <div class="navbar-brand">
-      <a id="nav-logo-item" class="navbar-item" href="/">
+      <router-link id="nav-logo-item" class="navbar-item" :to="{ name: 'home' }">
         <img id="nav-logo-img" src="@/assets/logos/terra-cognita_white.png" alt="Terra Cognita Game" draggable="false" class="not-draggable-fig">
-      </a>
+      </router-link>
       <a role="button" id="burger" class="navbar-burger" @click="clickNavBurger()" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -16,10 +16,10 @@
     <div id="nav-links" class="navbar-menu">
       <!-- <div class="navbar-start"></div> -->
       <div class="navbar-end">
-        <a class="navbar-item" @click="goto('home')">WELCOME</a>
-        <a class="navbar-item" @click="goto('team')">GAMEPLAY</a>
-        <a class="navbar-item" @click="goto('lore')">TEAM</a>
-        <a class="navbar-item" @click="goto('lore')">ACCESS</a>
+        <router-link class="navbar-item" :to="{ name: 'home', hash: '#welcome' }">WELCOME</router-link>
+        <router-link class="navbar-item" :to="{ name: 'home', hash: '#gameplay' }">GAMEPLAY</router-link>
+        <router-link class="navbar-item" :to="{ name: 'home', hash: '#team' }">TEAM</router-link>
+        <router-link class="navbar-item" :to="{ name: 'login'}">ACCESS</router-link >
       </div>
     </div>
   </nav>

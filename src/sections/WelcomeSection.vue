@@ -1,5 +1,5 @@
 <template>
-  <section id="welcome-section" class="hero is-forest-3">
+  <section id="welcome" class="hero is-forest-3">
     <div class="hero-body">
       <section-naming>A new world</section-naming>
       <welcome-tc></welcome-tc>

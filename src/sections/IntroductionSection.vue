@@ -1,5 +1,5 @@
 <template>
-  <section id="introduction-section" class="hero is-forest-2">
+  <section id="introduction" class="hero is-forest-2">
     <div class="hero-body">
       <div class="columns">
         <div class="column is-half">

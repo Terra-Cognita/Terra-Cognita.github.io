@@ -1,35 +1,17 @@
 import {createRouter} from 'vue-router';
-import Home from '../sections/HomeSection.vue';
-import Introduction from '../sections/IntroductionSection.vue';
-import Welcome from '../sections/WelcomeSection.vue'
-import Gameplay from '../sections/GameplaySection.vue';
-import Team from '../sections/TeamSection.vue';
+import Landing from '../pages/Landing.vue';
+import Login from '../pages/Login.vue';
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: Home,
+    component: Landing,
   },
   {
-    path: "/intro",
-    name: "intro",
-    component: Introduction,
-  },
-  {
-    path: "/welcome",
-    name: "welcome",
-    component: Welcome,
-  },
-  {
-    path: "/gameplay",
-    name: "gameplay",
-    component: Gameplay,
-  },
-  {
-    path: "/team",
-    name: "team",
-    component: Team,
+    path: "/login",
+    name: "login",
+    component: Login,
   },
 ]
 
@@ -40,7 +22,16 @@ export default function (history) {
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
-      } 
+      }
+      if (to.hash) {
+        return {
+          el: to.hash,
+          behavior: 'smooth'
+        }
+      }
+      return { 
+        top: 0,
+        behavior: 'smooth' }
     }
   })
 }

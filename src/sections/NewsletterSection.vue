@@ -1,5 +1,5 @@
 <template>
-  <section id="newsletter-section" class="hero is-forest-3">
+  <section id="newsletter" class="hero is-forest-3">
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="title">

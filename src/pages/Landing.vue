@@ -1,7 +1,7 @@
 <template>
-  <div id="home-view">
+  <!-- <div id="home-view"> -->
 
-    <home-section></home-section>
+    <start-section></start-section>
     <intro-section></intro-section>
     <welcome-section></welcome-section>
     <gameplay-section></gameplay-section>
@@ -9,11 +9,13 @@
     <team-section></team-section>
     <newsletter-section></newsletter-section>
 
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
-import HomeSection from "../sections/HomeSection.vue"
+import { useRouter, useRoute } from 'vue-router'
+
+import StartSection from "../sections/StartSection.vue"
 import IntroSection from "../sections/IntroductionSection.vue"
 import WelcomeSection from "../sections/WelcomeSection.vue"
 import GameplaySection from "../sections/GameplaySection.vue"
@@ -24,7 +26,7 @@ import BreathingText from "../components/BreathingText.vue"
 export default {
   name: "MainView",
   components: {
-    HomeSection,
+    StartSection,
     IntroSection,
     WelcomeSection,
     GameplaySection,
@@ -33,8 +35,10 @@ export default {
     BreathingText
   },
   setup() {
-    return { 
-    }
+    const router = useRouter()
+    router.push({ name: 'home' })
+
+    return {}
   }
 }
 </script>

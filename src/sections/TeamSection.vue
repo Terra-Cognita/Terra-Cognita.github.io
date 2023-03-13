@@ -1,5 +1,5 @@
 <template>
-  <section id="team-section" class="hero is-forest-3">
+  <section id="team" class="hero is-forest-3">
     <div class="hero-body">
       <div class="title">
         {{ $t('team.TITLE') }}

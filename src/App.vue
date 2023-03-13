@@ -1,28 +1,26 @@
 <template>
   <div id="app" class="hero">
 
-    <!-- NAVBAR -->
+    <!-- Navbar -->
     <navbar-element></navbar-element>
 
-    <!-- MAIN VIEW -->
-    <main-view></main-view>
+    <!-- Landing Page -->
+    <router-view></router-view>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer-element></footer-element>
 
-  </div>  <!-- #app -->
+  </div>
 </template>
 
 <script>
 import NavbarElement from "./elements/Navbar.vue"
-import MainView from "./elements/MainView.vue"
 import FooterElement from "./elements/Footer.vue"
 
 export default {
   name: "App",
   components: {
     NavbarElement,
-    MainView,
     FooterElement,
   },
   setup() {
