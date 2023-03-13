@@ -14,7 +14,7 @@
       <div class="level">
         <div class="level-left">
           <div id="footer-logo-item" class="level-item">
-            <img id="footer-logo-img" src="@/assets/logos/terra-cognita_white.png" alt="Terra Cognita" draggable="false" class="not-draggable-fig">
+            <img id="footer-logo-img" src="@/assets/logos/terra-cognita_white.svg" alt="Terra Cognita" draggable="false" class="not-draggable-fig">
           </div>
         </div>
         <div id="footer-links" class="level-right">
