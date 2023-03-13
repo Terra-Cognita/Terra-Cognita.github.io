@@ -1,25 +1,30 @@
 <template>
 
   <nav id="navbar" class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+    
     <!-- Brand & Burger -->
     <div class="navbar-brand">
-      <router-link id="nav-logo-item" class="navbar-item" :to="{ name: 'home' }">
-        <img id="nav-logo-img" src="@/assets/logos/terra-cognita_white.png" alt="Terra Cognita Game" draggable="false" class="not-draggable-fig">
+
+      <router-link id="navbar-logo" class="navbar-item" :to="{ name: 'home' }">
+        <img id="navbar-logo-img" src="@/assets/logos/terra-cognita_white.svg" alt="Terra Cognita Game" draggable="false" class="not-draggable-fig">
       </router-link>
-      <a role="button" id="burger" class="navbar-burger" @click="clickNavBurger()" aria-label="menu" aria-expanded="false">
+
+      <a id="burger" class="navbar-burger" role="button" @click="clickNavBurger()" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
+
     <!-- Menu Links -->
-    <div id="nav-links" class="navbar-menu">
+    <div id="navbar-links" class="navbar-menu">
       <!-- <div class="navbar-start"></div> -->
+
       <div class="navbar-end">
-        <router-link class="navbar-item" :to="{ name: 'home', hash: '#welcome' }">WELCOME</router-link>
-        <router-link class="navbar-item" :to="{ name: 'home', hash: '#gameplay' }">GAMEPLAY</router-link>
-        <router-link class="navbar-item" :to="{ name: 'home', hash: '#team' }">TEAM</router-link>
-        <router-link class="navbar-item" :to="{ name: 'login'}">ACCESS</router-link >
+        <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'home', hash: '#welcome' }">WELCOME</router-link>
+        <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'home', hash: '#gameplay' }">GAMEPLAY</router-link>
+        <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'home', hash: '#team' }">TEAM</router-link>
+        <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'login'}">ACCESS</router-link >
       </div>
     </div>
   </nav>
@@ -39,53 +44,51 @@ export default {
 
     // computed
     const burgerIcon = computed( () => document.querySelector('#burger'))
-    const navbarMenu = computed( () => document.querySelector('#nav-links'))
+    const navbarMenu = computed( () => document.querySelector('#navbar-links'))
 
     // functions    
-    function goto(routerName) {
-      router.push({name: routerName})
-      closeNavLinks()
-    }
-
     function clickNavBurger() {
       navbarMenu.value.classList.toggle('is-active')
       burgerIcon.value.classList.toggle('is-active')
     }
-
     function closeNavLinks() {
       navbarMenu.value.classList.remove('is-active')
       burgerIcon.value.classList.remove('is-active')
     }
 
     return {
-      goto, 
-      clickNavBurger,    
+      clickNavBurger,
+      closeNavLinks   
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#nav-logo-item {
-  width: 20rem;
-  height: auto;
+.navbar-item {
+  color: $sand-1;
 }
-
-#nav-logo-img {
-  max-height: 100% !important;
-}
-.nav-button span {
-  color: black;
-}
-#burger {
+.navbar-item:hover {
+  color: $sand-3;
   background-color: transparent;
 }
-#burger span {
-  color: rgba(45, 140, 195);
+.navbar-item:focus-within {
+  color: $sand-1;
+  background-color: transparent;
 }
-// .navbar-item {
-//   align-items: flex-start;
-//   margin: 1rem;
-//   width: 10rem;
-// }
+.navbar-burger {
+  color: $sand-1
+}
+.navbar-menu {
+  background-color: transparent;
+}
+
+#navbar-logo {
+  width: 15rem;
+  height: auto;
+}
+#navbar-logo-img {
+  max-height: 100% !important;
+}
+
 </style>
