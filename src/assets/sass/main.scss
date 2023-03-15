@@ -1,0 +1,156 @@
+@import "bulma/sass/utilities/_all";
+@import "./variables.scss";
+
+// Set your colors
+$primary: rgba(45, 140, 195, 0.8);
+$primary-light: findLightColor($primary);
+$primary-dark: findDarkColor($primary);
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps(
+  (
+    "sand-1": (
+      $sand-1,
+      $white,
+    ),
+    "sand-2": (
+      $sand-2,
+      $earth-2,
+    ),
+    "sand-3": (
+      $sand-3,
+      $white,
+    ),
+    "earth-1": (
+      $earth-1,
+      $white,
+    ),
+    "earth-2": (
+      $earth-2,
+      $white,
+    ),
+    "earth-3": (
+      $earth-3,
+      $white,
+    ),
+    "forest-1": (
+      $forest-1,
+      $white,
+    ),
+    "forest-2": (
+      $forest-2,
+      $white,
+    ),
+    "forest-3": (
+      $forest-3,
+      $white,
+    ),
+    "sky-1": (
+      $sky-1,
+      $white,
+    ),
+    "sky-2": (
+      $sky-2,
+      $white,
+    ),
+    "sky-3": (
+      $sky-3,
+      $white,
+    ),
+    "sky-4": (
+      $sky-4,
+      $white,
+    ),
+    "sky-5": (
+      $sky-5,
+      $white,
+    ),
+    "magic-sand": (
+      $magic-sand,
+      $white,
+    ),
+    "magic-earth": (
+      $magic-earth,
+      $white,
+    ),
+    "magic-forest": (
+      $magic-forest,
+      $white,
+    ),
+    "magic-sky": (
+      $magic-sky,
+      $white,
+    ),
+    "white": (
+        $white,
+        $black,
+    ),
+    "black": (
+        $black,
+        $white,
+    ),
+    "light": (
+        $light,
+        $light-invert,
+    ),
+    "dark": (
+        $dark,
+        $dark-invert,
+    ),
+    "primary": (
+        $primary,
+        $primary-invert,
+        $primary-light,
+        $primary-dark,
+    ),
+    "link": (
+        $link,
+        $link-invert,
+        $link-light,
+        $link-dark,
+    ),
+    "info": (
+        $info,
+        $info-invert,
+        $info-light,
+        $info-dark,
+    ),
+    "success": (
+        $success,
+        $success-invert,
+        $success-light,
+        $success-dark,
+    ),
+    "warning": (
+        $warning,
+        $warning-invert,
+        $warning-light,
+        $warning-dark,
+    ),
+    "danger": (
+        $danger,
+        $danger-invert,
+        $danger-light,
+        $danger-dark,
+    ),
+  ),
+  $custom-colors
+);
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+@import "bulma/bulma";
+@import 'bulma-floating-button/dist/css/bulma-floating-button.min.css';
+@import '@oruga-ui/theme-bulma/dist/scss/bulma';
+@import '@oruga-ui/oruga-next/dist/oruga-full-vars.css';
+// @import '@oruga-ui/oruga-next/src/scss/oruga-full-vars';

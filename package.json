@@ -1,23 +1,29 @@
 {
-  "name": "landing-page",
-  "version": "1.0.0",
-  "description": "Landing page for Terra Cognita",
-  "main": "index.js",
+  "name": "terra-cognita-github-io",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "watch:scss":  "node-sass -w assets/css/styles_effect.scss assets/css/styles_effect.css"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Terra-Cognita/landing-page.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Terra-Cognita/landing-page/issues"
-  },
-  "homepage": "https://github.com/Terra-Cognita/landing-page#readme",
   "dependencies": {
-    "node-sass": "^7.0.1"
+    "@oruga-ui/oruga-next": "^0.5.9",
+    "@oruga-ui/theme-bulma": "^0.2.8",
+    "bulma": "^0.9.4",
+    "bulma-floating-button": "^1.0.3",
+    "howler": "^2.2.3",
+    "pinia": "^2.0.28",
+    "pinia-plugin-persistedstate": "^3.0.2",
+    "vue": "^3.2.45",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "vite": "^4.0.0"
   }
 }
