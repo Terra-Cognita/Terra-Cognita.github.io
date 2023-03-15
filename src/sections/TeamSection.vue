@@ -1,7 +1,6 @@
 <template>
-  <section id="team" class="hero is-forest-3">
-    <div class="hero-body">
-      <div class="title">
+  <tc-section id="team" class="">
+      <div class="tc-title has-text-centered">
         {{ $t('team.TITLE') }}
       </div>
 
@@ -14,16 +13,17 @@
           </frame-member>
         </div>
       </div>
-    </div>
-  </section>
+  </tc-section>
 </template>
 
 <script>
+import TcSection from '../layouts/TcSection.vue'
 import FrameMember from "../components/FrameTeamMember.vue"
 
 export default {
   name: "TeamSection",
   components: {
+    TcSection,
     FrameMember
   },
   setup() {

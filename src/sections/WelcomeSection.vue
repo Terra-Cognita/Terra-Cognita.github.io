@@ -1,21 +1,25 @@
 <template>
-  <section id="welcome" class="hero is-forest-3">
-    <div class="hero-body">
-      <section-naming>A new world</section-naming>
-      <welcome-tc></welcome-tc>
-    </div>
-  </section>
+  <tc-section id="welcome" class="">
+      <div class="tc-smalltitle">A new world</div>
+      <tc-headline
+        :title="$t('headlines.WelcomeTc.TITLE')"
+        :subtitle="$t('headlines.WelcomeTc.SUBTITLE')"
+        :text="$t('headlines.WelcomeTc.TEXT')"
+        :figFile="'/src/assets/images/Crystal-Elements.png'"
+      >
+      </tc-headline>
+  </tc-section>
 </template>
 
 <script>
-import SectionNaming from "../components/SectionNaming.vue"
-import WelcomeTc from "../headlines/WelcomeTc.vue"
+import TcSection from '../layouts/TcSection.vue'
+import TcHeadline from '../layouts/TcHeadline.vue'
 
 export default {
   name: "WelcomeSection",
   components: {
-    SectionNaming,
-    WelcomeTc
+    TcSection,
+    TcHeadline
   },
   setup() {
     return {}

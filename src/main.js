@@ -15,6 +15,7 @@ import messages from './locales/messages/index.js'
 
 // import '@oruga-ui/theme-bulma/dist/bulma.css'
 import './assets/sass/main.scss'
+import './assets/sass/tc_classes.scss'
 import './style.scss'
 
 const router = createRouter(createWebHistory())
@@ -37,9 +38,5 @@ const app = createApp(App)
   .use(Oruga, bulmaConfig)
   .use(router)
   .use(i18n)
-  
-app.directive("focus", (el, binding) => {
-  if(binding.value) { el.focus() }
-})
 
 app.mount('#app')

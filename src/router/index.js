@@ -1,6 +1,6 @@
 import {createRouter} from 'vue-router';
-import Landing from '../pages/Landing.vue';
-import Login from '../pages/Login.vue';
+import Landing from '../pages/LandingPage.vue';
+import Login from '../pages/LoginPage.vue';
 
 const routes = [
   {

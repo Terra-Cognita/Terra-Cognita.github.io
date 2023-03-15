@@ -1,5 +1,4 @@
 <template>
-
   <nav id="navbar" class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
     
     <!-- Brand & Burger -->
@@ -24,7 +23,7 @@
         <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'home', hash: '#welcome' }">WELCOME</router-link>
         <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'home', hash: '#gameplay' }">GAMEPLAY</router-link>
         <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'home', hash: '#team' }">TEAM</router-link>
-        <router-link class="navbar-item" @click="closeNavLinks()" :to="{ name: 'login'}">ACCESS</router-link >
+        <router-link class="navbar-item login-item" @click="closeNavLinks()" :to="{ name: 'login'}">ACCESS</router-link >
       </div>
     </div>
   </nav>
@@ -65,16 +64,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+nav {
+  padding: 0 $pad-web-right 0 $pad-web-left;
+}
 .navbar-item {
   color: $sand-1;
+  font-weight: 900;
+  text-shadow: 0.05em 0 0.05em $sand-1;
 }
 .navbar-item:hover {
   color: $sand-3;
+  text-shadow: 0.05em 0 0.05em $sand-3;
   background-color: transparent;
 }
 .navbar-item:focus-within {
   color: $sand-1;
   background-color: transparent;
+}
+.login-item{
+  margin-left: 5vw;
 }
 .navbar-burger {
   color: $sand-1

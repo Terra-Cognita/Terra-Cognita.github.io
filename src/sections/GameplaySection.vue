@@ -1,39 +1,39 @@
 <template>
-  <section id="gameplay" class="hero is-forest-3">
-    <div class="hero-body">
-      <section-naming>Gameplay</section-naming>
-      <div class="title">
-        {{ $t('gameplay.TITLE') }}
-      </div>
+  <tc-section id="gameplay" class="">
+    <img class="image-bg" background-image src="@/assets/images/Crystal-Elements.png">
 
-      <div class="columns">
-        <div class="column is-one-third">
-          <frame-gem-1>{{ $t('gameplay.FRAME_1_TEXT') }}</frame-gem-1>
-        </div>
-        <div class="column is-one-third">
-          <frame-gem-3>{{ $t('gameplay.FRAME_2_TEXT') }}</frame-gem-3>
-        </div>
-        <div class="column is-one-third">
-          <frame-gem-4>{{ $t('gameplay.FRAME_3_TEXT') }}</frame-gem-4>
-        </div>
+    <div class="tc-smalltitle">Gameplay</div>
+    <div class="tc-title">
+      {{ $t('gameplay.TITLE') }}
+    </div>
+
+    <div class="columns is-variable is-8">
+      <div class="column is-one-third">
+        <frame-crystal-1>{{ $t('gameplay.FRAME_1_TEXT') }}</frame-crystal-1>
+      </div>
+      <div class="column is-one-third">
+        <frame-crystal-3>{{ $t('gameplay.FRAME_2_TEXT') }}</frame-crystal-3>
+      </div>
+      <div class="column is-one-third">
+        <frame-crystal-4>{{ $t('gameplay.FRAME_3_TEXT') }}</frame-crystal-4>
       </div>
     </div>
-  </section>
+  </tc-section>
 </template>
 
 <script>
-import SectionNaming from "../components/SectionNaming.vue"
-import FrameGem1 from "../components/FrameGem1.vue"
-import FrameGem3 from "../components/FrameGem3.vue"
-import FrameGem4 from '../components/FrameGem4.vue'
+import TcSection from '../layouts/TcSection.vue'
+import FrameCrystal1 from "../components/FrameCrystal1.vue"
+import FrameCrystal3 from "../components/FrameCrystal3.vue"
+import FrameCrystal4 from '../components/FrameCrystal4.vue'
 
 export default {
   name: "GameplaySection",
   components: {
-    SectionNaming,
-    FrameGem1,
-    FrameGem3,
-    FrameGem4
+    TcSection,
+    FrameCrystal1,
+    FrameCrystal3,
+    FrameCrystal4
   },
   setup() {
     return {}
@@ -42,4 +42,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#gameplay {
+  position: relative;
+  overflow: hidden;
+}
+.image-bg {
+  width: 40vw;
+  object-fit: fill;
+  object-position: center 0%;
+  opacity: 0.1;
+  position: absolute;
+  left:0;
+  right:0;
+  // top: 0;
+  // bottom:0;
+  margin:auto;
+  -webkit-transform: rotate(180deg); /* Safari and Chrome */
+  -moz-transform: rotate(180deg);   /* Firefox */
+  -ms-transform: rotate(180deg);   /* IE 9 */
+  -o-transform: rotate(180deg);   /* Opera */
+  transform: rotate(180deg);
+}
 </style>

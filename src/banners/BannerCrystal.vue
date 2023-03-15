@@ -1,22 +1,21 @@
 <template>
-  <section id="banner-crystal" class="hero is-forest-3 is-fullheight banner-bg">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <img src="@/assets/images/Crystal-Banner.png"/>
-        <div class="title" v-html="$t('banners.BannerCrystal.TITLE')"></div>
-        <div class="subtitle">
-          {{ $t('banners.BannerCrystal.TEXT') }}
-        </div>
-      </div>
+  <tc-banner id="banner-crystal" :backgroundFile="'/src/assets/images/BG-Banner1.png'">
+    <img src="@/assets/images/Crystal-Banner.png">
+    <div class="tc-title title-white" v-html="$t('banners.BannerCrystal.TITLE')"></div>
+    <div class="tc-text has-text-centered">
+      {{ $t('banners.BannerCrystal.TEXT') }}
     </div>
-  </section>
+  </tc-banner>
 </template>
 
 <script>
-import { ref, computed, reactive } from 'vue';
+import TcBanner from '../layouts/TcBanner.vue'
 
 export default {
   name: "BannerCrystal",
+  components: {
+    TcBanner
+  },
   setup() {
     return {
     }
@@ -25,11 +24,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner-bg {
-    background-image: url('@/assets/images/BG-Banner1.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    // background-attachment: fixed;
-    background-size: cover;
-}
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <section id="tc-start">
+  <div id="tc-start">
     <banner-crystal></banner-crystal>
-  </section>
+  </div>
 </template>
 
 <script>

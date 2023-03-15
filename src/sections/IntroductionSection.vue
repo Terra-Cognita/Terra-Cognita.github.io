@@ -1,9 +1,8 @@
 <template>
-  <section id="introduction" class="hero is-forest-2">
-    <div class="hero-body">
-      <div class="columns">
+  <tc-section id="introduction" class="is-forest-2">
+      <div class="columns is-variable is-8">
         <div class="column is-half">
-          <div class="title">
+          <div class="tc-title">
             {{ $t('introduction.TITLE') }}
           </div>
           <div class="subtitle">
@@ -11,19 +10,22 @@
           </div>
         </div>
         <div class="column is-half">
-          <img src="@/assets/images/temp_video.png"/>
+          <img src="@/assets/images/temp_video.png"/> 
         </div>
       </div>
-    </div>
-  </section>
+  </tc-section>
 </template>
 
 <script>
+import TcSection from '../layouts/TcSection.vue'
 
 export default {
   name: "IntroductionSection",
+  components: {
+    TcSection
+  },
   setup() {
-    return {}
+    return { }
   }
 }
 </script>

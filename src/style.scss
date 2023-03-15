@@ -1,36 +1,18 @@
 :root {
-  font-family: 'Texturina';
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  font-family: $default-font;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
+  font-weight: $default-font-weight;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: $forest-3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
@@ -53,50 +35,45 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
+  text-align: left;
+  background-color: $forest-3;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+/* ========= Typography =========== */
+
+a {
   font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+/* ========= Components =========== */
+
+button {
+  border: none;
+  padding: 0.6em 1.2em;
+  font-size: $button-font-size;
+  font-weight: $super-bold-font-weight;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: $sand-2;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: none;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.card {
-  padding: 2em;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-/* =========== */
-/*    UTILS    */
-/* =========== */
+/* ========= Utils =========== */
 
 .not-draggable-fig {
   user-drag: none; 
@@ -109,18 +86,19 @@ button:focus-visible {
   -khtml-user-select: none;
 }
 
-/* ====================== */
-/*     APP.VUE CONFIGS    */
-/* ====================== */
+/* ========= Media =========== */
 
-#app {
-  min-width: 100vw;
-  min-height: 100vh;
-  max-width: 1280px;
-  text-align: left;
-  background-color: $forest-3; 
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
+// add media to adjust font-size for different screens
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 }

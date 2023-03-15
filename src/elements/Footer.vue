@@ -1,14 +1,4 @@
 <template>
-
-  <!-- <footer class="footer is-forest-2">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-    </div>
-  </footer> -->
   <section id="footer" class="hero is-forest-2">
     <div class="hero-body">
       <div class="level">
@@ -18,24 +8,29 @@
           </div>
         </div>
         <div id="footer-links" class="level-right">
-          <p class="level-item">
-            <a class="footer-icon" href="https://github.com/Terra-Cognita" target="_blank">
-              <o-icon pack="mdi" icon="github" variant="sand-3" size="medium"></o-icon>
+          <p class="level-item footer-icon mr-5">
+            <a href="" target="_blank">
+              <o-icon pack="mdi" icon="email-outline" variant="sand-3" size="medium"></o-icon>
             </a>
           </p>
-          <p class="level-item">
-            <a class="footer-icon" href="https://twitter.com/AimCardano" target="_blank">
+          <p class="level-item footer-icon mr-5">
+            <a href="https://twitter.com/AimCardano" target="_blank">
               <o-icon pack="mdi" icon="twitter" variant="sand-3" size="medium"></o-icon>
             </a>
           </p>
-          <p class="level-item">
-            <a class=" footer-icon" href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
-              <o-icon pack="mdi" icon="telegram" variant="sand-3" size="medium"></o-icon>
+          <p class="level-item footer-icon mr-5">
+            <a href="" target="_blank">
+              <o-icon pack="mdi" icon="linkedin" variant="sand-3" size="medium"></o-icon>
+            </a>
+          </p>
+          <p class="level-item footer-icon">
+            <a href="https://github.com/Terra-Cognita" target="_blank">
+              <o-icon pack="mdi" icon="github" variant="sand-3" size="medium"></o-icon>
             </a>
           </p>
         </div>
       </div>
-      <hr id="divider">
+      <hr class="is-divider">
       <p class="has-text-centered">© Terra Cognita 2023. The land of discovery.</p>
     </div>
   </section>
@@ -47,15 +42,23 @@
 export default {
   name: "Footer",
   setup() {
-    
-    return {       
-    }
+    return { }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#divider {
+div.hero-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+div.level {
+  padding-left: $pad-web-left;
+  padding-right: $pad-web-right;
+}
+.is-divider {
+  margin-left: calc($pad-web-left / 2);
+  margin-right: calc($pad-web-right / 2);
   background-color: $sand-3;
 }
 #footer-logo-item {
