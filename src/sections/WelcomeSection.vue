@@ -5,7 +5,7 @@
         :title="$t('headlines.WelcomeTc.TITLE')"
         :subtitle="$t('headlines.WelcomeTc.SUBTITLE')"
         :text="$t('headlines.WelcomeTc.TEXT')"
-        :figFile="'/src/assets/images/Crystal-Elements.png'"
+        :figFile="'./src/assets/images/Crystal-Elements.png'"
       >
       </tc-headline>
   </tc-section>
