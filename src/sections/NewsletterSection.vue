@@ -33,6 +33,8 @@ export default {
   position: relative;
 }
 .image-bg {
+  width: auto;
+  height: 150%;
   opacity: 0.1;
   position: absolute;
   left:0;
