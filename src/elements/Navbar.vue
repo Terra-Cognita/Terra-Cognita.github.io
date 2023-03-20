@@ -42,6 +42,7 @@ export default {
     const route = useRoute()
 
     // computed
+    const navbar = computed( () => document.getElementById('navbar'))
     const burgerIcon = computed( () => document.querySelector('#burger'))
     const navbarMenu = computed( () => document.querySelector('#navbar-links'))
 
@@ -55,6 +56,31 @@ export default {
       burgerIcon.value.classList.remove('is-active')
     }
 
+    const windowHeight = window.innerHeight;
+    function graduateBackgroundOpacity(event) {
+      if(document.documentElement.scrollTop >= 0.5*windowHeight && document.documentElement.scrollTop < 0.8*windowHeight) {
+        navbar.value.classList.remove('is-almost-opaque')
+        navbar.value.classList.remove('is-opaque')
+        navbar.value.classList.add('is-semi-opaque')
+      }
+      else if(document.documentElement.scrollTop >= 0.8*windowHeight && document.documentElement.scrollTop < windowHeight) {
+        navbar.value.classList.remove('is-semi-opaque')
+        navbar.value.classList.remove('is-opaque')
+        navbar.value.classList.add('is-almost-opaque')
+      }
+      else if(document.documentElement.scrollTop >= windowHeight) {
+        navbar.value.classList.remove('is-semi-opaque')
+        navbar.value.classList.remove('is-almost-opaque')
+        navbar.value.classList.add('is-opaque')
+      } else {
+        navbar.value.classList.remove('is-semi-opaque')
+        navbar.value.classList.remove('is-almost-opaque')
+        navbar.value.classList.remove('is-opaque')
+      }
+    }
+
+    window.addEventListener('scroll', graduateBackgroundOpacity);
+
     return {
       clickNavBurger,
       closeNavLinks   
@@ -64,6 +90,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#navbar.is-semi-opaque {
+  background-color: rgba($forest-2, 0.5);
+}
+#navbar.is-almost-opaque {
+  background-color: rgba($forest-2, 0.8);
+}
+#navbar.is-opaque {
+  background-color: rgba($forest-2, 1);
+}
 nav {
   padding: 0 $pad-web-right 0 $pad-web-left;
 }
