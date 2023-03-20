@@ -10,17 +10,25 @@
 
 <script>
 import { ref } from 'vue';
+import { useAssets } from '../composables/useAssets.js'
 
 export default {
   props: {
-    backgroundFile: {
-      type: String,
-      default: '/src/assets/images/BG-Banner1.png'
-    }
+    backgroundFile: String,
   },
   setup(props) {
-    const backgroundStyle = ref(`background-image: url(${props.backgroundFile})`)
-    return { backgroundStyle }
+    let bgFile;
+    if (props.backgroundFile === undefined) {
+      const { bgBanner1 } = useAssets()
+      bgFile = bgBanner1
+    } else {
+      bgFile = props.backgroundFile
+    }
+
+    const backgroundStyle = ref(`background-image: url(${bgFile})`)
+    return { 
+      backgroundStyle 
+    }
   }
 }
 </script>

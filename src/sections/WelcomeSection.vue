@@ -5,7 +5,7 @@
         :title="$t('headlines.WelcomeTc.TITLE')"
         :subtitle="$t('headlines.WelcomeTc.SUBTITLE')"
         :text="$t('headlines.WelcomeTc.TEXT')"
-        :figFile="'./src/assets/images/Crystal-Elements.png'"
+        :figFile="imgCrystalElement"
       >
       </tc-headline>
   </tc-section>
@@ -14,6 +14,7 @@
 <script>
 import TcSection from '../layouts/TcSection.vue'
 import TcHeadline from '../layouts/TcHeadline.vue'
+import { useAssets } from '../composables/useAssets.js'
 
 export default {
   name: "WelcomeSection",
@@ -22,7 +23,10 @@ export default {
     TcHeadline
   },
   setup() {
-    return {}
+    const { imgCrystalElement } = useAssets()
+    return {
+      imgCrystalElement
+    }
   }
 }
 </script>
