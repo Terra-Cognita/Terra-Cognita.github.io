@@ -14,7 +14,7 @@
             </a>
           </p>
           <p class="level-item footer-icon mr-5">
-            <a href="https://twitter.com/AimCardano" target="_blank">
+            <a href="https://twitter.com/TCog1576" target="_blank">
               <o-icon pack="mdi" icon="twitter" variant="sand-3" size="medium"></o-icon>
             </a>
           </p>
