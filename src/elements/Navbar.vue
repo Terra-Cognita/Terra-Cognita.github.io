@@ -1,5 +1,5 @@
 <template>
-  <nav id="navbar" class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
+  <nav id="navbar" class="navbar is-fixed-top" :style="{ backgroundColor: `rgba(var(--bg-color), ${bgOpacity})` }" role="navigation" aria-label="main navigation">
     
     <!-- Brand & Burger -->
     <div class="navbar-brand">
@@ -38,15 +38,34 @@ export default {
   name: "Navbar",
   setup() {
     
+    window.addEventListener('scroll', graduateBackgroundOpacity);
+
     const router = useRouter()
     const route = useRoute()
 
-    // computed
+    // computed: DOM elements
     const navbar = computed( () => document.getElementById('navbar'))
     const burgerIcon = computed( () => document.querySelector('#burger'))
     const navbarMenu = computed( () => document.querySelector('#navbar-links'))
 
-    // functions    
+    // Scrolling event to change navbar bg opacity
+    const windowHeight = ref(window.innerHeight);
+    const topPagePosition = ref(document.documentElement.scrollTop)
+    const bgOpacity = ref(0)
+
+    function graduateBackgroundOpacity(event) {
+      windowHeight.value = window.innerHeight;
+      topPagePosition.value = document.documentElement.scrollTop
+
+      let newOpacity = topPagePosition.value / windowHeight.value
+      if(newOpacity > 1) { 
+        bgOpacity.value = 1 
+      } else { 
+        bgOpacity.value = Math.round (newOpacity * 10) / 10 
+      }
+    }
+
+    // functions: navlinks logic    
     function clickNavBurger() {
       navbarMenu.value.classList.toggle('is-active')
       burgerIcon.value.classList.toggle('is-active')
@@ -56,32 +75,8 @@ export default {
       burgerIcon.value.classList.remove('is-active')
     }
 
-    const windowHeight = window.innerHeight;
-    function graduateBackgroundOpacity(event) {
-      if(document.documentElement.scrollTop >= 0.5*windowHeight && document.documentElement.scrollTop < 0.8*windowHeight) {
-        navbar.value.classList.remove('is-almost-opaque')
-        navbar.value.classList.remove('is-opaque')
-        navbar.value.classList.add('is-semi-opaque')
-      }
-      else if(document.documentElement.scrollTop >= 0.8*windowHeight && document.documentElement.scrollTop < windowHeight) {
-        navbar.value.classList.remove('is-semi-opaque')
-        navbar.value.classList.remove('is-opaque')
-        navbar.value.classList.add('is-almost-opaque')
-      }
-      else if(document.documentElement.scrollTop >= windowHeight) {
-        navbar.value.classList.remove('is-semi-opaque')
-        navbar.value.classList.remove('is-almost-opaque')
-        navbar.value.classList.add('is-opaque')
-      } else {
-        navbar.value.classList.remove('is-semi-opaque')
-        navbar.value.classList.remove('is-almost-opaque')
-        navbar.value.classList.remove('is-opaque')
-      }
-    }
-
-    window.addEventListener('scroll', graduateBackgroundOpacity);
-
     return {
+      bgOpacity,
       clickNavBurger,
       closeNavLinks   
     }
@@ -90,14 +85,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#navbar.is-semi-opaque {
-  background-color: rgba($forest-2, 0.5);
-}
-#navbar.is-almost-opaque {
-  background-color: rgba($forest-2, 0.8);
-}
-#navbar.is-opaque {
-  background-color: rgba($forest-2, 1);
+
+
+#navbar {
+  --bg-color: 109, 102, 45; // rgb equivalent to < $forest-2 > color defined in assets/sass/variables
 }
 nav {
   padding: 0 $pad-web-right 0 $pad-web-left;
