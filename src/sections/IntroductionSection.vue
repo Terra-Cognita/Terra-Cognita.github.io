@@ -9,8 +9,14 @@
             {{ $t('introduction.TEXT') }}
           </div>
         </div>
-        <div class="column is-half">
-          <img src="@/assets/images/temp_video.png"/> 
+        <div class="column is-half v-centered">
+          <iframe id="yt-video"
+            src="https://www.youtube.com/embed/HY2I8T0BlVQ" 
+            title="TC intro video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
   </tc-section>
@@ -30,5 +36,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+#yt-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.v-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
