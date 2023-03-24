@@ -33,8 +33,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-div.hero-body {
+<style scoped>
+/* div.hero-body {
   padding: $pad-section-top $pad-web-right $pad-section-bottom $pad-web-left;
 }
 .banner-bg {
@@ -42,5 +42,5 @@ div.hero-body {
   background-repeat: no-repeat;
   // background-attachment: fixed;
   background-size: cover;
-}
+} */
 </style>

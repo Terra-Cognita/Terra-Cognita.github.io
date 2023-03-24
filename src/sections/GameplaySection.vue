@@ -1,6 +1,6 @@
 <template>
   <tc-section id="gameplay" class="">
-    <img class="image-bg" background-image src="@/assets/images/Crystal-Elements.png">
+    <img class="image-bg" background-image :src="imgCrystalElement">
 
     <div class="tc-smalltitle">Gameplay</div>
     <div class="tc-title">
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { useAssets } from '../composables/useAssets.js'
 import TcSection from '../layouts/TcSection.vue'
 import FrameCrystal1 from "../components/FrameCrystal1.vue"
 import FrameCrystal3 from "../components/FrameCrystal3.vue"
@@ -36,7 +37,10 @@ export default {
     FrameCrystal4
   },
   setup() {
-    return {}
+    const { imgCrystalElement } = useAssets()
+    return {
+      imgCrystalElement
+    }
   }
 }
 </script>

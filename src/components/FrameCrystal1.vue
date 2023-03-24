@@ -8,9 +8,9 @@
   </section>
 </template>
 
-<style lang="scss" scoped>
-#Camada_1 {
+<style scoped>
+/* #Camada_1 {
   fill: $magic-sky;
   stroke:  $magic-sky;
-}
+} */
 </style>

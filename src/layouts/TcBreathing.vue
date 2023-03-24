@@ -8,8 +8,8 @@
   </section>
 </template>
 
-<style lang="scss" scoped>
-div.hero-body {
+<style scoped>
+/* div.hero-body {
   padding: $pad-section-top $pad-web-right $pad-section-bottom $pad-web-left;
-}
+} */
 </style>

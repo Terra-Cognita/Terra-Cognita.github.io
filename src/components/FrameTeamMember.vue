@@ -21,9 +21,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-#Camada_1 {
+<style scoped>
+/* #Camada_1 {
   fill: $magic-earth;
   stroke:  $magic-earth;
-}
+} */
 </style>

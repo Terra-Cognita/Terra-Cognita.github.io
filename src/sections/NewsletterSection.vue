@@ -1,6 +1,6 @@
 <template>
   <tc-section id="newsletter" class="">
-    <img class="image-bg" background-image src="@/assets/images/Crystal-Elements.png">
+    <img class="image-bg" background-image :src="imgCrystalElement">
     
     <div class="container has-text-centered">
       <div class="tc-title text-white">
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { useAssets } from '../composables/useAssets.js'
 import TcSection from '../layouts/TcSection.vue'
 
 export default {
@@ -22,7 +23,10 @@ export default {
     TcSection,
   },
   setup() {
-    return {}
+    const { imgCrystalElement } = useAssets()
+    return {
+      imgCrystalElement
+    }
   }
 }
 </script>

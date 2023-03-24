@@ -1,6 +1,6 @@
 <template>
   <tc-banner id="banner-crystal" :backgroundFile="bgBanner1">
-    <img src="@/assets/images/Crystal-Banner.png">
+    <img :src="imgCrystalElement">
     <div class="tc-title title-white" v-html="$t('banners.BannerCrystal.TITLE')"></div>
     <div class="tc-text has-text-centered">
       {{ $t('banners.BannerCrystal.TEXT') }}
@@ -18,13 +18,14 @@ export default {
     TcBanner
   },
   setup() {
-    const { bgBanner1 } = useAssets()
+    const { bgBanner1, imgCrystalElement } = useAssets()
     return {
-      bgBanner1
+      bgBanner1,
+      imgCrystalElement
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 </style>
