@@ -1,51 +1,29 @@
 <template>
-  <tc-section id="newsletter" class="">
-    <img class="image-bg" background-image src="@/assets/images/Crystal-Elements.png">
+  <tc-section id="newsletter" class="relative">
+    <img class="absolute opacity-10 -rotate-90 h-[150%] w-auto
+                left-0 right-0 top-0 bottom-0 m-auto" 
+         :src="imgCrystalElement">
     
-    <div class="container has-text-centered">
-      <div class="tc-title text-white">
-        {{ $t('newsletter.TITLE') }}
-      </div>
-      <div class="tc-text" v-html="$t('newsletter.TEXT')"></div>
-      <o-button class="tc-button">{{ $t('newsletter.BUTTON') }}</o-button>
+    <div class="text-center">
+      <div class="title"> {{ $t('newsletter.TITLE') }} </div>
+      <div v-html="$t('newsletter.TEXT')"></div>
+      <tc-button> {{ $t('newsletter.BUTTON') }} </tc-button>
     </div>
     
   </tc-section>
 </template>
 
 <script>
-import TcSection from '../layouts/TcSection.vue'
+import { useAssets } from '@/composables/useAssets.js'
 
 export default {
   name: "NewsletterSection",
-  components: {
-    TcSection,
-  },
+  components: { },
   setup() {
-    return {}
+    const { imgCrystalElement } = useAssets()
+    return {
+      imgCrystalElement
+    }
   }
 }
 </script>
-
-
-<style lang="scss" scoped>
-#newsletter {
-  position: relative;
-}
-.image-bg {
-  width: auto;
-  height: 150%;
-  opacity: 0.1;
-  position: absolute;
-  left:0;
-  right:0;
-  top: 0;
-  bottom:0;
-  margin:auto;
-  -webkit-transform: rotate(-90deg); /* Safari and Chrome */
-  -moz-transform: rotate(-90deg);   /* Firefox */
-  -ms-transform: rotate(-90deg);   /* IE 9 */
-  -o-transform: rotate(-90deg);   /* Opera */
-  transform: rotate(-90deg);
-}
-</style>

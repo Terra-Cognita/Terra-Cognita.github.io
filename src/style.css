@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .logo-img {
+    @apply h-8 md:h-14 w-auto
+  }
+  .icon {
+    @apply w-5 md:w-8 h-5 md:h-8 
+  }
+  .title {
+    @apply text-2xl md:text-5xl uppercase font-black mb-8 md:mb-12
+  }
+  .subtitle {
+    @apply text-xl md:text-3xl font-bold mb-6 md:mb-10
+  }
+  .section-title {
+    @apply text-xs md:text-base uppercase underline mb-6 md:mb-8
+  }
+  .btn-polygon {
+    --notchSize: 0.8rem;
+    clip-path: 
+      polygon(
+        0% var(--notchSize), 
+        var(--notchSize) 0%, 
+        calc(100% - var(--notchSize)) 0%, 
+        100% var(--notchSize), 
+        100% calc(100% - var(--notchSize)), 
+        calc(100% - var(--notchSize)) 100%, 
+        var(--notchSize) 100%, 
+        0% calc(100% - var(--notchSize))
+      );
+  }
+}

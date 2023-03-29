@@ -11,24 +11,22 @@
 <script>
 import { useRouter, useRoute } from 'vue-router'
 
-import TcBreathing from "../layouts/TcBreathing.vue"
-import StartSection from "../sections/StartSection.vue"
-import IntroSection from "../sections/IntroductionSection.vue"
-import WelcomeSection from "../sections/WelcomeSection.vue"
-import GameplaySection from "../sections/GameplaySection.vue"
-import TeamSection from "../sections/TeamSection.vue"
-import NewsletterSection from '../sections/NewsletterSection.vue'
+import StartSection from "@/sections/StartSection.vue"
+import IntroSection from "@/sections/IntroductionSection.vue"
+import WelcomeSection from "@/sections/WelcomeSection.vue"
+import GameplaySection from "@/sections/GameplaySection.vue"
+import TeamSection from "@/sections/TeamSection.vue"
+import NewsletterSection from '@/sections/NewsletterSection.vue'
 
 export default {
   name: "LandingPage",
   components: {
-    TcBreathing,
     StartSection,
     IntroSection,
     WelcomeSection,
     GameplaySection,
     TeamSection,
-    NewsletterSection,
+    NewsletterSection
   },
   setup() {
     const router = useRouter()
@@ -38,6 +36,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -9,21 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@oruga-ui/oruga-next": "^0.5.9",
-    "@oruga-ui/theme-bulma": "^0.2.8",
-    "bulma": "^0.9.4",
-    "bulma-floating-button": "^1.0.3",
-    "howler": "^2.2.3",
+    "@headlessui/vue": "^1.7.12",
+    "@heroicons/vue": "^2.0.16",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
-    "sass": "^1.57.1",
-    "sass-loader": "^13.2.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
     "vite": "^4.0.0"
   }
 }

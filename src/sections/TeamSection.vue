@@ -1,12 +1,10 @@
 <template>
-  <tc-section id="team" class="">
-      <div class="tc-title has-text-centered">
-        {{ $t('team.TITLE') }}
-      </div>
+  <tc-section id="team">
+      <div class="title text-sand-900 text-center"> {{ $t('team.TITLE') }} </div>
 
-      <div class="columns is-multiline">
-        <div class="column is-one-quarter" v-for="memberId in team" :key="memberId">
-          <frame-member
+      <div class="grid grid-cols-2 gap-5 md:grid-cols-4">
+        <div class="" v-for="memberId in team" :key="memberId">
+          <frame-member class="stroke-magic-earth fill-magic-earth"
             :name="$t(`team.MEMBERS.${memberId}.NAME`)"
             :occupation="$t(`team.MEMBERS.${memberId}.OCCUPATION`)"
             :briefing="$t(`team.MEMBERS.${memberId}.BRIEF`)">
@@ -17,13 +15,11 @@
 </template>
 
 <script>
-import TcSection from '../layouts/TcSection.vue'
-import FrameMember from "../components/FrameTeamMember.vue"
+import FrameMember from "@/components/frames/FrameTeamMember.vue"
 
 export default {
   name: "TeamSection",
   components: {
-    TcSection,
     FrameMember
   },
   setup() {
@@ -43,6 +39,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -1,5 +1,10 @@
 <template>
-  <div id="app" class="hero">
+  <div 
+    id="app" 
+    class="bg-forest-900
+          text-base md:text-2xl text-sand-100
+          [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+  >
 
     <!-- Navbar -->
     <navbar-element></navbar-element>
@@ -14,8 +19,8 @@
 </template>
 
 <script>
-import NavbarElement from "./elements/Navbar.vue"
-import FooterElement from "./elements/Footer.vue"
+import NavbarElement from "@/components/elements/Navbar.vue"
+import FooterElement from "@/components/elements/Footer.vue"
 
 export default {
   name: "App",
@@ -30,5 +35,3 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
