@@ -12,5 +12,6 @@ export function useAssets() {
     logoSymbolBlack: logos[logoPath+'terra-cognita_symbol.png'].default,
     bgBanner1: pngs[imgPath+'BG-Banner1.png'].default,
     imgCrystalElement: pngs[imgPath+'Crystal-Elements.png'].default,
+    imgCrystalBanner: pngs[imgPath+'Crystal-Banner.png'].default,
   }; 
 }

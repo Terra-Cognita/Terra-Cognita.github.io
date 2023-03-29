@@ -1,20 +1,26 @@
 <template>
   <div id="tc-start">
-    <banner-crystal></banner-crystal>
+    <tc-hero class="bg-banner-1">
+      <img class="mx-auto" :src="imgCrystalBanner">
+      <div class="title text-center" v-html="$t('banners.BannerCrystal.TITLE')"></div>
+      <div class="text-center">
+        {{ $t('banners.BannerCrystal.TEXT') }}
+      </div>
+    </tc-hero>
   </div>
 </template>
 
 <script>
-import { ref, reactive } from 'vue';
-import BannerCrystal from "../banners/BannerCrystal.vue"
+import { useAssets } from '@/composables/useAssets.js'
+
 
 export default {
   name: "StartSection",
-  components: {
-    BannerCrystal
-  },
+  components: { },
   setup() {
+    const { imgCrystalBanner } = useAssets()
     return {
+      imgCrystalBanner
     }
   }
 }

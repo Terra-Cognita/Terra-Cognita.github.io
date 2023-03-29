@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./index.html",
@@ -6,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Texturina', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         sand:{
           100: '#FDF9F2',
@@ -38,8 +43,14 @@ module.exports = {
           forest: '#3BFF65',
           sky: '#15FFFF',
         }
+      },
+      backgroundImage: {
+        'banner-1': "url('/src/assets/images/BG-Banner1.png')",
+        'crystalElement': "url('/src/assets/images/Crystal-Elements.png')"
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }
