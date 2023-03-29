@@ -14,6 +14,7 @@ import messages from './locales/messages/index.js'
 import TcHero from './components/globalLayouts/TcHero.vue'
 import TcSection from './components/globalLayouts/TcSection.vue'
 import TcBreathing from './components/globalLayouts/TcBreathing.vue'
+import TcButton from './components/globalLayouts/TcButton.vue'
 
 import './style.css'
 
@@ -40,5 +41,6 @@ const app = createApp(App)
 app.component('TcHero', TcHero)
 app.component('TcSection', TcSection)
 app.component('TcBreathing', TcBreathing)
+app.component('TcButton', TcButton)
 
 app.mount('#app')

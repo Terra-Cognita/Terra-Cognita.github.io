@@ -7,7 +7,9 @@
         <div class="subtitle"> {{ subtitle }} </div>
         <div> {{ text }} </div>
 
-        <button class="tc-button">{{ buttonMsg }}</button>
+        <div class="text-center">
+          <tc-button>{{ buttonMsg }}</tc-button>
+        </div>
       </div>
       
       <div class="">

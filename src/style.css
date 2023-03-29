@@ -18,4 +18,18 @@
   .section-title {
     @apply text-xs md:text-base uppercase underline mb-6 md:mb-8
   }
+  .btn-polygon {
+    --notchSize: 0.8rem;
+    clip-path: 
+      polygon(
+        0% var(--notchSize), 
+        var(--notchSize) 0%, 
+        calc(100% - var(--notchSize)) 0%, 
+        100% var(--notchSize), 
+        100% calc(100% - var(--notchSize)), 
+        calc(100% - var(--notchSize)) 100%, 
+        var(--notchSize) 100%, 
+        0% calc(100% - var(--notchSize))
+      );
+  }
 }

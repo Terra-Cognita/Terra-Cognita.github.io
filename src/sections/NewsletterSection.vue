@@ -7,7 +7,7 @@
     <div class="text-center">
       <div class="title"> {{ $t('newsletter.TITLE') }} </div>
       <div v-html="$t('newsletter.TEXT')"></div>
-      <button> {{ $t('newsletter.BUTTON') }} </button>
+      <tc-button> {{ $t('newsletter.BUTTON') }} </tc-button>
     </div>
     
   </tc-section>
