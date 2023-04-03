@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import FrameMember from "@/components/frames/FrameTeamMember.vue"
+import FrameMember from "@/components/layouts/FrameTeamMember.vue"
 
 export default {
   name: "TeamSection",
