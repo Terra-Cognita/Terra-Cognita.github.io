@@ -1,4 +1,4 @@
-<img src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/assets/images/MD-Banner1_.png" 
+<img src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/assets/images/MD-Banner1.png" 
      alt="Terra Cognita Welcome" 
      width="100%">
 <p align="center">
