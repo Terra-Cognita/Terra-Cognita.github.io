@@ -1,7 +1,9 @@
 <template>
-  <div class="h-screen bg-clip-border bg-no-repeat bg-cover bg-center bg-forest-500">
+  <div
+    class="h-screen bg-forest-500 bg-cover bg-clip-border bg-center bg-no-repeat"
+  >
     <tc-section class="h-full">
-      <slot/>
+      <slot />
     </tc-section>
   </div>
 </template>

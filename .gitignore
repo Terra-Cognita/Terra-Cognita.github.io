@@ -3,7 +3,7 @@ src/assets/home_screen/
 # code archieve
 src/_code_archive/
 
-.vscode/
+# .vscode/
 .env
 
 # Logs

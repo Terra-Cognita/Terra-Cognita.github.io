@@ -1,8 +1,9 @@
 <template>
-  <router-link  class="block sm:inline-block sm:px-4 py-2 
-                      transition-colors duration-300 font-black uppercase" 
-                :to="{name: `${to.name}`, hash: `${to.hash}`}"
-                @click="$emit('closeMenu')">
+  <router-link
+    class="block py-2 font-black uppercase transition-colors duration-300 sm:inline-block sm:px-4"
+    :to="{ name: `${to.name}`, hash: `${to.hash}` }"
+    @click="$emit('closeMenu')"
+  >
     {{ label }}
   </router-link>
 </template>
@@ -12,15 +13,15 @@ export default {
   props: {
     to: {
       type: Object,
-      required: true
+      required: true,
     },
     label: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
-    return { }
-  }
-}
+    return {};
+  },
+};
 </script>

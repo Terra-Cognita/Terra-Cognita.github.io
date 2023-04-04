@@ -12,7 +12,7 @@ export function useToggle() {
   }
 
   function toggle() {
-    isVisible.value === true ? hide() : show()
+    isVisible.value === true ? hide() : show();
   }
 
   return {
@@ -20,5 +20,5 @@ export function useToggle() {
     show,
     hide,
     toggle,
-  }
+  };
 }

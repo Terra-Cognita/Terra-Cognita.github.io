@@ -1,6 +1,6 @@
-import {createRouter} from 'vue-router';
-import Landing from '../pages/LandingPage.vue';
-import Login from '../pages/LoginPage.vue';
+import { createRouter } from "vue-router";
+import Landing from "../pages/LandingPage.vue";
+import Login from "../pages/LoginPage.vue";
 
 const routes = [
   {
@@ -13,7 +13,7 @@ const routes = [
     name: "login",
     component: Login,
   },
-]
+];
 
 export default function (history) {
   return createRouter({
@@ -21,17 +21,18 @@ export default function (history) {
     routes,
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
-        return savedPosition
+        return savedPosition;
       }
       if (to.hash) {
         return {
           el: to.hash,
-          behavior: 'smooth'
-        }
+          behavior: "smooth",
+        };
       }
-      return { 
+      return {
         top: 0,
-        behavior: 'smooth' }
-    }
-  })
+        behavior: "smooth",
+      };
+    },
+  });
 }
