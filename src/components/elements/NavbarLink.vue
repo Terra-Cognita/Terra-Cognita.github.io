@@ -1,6 +1,6 @@
 <template>
   <router-link
-    class="block py-2 font-black uppercase transition-colors duration-300 sm:inline-block sm:px-4"
+    class="block py-1 font-black uppercase transition-colors duration-300 hover:text-magic-sky laptop:inline-block laptop:flex-auto laptop:truncate laptop:py-0"
     :to="{ name: `${to.name}`, hash: `${to.hash}` }"
     @click="$emit('closeMenu')"
   >

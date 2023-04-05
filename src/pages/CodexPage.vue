@@ -1,15 +1,15 @@
 <template>
   <tc-breathing class="bg-banner-1 bg-cover bg-top bg-no-repeat"></tc-breathing>
-  <login-section></login-section>
+  <codex-section></codex-section>
 </template>
 
 <script>
-import LoginSection from "@/sections/LoginSection.vue";
+import CodexSection from "@/sections/CodexSection.vue";
 
 export default {
-  name: "LoginPage",
+  name: "CodexPage",
   components: {
-    LoginSection,
+    CodexSection,
   },
   setup() {
     return {};

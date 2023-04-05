@@ -1,5 +1,6 @@
 import { createRouter } from "vue-router";
 import Landing from "../pages/LandingPage.vue";
+import Codex from "../pages/CodexPage.vue";
 import Login from "../pages/LoginPage.vue";
 
 const routes = [
@@ -7,6 +8,11 @@ const routes = [
     path: "/",
     name: "home",
     component: Landing,
+  },
+  {
+    path: "/codex",
+    name: "codex",
+    component: Codex,
   },
   {
     path: "/login",

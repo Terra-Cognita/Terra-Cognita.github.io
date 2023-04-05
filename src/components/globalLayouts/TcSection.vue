@@ -1,5 +1,5 @@
 <template>
-  <div class="px-10 py-10 md:px-40 md:py-20">
+  <div class="tc-px py-10 laptop:py-20">
     <slot />
   </div>
 </template>

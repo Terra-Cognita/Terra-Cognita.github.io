@@ -42,6 +42,16 @@ module.exports = {
         "banner-1": "url('/src/assets/images/BG-Banner1.png')",
         crystalElement: "url('/src/assets/images/Crystal-Elements.png')",
       },
+      screens: {
+        tablet: "640px",
+        // => @media (min-width: 640px) { ... }
+
+        laptop: "1024px",
+        // => @media (min-width: 1024px) { ... }
+
+        desktop: "1280px",
+        // => @media (min-width: 1280px) { ... }
+      },
     },
   },
   plugins: [require("tailwind-scrollbar-hide")],

@@ -2,21 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-size: 16px;
+}
+
 @layer utilities {
+  .tc-px {
+    @apply px-10 laptop:px-40;
+  }
   .logo-img {
-    @apply h-8 w-auto md:h-14;
+    @apply h-14 w-auto laptop:h-24;
   }
   .icon {
-    @apply h-5 w-5 md:h-8 md:w-8;
+    @apply h-5 w-5 laptop:h-8 laptop:w-8;
   }
   .title {
-    @apply mb-8 text-2xl font-black uppercase md:mb-12 md:text-5xl;
+    @apply mb-8 text-2xl font-black uppercase laptop:mb-12 laptop:text-5xl;
   }
   .subtitle {
-    @apply mb-6 text-xl font-bold md:mb-10 md:text-3xl;
+    @apply mb-6 text-xl font-bold laptop:mb-10 laptop:text-3xl;
   }
   .section-title {
-    @apply mb-6 text-xs uppercase underline md:mb-8 md:text-base;
+    @apply mb-6 text-xs uppercase underline laptop:mb-8 laptop:text-base;
   }
   .btn-polygon {
     --notchSize: 0.8rem;
