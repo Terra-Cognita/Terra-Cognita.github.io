@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="bg-forest-900 text-base text-sand-100 [-ms-overflow-style:'none'] [scrollbar-width:'none'] laptop:text-2xl [&::-webkit-scrollbar]:hidden"
+    class="bg-tc_sky-700 text-base text-tc_sand-100 laptop:text-2xl"
   >
     <!-- Navbar -->
     <navbar-element></navbar-element>

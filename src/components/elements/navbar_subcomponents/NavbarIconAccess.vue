@@ -1,14 +1,16 @@
 <template>
-  <router-link :to="{ name: `${to.name}`, hash: `${to.hash}` }">
-    <UserIcon class="h-12 w-12 hover:text-magic-sky" />
-  </router-link>
+  <navbar-link :to="to">
+    <UserIcon class="h-[2.5vw] w-[2.5vw]" />
+  </navbar-link>
 </template>
 
 <script>
+import NavbarLink from "./NavbarLink.vue";
 import { UserIcon } from "@heroicons/vue/24/outline";
 
 export default {
   components: {
+    NavbarLink,
     UserIcon,
   },
   props: {
@@ -16,9 +18,6 @@ export default {
       type: Object,
       required: true,
     },
-  },
-  setup(props) {
-    return {};
   },
 };
 </script>

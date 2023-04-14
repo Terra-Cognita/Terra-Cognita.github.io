@@ -7,8 +7,6 @@ export function useAssets() {
   const imgPath = "/src/assets/images/";
 
   return {
-    logoWhite: logos[logoPath + "terra-cognita_white.svg"].default,
-    logoSymbolBlack: logos[logoPath + "terra-cognita_symbol.png"].default,
     bgBanner1: pngs[imgPath + "BG-Banner1.png"].default,
     imgCrystalElement: pngs[imgPath + "Crystal-Elements.png"].default,
     imgCrystalBanner: pngs[imgPath + "Crystal-Banner.png"].default,

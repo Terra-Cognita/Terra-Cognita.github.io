@@ -1,19 +1,20 @@
 <template>
   <nav
     id="navbar"
-    class="fixed z-10 w-full bg-forest-500 shadow transition-colors duration-500"
+    class="tc-px fixed z-10 w-full bg-tc_sky-700 shadow transition-colors duration-500"
     :class="{ 'bg-transparent shadow-none': !showBackground }"
   >
     <div
       id="navbar-content"
-      class="tc-px flex flex-col items-center justify-between py-2 laptop:flex-row laptop:space-x-4 laptop:py-4"
+      class="flex flex-col items-center justify-between py-2 laptop:flex-row laptop:space-x-4"
     >
-      <!-- 1st NAVBAR FLEX ITEM: Logo & Burger  -->
       <div
         id="navbar-content-main"
-        class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none"
+        class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
       >
-        <logo-main id="navbar-logo"></logo-main>
+        <div id="navbar-logo">
+          <navbar-logo></navbar-logo>
+        </div>
         <navbar-burger
           class="laptop:hidden"
           :isMenuOpen="isVisible"
@@ -22,64 +23,29 @@
         ></navbar-burger>
       </div>
 
-      <!-- 2nd NAVBAR FLEX ITEM: Navbar Links  -->
-      <div
+      <navbar-menu
         id="navbar-content-menu"
-        class="mt-4 w-full text-sand-100 laptop:mt-0 laptop:inline-flex laptop:shrink laptop:justify-end laptop:space-x-2 laptop:text-center"
         :class="{ hidden: !isVisible }"
-      >
-        <navbar-link
-          :to="navlinkProps.WELCOME.to"
-          :label="navlinkProps.WELCOME.label"
-          @close-menu="hide"
-        />
-        <navbar-link
-          :to="navlinkProps.GAMEPLAY.to"
-          :label="navlinkProps.GAMEPLAY.label"
-          @close-menu="hide"
-        />
-        <navbar-link
-          :to="navlinkProps.TEAM.to"
-          :label="navlinkProps.TEAM.label"
-          @close-menu="hide"
-        />
-        <navbar-link
-          :to="navlinkProps.CODEX.to"
-          :label="navlinkProps.CODEX.label"
-          @close-menu="hide"
-        />
-        <navbar-link
-          v-if="isVisible"
-          :to="navlinkProps.LOGIN.to"
-          :label="navlinkProps.LOGIN.label"
-          @close-menu="hide"
-        />
-      </div>
-
-      <!-- 3th NAVBAR FLEX ITEM: Login Icon  -->
-      <navbar-user-link
-        class="max-laptop:hidden"
-        :to="navlinkProps.LOGIN.to"
-      ></navbar-user-link>
+        @close-menu="hide"
+      ></navbar-menu>
     </div>
   </nav>
 </template>
 
 <script>
-import NavbarLink from "./NavbarLink.vue";
-import NavbarUserLink from "./NavbarUserLink.vue";
-import NavbarBurger from "./NavbarBurger.vue";
-import LogoMain from "@/components/logos/LogoMain.vue";
+import NavbarLogo from "./navbar_subcomponents/NavbarLogo.vue";
+import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
+import NavbarMenu from "./NavbarMenu.vue";
+
 import { useToggle } from "@/composables/useToggle";
 import { ref, computed, watchEffect } from "vue";
 
 export default {
   name: "Navbar",
   components: {
-    NavbarLink,
+    NavbarLogo,
     NavbarBurger,
-    NavbarUserLink,
-    LogoMain,
+    NavbarMenu,
   },
   props: {},
   setup() {

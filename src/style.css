@@ -10,7 +10,10 @@ html {
   .tc-px {
     @apply px-10 laptop:px-40;
   }
-  .logo-img {
+  .logo-small {
+    @apply h-20 w-auto laptop:h-24;
+  }
+  .logo-medium {
     @apply h-14 w-auto laptop:h-24;
   }
   .icon {

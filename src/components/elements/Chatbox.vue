@@ -13,8 +13,8 @@
 
 <script>
 import { useToggle } from "@/composables/useToggle";
-import ChatboxButton from "@/components/elements/ChatboxButton.vue";
-import ChatboxWindow from "@/components/elements/ChatboxWindow.vue";
+import ChatboxButton from "./ChatboxButton.vue";
+import ChatboxWindow from "./ChatboxWindow.vue";
 
 export default {
   name: "ChatboxElement",
