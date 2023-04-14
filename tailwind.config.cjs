@@ -39,7 +39,11 @@ module.exports = {
         },
       },
       backgroundImage: {
-        "banner-1": "url('/src/assets/images/BG-Banner1.png')",
+        bgBanner: "url('/src/assets/backgrounds/bgBanner.png')",
+        bgCrystal: "url('/src/assets/backgrounds/bgCrystal.png')",
+        bgCrystalMasked: "url('/src/assets/backgrounds/bgCrystalMasked.png')",
+        bgMultipleCrystals:
+          "url('/src/assets/backgrounds/bgMultipleCrystals.png')",
         crystalElement: "url('/src/assets/images/Crystal-Elements.png')",
       },
       screens: {
