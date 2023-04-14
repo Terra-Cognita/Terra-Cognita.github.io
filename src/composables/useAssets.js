@@ -12,5 +12,8 @@ export function useAssets() {
     bgBanner1: pngs[imgPath + "BG-Banner1.png"].default,
     imgCrystalElement: pngs[imgPath + "Crystal-Elements.png"].default,
     imgCrystalBanner: pngs[imgPath + "Crystal-Banner.png"].default,
+    imgOrimbu: pngs[imgPath + "chatButton-Orimbu.png"].default,
+    imgProfileOrimbu: pngs[imgPath + "profileOrimbu.png"].default,
+    imgProfileUser: pngs[imgPath + "profileUser.png"].default,
   };
 }

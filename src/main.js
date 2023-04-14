@@ -40,4 +40,10 @@ app.component("TcSection", TcSection);
 app.component("TcBreathing", TcBreathing);
 app.component("TcButton", TcButton);
 
+app.directive("focus", (el, binding) => {
+  if (binding.value) {
+    el.focus();
+  }
+});
+
 app.mount("#app");

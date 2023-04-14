@@ -9,6 +9,9 @@
     <!-- Landing Page -->
     <router-view></router-view>
 
+    <!-- Chatbox -->
+    <chatbox-element></chatbox-element>
+
     <!-- Footer -->
     <footer-element></footer-element>
   </div>
@@ -17,12 +20,14 @@
 <script>
 import NavbarElement from "@/components/elements/Navbar.vue";
 import FooterElement from "@/components/elements/Footer.vue";
+import ChatboxElement from "@/components/elements/Chatbox.vue";
 
 export default {
   name: "App",
   components: {
     NavbarElement,
     FooterElement,
+    ChatboxElement,
   },
   setup() {
     return {};
