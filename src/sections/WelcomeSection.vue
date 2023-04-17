@@ -3,9 +3,9 @@
     <div class="section-title">A new world</div>
 
     <tc-headline
-      :title="$t('headlines.WelcomeTc.TITLE')"
-      :subtitle="$t('headlines.WelcomeTc.SUBTITLE')"
-      :text="$t('headlines.WelcomeTc.TEXT')"
+      :title="$t('welcome.TITLE')"
+      :subtitle="$t('welcome.SUBTITLE')"
+      :text="$t('welcome.TEXT')"
       :figFile="imgCrystalElement"
     >
     </tc-headline>

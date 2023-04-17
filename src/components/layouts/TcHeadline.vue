@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="headline container">
     <div class="grid grid-cols-3">
       <div class="col-span-2">
-        <div class="title text-sand-900" v-html="title"></div>
+        <div class="title" v-html="title"></div>
         <div class="subtitle">{{ subtitle }}</div>
         <div>{{ text }}</div>
 

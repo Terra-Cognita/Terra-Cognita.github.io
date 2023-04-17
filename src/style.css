@@ -20,7 +20,7 @@ html {
     @apply h-5 w-5 laptop:h-8 laptop:w-8;
   }
   .title {
-    @apply mb-8 text-2xl font-black uppercase laptop:mb-12 laptop:text-5xl;
+    @apply mb-8 block text-2xl font-black uppercase text-tc_sand-900 laptop:mb-12 laptop:text-5xl;
   }
   .subtitle {
     @apply mb-6 text-xl font-bold laptop:mb-10 laptop:text-3xl;

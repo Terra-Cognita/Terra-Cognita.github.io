@@ -1,10 +1,12 @@
 <template>
   <router-link :to="{ name: 'home' }">
     <logo-vertical
-      class="logo-small fill-white stroke-white laptop:hidden"
+      class="logo-small fill-white stroke-white"
+      :class="{ 'laptop:hidden': shrink, hidden: !shrink }"
     ></logo-vertical>
     <logo-horizontal
-      class="logo-small fill-white stroke-white max-laptop:hidden"
+      class="logo-small fill-white stroke-white"
+      :class="{ 'max-laptop:hidden': shrink }"
     ></logo-horizontal>
   </router-link>
 </template>
@@ -18,6 +20,12 @@ export default {
   components: {
     LogoVertical,
     LogoHorizontal,
+  },
+  props: {
+    shrink: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

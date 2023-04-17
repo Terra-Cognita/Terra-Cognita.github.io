@@ -1,31 +1,35 @@
 <template>
   <div id="tc-start">
-    <tc-hero class="bg-banner-1">
-      <img class="mx-auto" :src="imgCrystalBanner" />
+    <tc-hero class="bg-bgBanner">
       <div
-        class="title text-center"
-        v-html="$t('banners.BannerCrystal.TITLE')"
-      ></div>
-      <div class="text-center">
-        {{ $t("banners.BannerCrystal.TEXT") }}
+        class="flex h-full flex-col content-center justify-items-stretch p-10"
+      >
+        <div class="flex grow justify-center p-14">
+          <iframe
+            id="yt-video"
+            class="aspect-video"
+            src="https://www.youtube.com/embed/HY2I8T0BlVQ"
+            title="TC intro video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+        <div
+          class="title flex-none text-center"
+          v-html="$t('start.bannerVideo.TITLE')"
+        ></div>
       </div>
     </tc-hero>
   </div>
 </template>
 
 <script>
-import { useAssets } from "@/composables/useAssets.js";
-
 export default {
   name: "StartSection",
-  components: {},
   setup() {
-    const { imgCrystalBanner } = useAssets();
-    return {
-      imgCrystalBanner,
-    };
+    return {};
   },
 };
 </script>
-
-<style scoped></style>

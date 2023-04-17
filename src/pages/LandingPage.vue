@@ -1,8 +1,10 @@
 <template>
   <start-section></start-section>
   <intro-section></intro-section>
-  <welcome-section></welcome-section>
-  <gameplay-section></gameplay-section>
+  <div class="bg-bgMultipleCrystals">
+    <welcome-section></welcome-section>
+    <gameplay-section></gameplay-section>
+  </div>
   <tc-breathing>{{ $t("breathing.TEXT_1") }}</tc-breathing>
   <team-section></team-section>
   <newsletter-section></newsletter-section>

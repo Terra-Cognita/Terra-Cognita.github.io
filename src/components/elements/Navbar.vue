@@ -13,7 +13,7 @@
         class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
       >
         <div id="navbar-logo">
-          <navbar-logo></navbar-logo>
+          <tc-logo :shrink="true"></tc-logo>
         </div>
         <navbar-burger
           class="laptop:hidden"
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import NavbarLogo from "./navbar_subcomponents/NavbarLogo.vue";
+import TcLogo from "./TcLogo.vue";
 import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
 import NavbarMenu from "./NavbarMenu.vue";
 
@@ -43,7 +43,7 @@ import { ref, computed, watchEffect } from "vue";
 export default {
   name: "Navbar",
   components: {
-    NavbarLogo,
+    TcLogo,
     NavbarBurger,
     NavbarMenu,
   },

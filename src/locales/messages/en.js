@@ -1,35 +1,49 @@
 export default {
+  start: {
+    bannerVideo: {
+      TITLE: "Get ready for a gaming experience like no other…",
+    },
+  },
   introduction: {
-    TITLE: "Introduction",
-    SUBTITLE: "",
-    TEXT: "In 1576, the world was ablaze with a feverish excitement for exploration.\
-          The greatest navigators of the era were on a mission to uncover new lands and worlds that had never been seen before.\
-          It seemed like every corner of the earth had been discovered, every civilization connected.",
+    TITLE: "The year was 1576",
+    PARAGRAPH_1:
+      "In 1576, the world was ablaze with a feverish excitement for exploration.\
+      The greatest navigators of the era were on a mission to uncover new lands and worlds that\
+      had never been seen before. It seemed like every corner of the earth had been discovered,\
+      every civilization connected. But then, rumors started to circulate about a newly discovered\
+      land, unlike anything that had been seen before.",
+    PARAGRAPH_2:
+      "As tales of this new land spread like wildfire, people everywhere became more and more\
+      curious. Whispers of unimaginable riches, strange and exotic creatures,\
+      and even whispers of magic began to ignite the imaginations of not only the great explorers,\
+      but also of every sailor daring enough to venture out into the unknown waters to see if these\
+      stories held any truth. It was a time of great anticipation, where anything seemed possible\
+      and nothing was too fantastical to be believed.",
+  },
+  welcome: {
+    TITLE: "Welcome to<br/>Terra Cognita!",
+    SUBTITLE:
+      "An innovative, online, real time, strategic, cooperative, AI-powered game,\
+      where you will be transported to an entirely new world and a whole new gaming experience.",
+    TEXT: "Do you have what it takes to solve the mysteries of this unknown land?",
   },
   gameplay: {
     TITLE: "Are you ready for a gaming experience like no other?",
-    SUBTITLE: "",
-    FRAME_1_TEXT:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dictum lectus.",
-    FRAME_2_TEXT:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dictum lectus.",
-    FRAME_3_TEXT:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dictum lectus.",
-  },
-  banners: {
-    BannerCrystal: {
-      TITLE: "Please insert a bitcoin...<br/>...to the land of discovery",
-      SUBTITLE: "",
-      TEXT: "Brief introduction text to instigate and generate curiosity about the game storytelling",
+    CARD_1: {
+      TITLE: "AI-Powered characters:",
+      TEXT: "Create your unique characters, that will learn based on your\
+            strategy and their own experience in Terra Cognita.",
     },
-  },
-  headlines: {
-    WelcomeTc: {
-      TITLE: "Welcome to<br/>Terra Cognita!",
-      SUBTITLE:
-        "An innovative, online, strategic, cooperative RPG game,\
-                where you will be transported to an entirely new world.",
-      TEXT: "Will you and your team have what it takes to solve the mysteries of this unknown land?",
+    CARD_2: {
+      TITLE: "A new gaming experience:",
+      TEXT: "Your character plays for you. Set his strategy and equipment,\
+            and let it explore, learn and conquer the land.",
+    },
+    CARD_3: {
+      TITLE: "Real time universe:",
+      TEXT: "Terra Cognita in unfolding as we speak. Your character will be\
+            exploring the game as you live your life. You decide when and how\
+            to check on it.",
     },
   },
   breathing: {
@@ -47,43 +61,31 @@ export default {
     MEMBERS: {
       VictorCorcino: {
         NAME: "Victor Corcino",
-        OCCUPATION: "COO and Co-founder",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        OCCUPATION: "Game creator and lead, general management & storyteller",
       },
-      TeamMember2: {
-        NAME: "Team Member 2",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      LucioBaglione: {
+        NAME: "Lucio Baglione",
+        OCCUPATION: "Lead developer",
       },
-      TeamMember3: {
-        NAME: "Team Member 3",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      PhilKhoo: {
+        NAME: "Phil Khoo",
+        OCCUPATION: "Storyteller, designer & creative lead",
       },
-      TeamMember4: {
-        NAME: "Team Member 4",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      FilipBlagojevic: {
+        NAME: "Filip Blagojević",
+        OCCUPATION: "Developer, technical consultant & storyteller",
       },
-      TeamMember5: {
-        NAME: "Team Member 5",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      FelipeMarcel: {
+        NAME: "Felipe Marcel",
+        OCCUPATION: "Art director & designer",
       },
-      TeamMember6: {
-        NAME: "Team Member 6",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      JulianaMattos: {
+        NAME: "Juliana Mattos",
+        OCCUPATION: "Full stack developer",
       },
-      TeamMember7: {
-        NAME: "Team Member 7",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      TeamMember8: {
-        NAME: "Team Member 8",
-        OCCUPATION: "Occupation",
-        BRIEF: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      MarieBarrau: {
+        NAME: "Marie Barrau",
+        OCCUPATION: "Music & sound design",
       },
     },
   },
