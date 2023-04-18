@@ -1,5 +1,7 @@
 <template>
-  <frame-oval class="fill-tc_magic-sky stroke-tc_magic-sky"></frame-oval>
+  <frame-oval
+    class="mx-auto h-auto w-4/5 fill-tc_magic-sky stroke-tc_magic-sky"
+  ></frame-oval>
   <div class="mt-5 text-center font-bold uppercase max-laptop:text-xs">
     {{ title }}
   </div>

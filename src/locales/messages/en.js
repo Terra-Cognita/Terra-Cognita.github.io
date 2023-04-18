@@ -52,8 +52,7 @@ export default {
   },
   newsletter: {
     TITLE: "NEWSLETTER",
-    TEXT: "Interested in working with us?\
-          <br/>Explore open positions and tell us about yourself.",
+    TEXT: "Subscribe to our newsletter and don’t miss anything!",
     BUTTON: "Subscribe",
   },
   team: {
@@ -62,30 +61,65 @@ export default {
       VictorCorcino: {
         NAME: "Victor Corcino",
         OCCUPATION: "Game creator and lead, general management & storyteller",
+        MEDIAS: {
+          TECH: "#",
+          LINKEDIN: "#",
+          EMAIL: "#",
+        },
       },
       LucioBaglione: {
         NAME: "Lucio Baglione",
         OCCUPATION: "Lead developer",
+        MEDIAS: {
+          TECH: "#",
+          LINKEDIN: "#",
+          EMAIL: "#",
+        },
       },
       PhilKhoo: {
         NAME: "Phil Khoo",
         OCCUPATION: "Storyteller, designer & creative lead",
+        MEDIAS: {
+          TECH: "#",
+          LINKEDIN: "#",
+          EMAIL: "#",
+        },
       },
       FilipBlagojevic: {
         NAME: "Filip Blagojević",
         OCCUPATION: "Developer, technical consultant & storyteller",
+        MEDIAS: {
+          TECH: "#",
+          LINKEDIN: "#",
+          EMAIL: "#",
+        },
       },
       FelipeMarcel: {
         NAME: "Felipe Marcel",
         OCCUPATION: "Art director & designer",
+        MEDIAS: {
+          TECH: "#",
+          LINKEDIN: "#",
+          EMAIL: "#",
+        },
       },
       JulianaMattos: {
         NAME: "Juliana Mattos",
         OCCUPATION: "Full stack developer",
+        MEDIAS: {
+          TECH: "https://github.com/jbmattos",
+          LINKEDIN: "https://www.linkedin.com/in/julianabmattos/",
+          EMAIL: "#",
+        },
       },
       MarieBarrau: {
         NAME: "Marie Barrau",
         OCCUPATION: "Music & sound design",
+        MEDIAS: {
+          TECH: "#",
+          LINKEDIN: "#",
+          EMAIL: "#",
+        },
       },
     },
   },

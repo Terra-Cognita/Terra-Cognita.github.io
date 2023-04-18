@@ -44,6 +44,7 @@ module.exports = {
         bgCrystalMasked: "url('/src/assets/backgrounds/bgCrystalMasked.png')",
         bgMultipleCrystals:
           "url('/src/assets/backgrounds/bgMultipleCrystals.png')",
+        iconUndeline: "url('/src/assets/icons/underlineIcon.svg')",
         crystalElement: "url('/src/assets/images/Crystal-Elements.png')",
       },
       screens: {

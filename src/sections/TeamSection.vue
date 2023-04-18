@@ -4,12 +4,7 @@
 
     <div class="grid grid-cols-2 gap-5 md:grid-cols-4">
       <div class="team-member" v-for="memberId in team" :key="memberId">
-        <card-member
-          :id="memberId"
-          :name="$t(`team.MEMBERS.${memberId}.NAME`)"
-          :occupation="$t(`team.MEMBERS.${memberId}.OCCUPATION`)"
-        >
-        </card-member>
+        <card-member :id="memberId"> </card-member>
       </div>
     </div>
   </tc-section>

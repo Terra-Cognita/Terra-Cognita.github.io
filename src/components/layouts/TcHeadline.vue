@@ -6,14 +6,12 @@
         <div class="subtitle">{{ subtitle }}</div>
         <div>{{ text }}</div>
 
-        <div class="text-center">
-          <tc-button>{{ buttonMsg }}</tc-button>
-        </div>
+        <tc-button>{{ buttonMsg }}</tc-button>
       </div>
 
-      <div class="">
-        <img class="float-right object-contain" :src="figFile" />
-      </div>
+      <!-- <div class=""> -->
+      <img class="mx-auto object-contain" :src="figFile" />
+      <!-- </div> -->
     </div>
   </div>
 </template>
