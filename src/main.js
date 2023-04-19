@@ -25,8 +25,9 @@ store.use(piniaPluginPersistedstate);
 
 const i18n = createI18n({
   locale: "en",
+  fallbackLocale: "en",
   messages: messages,
-  allowComposition: true,
+  legacy: false,
   warnHtmlInMessage: "off",
   // silentTranslationWarn: true,
   // missingWarn: false,
