@@ -26,6 +26,7 @@ export default {
       "An innovative, online, real time, strategic, cooperative, AI-powered game,\
       where you will be transported to an entirely new world and a whole new gaming experience.",
     TEXT: "Do you have what it takes to solve the mysteries of this unknown land?",
+    BUTTON: "Discover",
   },
   gameplay: {
     TITLE: "Are you ready for a gaming experience like no other?",
@@ -56,7 +57,7 @@ export default {
     BUTTON: "Subscribe",
   },
   team: {
-    TITLE: "Crew",
+    TITLE: "Team",
     MEMBERS: {
       VictorCorcino: {
         NAME: "Victor Corcino",

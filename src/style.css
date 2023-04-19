@@ -20,10 +20,10 @@ html {
     @apply h-5 w-5 laptop:h-10 laptop:w-10;
   }
   .title {
-    @apply mb-8 block text-2xl font-black uppercase text-tc_sand-900 laptop:mb-12 laptop:text-4xl;
+    @apply mb-8 block text-2xl font-black uppercase text-tc_sand-900 max-laptop:text-center laptop:mb-12 laptop:text-4xl;
   }
   .subtitle {
-    @apply mb-6 text-xl font-bold laptop:mb-10 laptop:text-3xl;
+    @apply mb-6 text-xl font-bold max-laptop:text-center laptop:mb-10 laptop:text-3xl;
   }
   .section-title {
     @apply mb-6 text-xs uppercase underline laptop:mb-8 laptop:text-base;

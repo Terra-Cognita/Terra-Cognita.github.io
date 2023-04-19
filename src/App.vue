@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="bg-tc_sky-700 text-base text-tc_sand-100 laptop:text-2xl"
+    class="bg-tc_sky-700 text-base text-tc_sand-100 max-laptop:text-center laptop:text-2xl"
   >
     <!-- Navbar -->
     <navbar-element></navbar-element>

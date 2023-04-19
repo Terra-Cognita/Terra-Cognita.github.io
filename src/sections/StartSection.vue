@@ -17,7 +17,7 @@
           </iframe>
         </div>
         <div
-          class="title flex-none text-center"
+          class="title flex-none text-center !text-tc_sky-100"
           v-html="$t('start.bannerVideo.TITLE')"
         ></div>
       </div>
