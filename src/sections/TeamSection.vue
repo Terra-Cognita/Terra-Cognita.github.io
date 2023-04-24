@@ -11,7 +11,7 @@
         </member-card>
       </div>
 
-      <div class="laptop:hidden">
+      <div id="team-cards-carousel" class="laptop:hidden">
         <team-carousel :teamKeys="team"></team-carousel>
       </div>
     </tc-section>
