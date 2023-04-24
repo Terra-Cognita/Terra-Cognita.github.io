@@ -1,5 +1,6 @@
 <template>
   <div
+    id="navbar-menu"
     class="mt-4 w-full items-center text-tc_sand-100 laptop:mt-0 laptop:inline-flex laptop:shrink laptop:justify-end laptop:space-x-2 laptop:text-center laptop:text-[1.3vw]"
   >
     <navbar-link :to="navlinkProps.WELCOME.to" @click="$emit('closeMenu')">
@@ -27,8 +28,8 @@
 </template>
 
 <script>
-import NavbarLink from "./navbar_subcomponents/NavbarLink.vue";
-import NavbarIconAccess from "./navbar_subcomponents/NavbarIconAccess.vue";
+import NavbarLink from "./NavbarLink.vue";
+import NavbarIconAccess from "./NavbarIconAccess.vue";
 
 export default {
   components: {

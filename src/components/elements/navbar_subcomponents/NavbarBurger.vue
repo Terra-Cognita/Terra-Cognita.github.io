@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <!-- Burger symbol -->
-    <button v-show="!isMenuOpen" @click="$emit('openMenu')">
+  <div id="navbar-burger">
+    <button id="burger-symbol" v-show="!isMenuOpen" @click="$emit('openMenu')">
       <burger-icon
         class="h-6 w-6 fill-tc_sand-100 stroke-tc_sand-100"
       ></burger-icon>
     </button>
-
-    <!-- Close X symbol -->
-    <button v-show="isMenuOpen" @click="$emit('closeMenu')">
+    <button id="close-symbol" v-show="isMenuOpen" @click="$emit('closeMenu')">
       <close-icon class="h-6 w-6 fill-tc_sand-100 stroke-tc_sand-100">
       </close-icon>
     </button>

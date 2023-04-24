@@ -9,7 +9,7 @@
       class="flex flex-col items-center justify-between py-2 laptop:flex-row laptop:space-x-4"
     >
       <div
-        id="navbar-content-main"
+        id="navbar-header"
         class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
       >
         <div id="navbar-logo">
@@ -24,7 +24,6 @@
       </div>
 
       <navbar-menu
-        id="navbar-content-menu"
         :class="{ hidden: !isVisible }"
         @close-menu="hide"
       ></navbar-menu>
@@ -35,7 +34,7 @@
 <script>
 import TcLogo from "./TcLogo.vue";
 import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
-import NavbarMenu from "./NavbarMenu.vue";
+import NavbarMenu from "./navbar_subcomponents/NavbarMenu.vue";
 
 import { useToggle } from "@/composables/useToggle";
 import { ref, computed, watchEffect } from "vue";
