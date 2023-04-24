@@ -1,22 +1,32 @@
 <template>
-  <tc-section id="team">
-    <div class="title text-center">{{ $t("team.TITLE") }}</div>
+  <div id="team">
+    <tc-section>
+      <div class="title text-center">{{ $t("team.TITLE") }}</div>
 
-    <div class="grid grid-cols-2 gap-5 md:grid-cols-4">
-      <div class="team-member" v-for="memberId in team" :key="memberId">
-        <member-card :id="memberId"> </member-card>
+      <div
+        id="team-cards-grid"
+        class="grid grid-cols-4 gap-5 max-laptop:hidden"
+      >
+        <member-card v-for="memberId in team" :key="memberId" :id="memberId">
+        </member-card>
       </div>
-    </div>
-  </tc-section>
+
+      <div class="laptop:hidden">
+        <team-carousel :teamKeys="team"></team-carousel>
+      </div>
+    </tc-section>
+  </div>
 </template>
 
 <script>
 import MemberCard from "@/components/cards/TeamMemberCard.vue";
+import TeamCarousel from "@/components/carousels/TeamCarousel.vue";
 
 export default {
   name: "TeamSection",
   components: {
     MemberCard,
+    TeamCarousel,
   },
   setup() {
     const team = [

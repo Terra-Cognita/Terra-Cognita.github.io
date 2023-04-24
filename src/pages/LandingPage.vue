@@ -5,7 +5,9 @@
     <welcome-section></welcome-section>
     <gameplay-section></gameplay-section>
   </div>
-  <tc-breathing>{{ $t("breathing.TEXT_1") }}</tc-breathing>
+  <div id="breathing-section-1">
+    <tc-breathing>{{ $t("breathing.TEXT_1") }}</tc-breathing>
+  </div>
   <team-section></team-section>
   <newsletter-section></newsletter-section>
 </template>

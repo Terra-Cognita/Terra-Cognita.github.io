@@ -1,8 +1,10 @@
 <template>
-  <div class="flex flex-col">
-    <img class="mx-auto block h-auto w-4/5" :src="avatar" />
+  <div id="team-member-card" class="flex flex-col">
+    <div id="card-avatar">
+      <img class="mx-auto block h-auto w-4/5" :src="avatar" />
+    </div>
 
-    <div class="grid grid-cols-3 justify-items-center">
+    <div id="card-icons" class="grid grid-cols-3 justify-items-center">
       <a :href="$t(`team.MEMBERS.${id}.MEDIAS.TECH`)" target="_blank">
         <behance-icon
           v-if="isBehance"
@@ -25,7 +27,7 @@
       </a>
     </div>
 
-    <div class="my-5 text-center">
+    <div id="card-info" class="my-5 text-center">
       <div class="font-bold uppercase text-tc_magic-sand max-laptop:text-xs">
         {{ $t(`team.MEMBERS.${id}.NAME`) }}
       </div>
