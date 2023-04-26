@@ -7,7 +7,7 @@
       @scroll="snapScroll"
     >
       <member-card
-        class="shrink-0 snap-center snap-always"
+        class="shrink-0 snap-center snap-always scroll-mx-2"
         v-for="(memberId, index) in teamKeys"
         :ref="
           (el) => {

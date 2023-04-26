@@ -35,11 +35,14 @@
         </a>
       </div>
 
-      <div id="card-info" class="my-3 text-center laptop:my-5">
-        <div class="font-bold uppercase text-tc_magic-sand max-laptop:text-xs">
+      <div
+        id="card-info"
+        class="mx-auto mt-3 w-11/12 text-center max-laptop:text-sm laptop:mt-5"
+      >
+        <div class="font-bold uppercase text-tc_magic-sand">
           {{ $t(`team.MEMBERS.${id}.NAME`) }}
         </div>
-        <div class="max-laptop:text-xs laptop:mb-6">
+        <div>
           {{ $t(`team.MEMBERS.${id}.OCCUPATION`) }}
         </div>
       </div>

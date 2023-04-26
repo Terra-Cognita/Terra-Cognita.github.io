@@ -13,7 +13,7 @@
         class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
       >
         <div id="navbar-logo">
-          <tc-logo :shrink="true"></tc-logo>
+          <tc-logo :shrink="true" @close-menu="hide"></tc-logo>
         </div>
         <navbar-burger
           class="laptop:hidden"
