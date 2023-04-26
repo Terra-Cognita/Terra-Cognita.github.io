@@ -3,7 +3,7 @@
     <div
       id="carousel-snap"
       ref="snapEl"
-      class="flex w-full snap-x snap-mandatory scroll-px-6 overflow-scroll"
+      class="flex w-full snap-x snap-mandatory overflow-scroll"
       @scroll="snapScroll"
     >
       <member-card
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { ref, computed, reactive, watchEffect, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import MemberCard from "@/components/cards/TeamMemberCard.vue";
 import AvatarCard from "@/components/cards/AvatarCard.vue";
 
@@ -82,8 +82,10 @@ export default {
 
       if (choiceCenter.length !== 0) {
         return choiceCenter[0];
-      } else {
-        // no central choice
+      }
+      // no central choice
+      else {
+        // ascending scrolling
         if (scrollPos > prevScroll.value) {
           let choiceAscending = Object.keys(cardCentersX.value).filter(
             (key) => {
@@ -94,7 +96,13 @@ export default {
             }
           );
           return choiceAscending[0];
-        } else {
+        }
+        // descending scrolling
+        else {
+          // case last card: avoid returning scroll movement
+          if (activeCardId.value === props.teamKeys.at(-1)) {
+            return activeCardId.value;
+          }
           let choiceDescending = Object.keys(cardCentersX.value).filter(
             (key) => {
               return (

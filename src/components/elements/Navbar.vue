@@ -1,7 +1,7 @@
 <template>
   <nav
     id="navbar"
-    class="tc-px fixed z-10 w-full bg-tc_sky-700 shadow transition-colors duration-500"
+    class="tc-px fixed z-50 w-full bg-tc_sky-700 shadow transition-colors duration-500"
     :class="{ 'bg-transparent shadow-none': !showBackground }"
   >
     <div
