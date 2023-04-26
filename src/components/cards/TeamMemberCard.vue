@@ -1,11 +1,12 @@
 <template>
   <div
     id="team-member-card"
+    ref="el"
     class="container flex flex-col max-laptop:basis-[60%]"
   >
     <div id="card-content">
       <div id="card-avatar">
-        <avatar-card :id="id"></avatar-card>
+        <avatar-card :id="id" :active="false"></avatar-card>
       </div>
 
       <div
@@ -52,7 +53,7 @@ import BehanceIcon from "@/components/icons/BehanceIcon.vue";
 import EmailIcon from "@/components/icons/EmailIcon.vue";
 import GithubIcon from "@/components/icons/GithubIcon.vue";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.vue";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 
 export default {
   name: "CardTeamMember",
@@ -73,8 +74,17 @@ export default {
     let isBehance;
     props.id === "FelipeMarcel" ? (isBehance = true) : (isBehance = false);
 
-    expose({ id: props.id });
+    const el = ref(null);
+    const centerX = computed(() => {
+      return el.value.offsetLeft + el.value.offsetWidth / 2;
+    });
+
+    expose({
+      id: props.id,
+      centerX: centerX,
+    });
     return {
+      el,
       isBehance,
     };
   },

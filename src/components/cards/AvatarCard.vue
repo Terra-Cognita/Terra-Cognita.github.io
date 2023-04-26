@@ -1,6 +1,10 @@
 <template>
   <div :id="`avatar-image-card`">
-    <img class="mx-auto block h-auto w-4/5" :src="avatar" />
+    <img
+      :src="avatar"
+      class="avatar-card-small mx-auto block"
+      :class="{ 'avatar-card-medium': active }"
+    />
   </div>
 </template>
 
@@ -12,6 +16,10 @@ export default {
   props: {
     id: {
       type: String,
+      required: true,
+    },
+    active: {
+      type: Boolean,
       required: true,
     },
   },

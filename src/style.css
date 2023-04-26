@@ -16,6 +16,12 @@ html {
   .logo-medium {
     @apply h-14 w-auto laptop:h-24;
   }
+  .avatar-card-small {
+    @apply h-auto w-4/5;
+  }
+  .avatar-card-medium {
+    @apply h-auto w-11/12;
+  }
   .icon {
     @apply h-7 w-7 laptop:h-10 laptop:w-10;
   }
