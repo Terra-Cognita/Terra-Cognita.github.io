@@ -48,6 +48,8 @@ module.exports = {
         bgCrystalMasked: "url('/src/assets/backgrounds/bgCrystalMasked.png')",
         bgMultipleCrystals:
           "url('/src/assets/backgrounds/bgMultipleCrystals.png')",
+        bgChatWindow: "url('/src/assets/backgrounds/bgChatWindow.svg')",
+        bgChatText: "url('/src/assets/backgrounds/bgChatText.svg')",
         iconUndeline: "url('/src/assets/icons/underlineIcon.svg')",
         crystalElement: "url('/src/assets/images/Crystal-Elements.png')",
       },

@@ -1,10 +1,10 @@
 <template>
   <div
     alt="Chatbox button"
-    class="z-90 h-20 w-20 object-contain duration-300 hover:animate-bounce laptop:h-28 laptop:w-28"
+    class="z-40 h-20 w-20 cursor-pointer object-contain duration-300 hover:animate-bounce laptop:h-28 laptop:w-28"
     @click="$emit('toggleChat')"
   >
-    <img :src="imgOrimbu" />
+    <img class="pointer-events-none" src="@/assets/images/chatButton.png" />
   </div>
 </template>
 

@@ -1,15 +1,15 @@
 <template>
-  <div class="text-sm text-sky-900">
+  <div class="justify-self-start text-sm text-tc_forest-500">
     <input
       v-if="isHearingBot"
-      class="bg-transparent"
+      class="pointer-events-none border-transparent bg-transparent"
       type="text"
       value="Orimbu is typing..."
       readonly
     />
     <input
       v-if="!isHearingBot"
-      class="bg-transparent"
+      class="pointer-events-none border-transparent bg-transparent"
       type="text"
       value=""
       readonly
