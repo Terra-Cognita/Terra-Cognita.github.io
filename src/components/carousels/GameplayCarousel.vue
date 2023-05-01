@@ -1,5 +1,9 @@
 <template>
-  <div id="gameplay-carousel" class="relative w-full" data-carousel="static">
+  <div
+    id="gameplay-carousel"
+    class="relative z-0 w-full"
+    data-carousel="static"
+  >
     <!-- Carousel wrapper -->
     <div class="relative h-[29rem] overflow-hidden">
       <!-- Item 1 -->
