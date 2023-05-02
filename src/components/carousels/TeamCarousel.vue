@@ -3,7 +3,7 @@
     <div
       id="carousel-snap"
       ref="snapEl"
-      class="flex w-full snap-x snap-mandatory overflow-scroll"
+      class="flex w-full touch-pan-x touch-pan-y snap-x snap-mandatory overflow-scroll overscroll-none"
       @scroll="snapScroll"
     >
       <member-card

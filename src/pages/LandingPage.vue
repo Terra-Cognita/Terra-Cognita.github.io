@@ -1,15 +1,17 @@
 <template>
-  <start-section></start-section>
-  <intro-section></intro-section>
-  <div class="bg-bgMultipleCrystals">
-    <welcome-section></welcome-section>
-    <gameplay-section></gameplay-section>
+  <div id="page-landing">
+    <start-section></start-section>
+    <intro-section></intro-section>
+    <div class="bg-bgMultipleCrystals">
+      <welcome-section></welcome-section>
+      <gameplay-section></gameplay-section>
+    </div>
+    <div id="breathing-section-1">
+      <tc-breathing>{{ $t("breathing.TEXT_1") }}</tc-breathing>
+    </div>
+    <team-section></team-section>
+    <newsletter-section></newsletter-section>
   </div>
-  <div id="breathing-section-1">
-    <tc-breathing>{{ $t("breathing.TEXT_1") }}</tc-breathing>
-  </div>
-  <team-section></team-section>
-  <newsletter-section></newsletter-section>
 </template>
 
 <script>

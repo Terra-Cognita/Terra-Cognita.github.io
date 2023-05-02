@@ -1,11 +1,11 @@
 <template>
-  <div id="chatbox-element" class="fixed bottom-2 right-0">
+  <div id="chatbox-element" class="sticky bottom-4 right-0 z-50 translate-y-2">
     <chatbox-window
-      class="absolute bottom-20 right-5 laptop:right-5"
+      class="absolute bottom-10 right-5 laptop:bottom-20 laptop:right-5"
       v-show="isVisible"
     ></chatbox-window>
     <chatbox-button
-      class="absolute bottom-0 right-5"
+      class="absolute bottom-0 right-1 laptop:bottom-0 laptop:right-5"
       @toggle-chat="toggle"
     ></chatbox-button>
   </div>

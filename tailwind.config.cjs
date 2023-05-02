@@ -7,6 +7,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
     "./node_modules/flowbite/**/*.js",
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+  plugins: [require("tailwind-scrollbar-hide"), require("flowbite/plugin")],
   theme: {
     extend: {
       fontFamily: {
@@ -65,5 +69,4 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide"), require("flowbite/plugin")],
 };

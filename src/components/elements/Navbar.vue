@@ -1,7 +1,7 @@
 <template>
   <nav
     id="navbar"
-    class="tc-px fixed z-50 w-full bg-tc_sky-700 shadow transition-colors duration-500"
+    class="tc-px fixed z-30 w-full bg-tc_sky-700 shadow transition-colors duration-500"
     :class="{ 'bg-transparent shadow-none': !showBackground }"
   >
     <div
@@ -13,19 +13,22 @@
         class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
       >
         <div id="navbar-logo">
-          <tc-logo :shrink="true" @close-menu="hide"></tc-logo>
+          <tc-logo
+            :shrink="true"
+            @close-menu="$emit('closeMobileMenu')"
+          ></tc-logo>
         </div>
         <navbar-burger
           class="laptop:hidden"
-          :isMenuOpen="isVisible"
-          @open-menu="show"
-          @close-menu="hide"
+          :isBurger="isMobileMenuOpen"
+          @open-menu="$emit('openMobileMenu')"
+          @close-menu="$emit('closeMobileMenu')"
         ></navbar-burger>
       </div>
 
       <navbar-menu
-        :class="{ hidden: !isVisible }"
-        @close-menu="hide"
+        :class="{ hidden: !isMobileMenuOpen }"
+        @close-menu="$emit('closeMobileMenu')"
       ></navbar-menu>
     </div>
   </nav>
@@ -36,7 +39,6 @@ import TcLogo from "./TcLogo.vue";
 import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
 import NavbarMenu from "./navbar_subcomponents/NavbarMenu.vue";
 
-import { useToggle } from "@/composables/useToggle";
 import { ref, computed, watchEffect } from "vue";
 
 export default {
@@ -46,38 +48,18 @@ export default {
     NavbarBurger,
     NavbarMenu,
   },
-  props: {},
-  setup() {
-    let { isVisible, hide, show } = useToggle();
-
-    const navlinkProps = {
-      WELCOME: {
-        to: { name: "home", hash: "#welcome" },
-        label: "Welcome",
-      },
-      GAMEPLAY: {
-        to: { name: "home", hash: "#gameplay" },
-        label: "Gameplay",
-      },
-      TEAM: {
-        to: { name: "home", hash: "#team" },
-        label: "Team",
-      },
-      CODEX: {
-        to: { name: "codex", hash: "" },
-        label: "Codex",
-      },
-      LOGIN: {
-        to: { name: "login", hash: "" },
-        label: "Access",
-      },
-    };
-
+  props: {
+    isMobileMenuOpen: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  setup(props) {
     let scrollBackgroundActive = ref(false);
     let menuBackgroundActive = ref(false);
 
     watchEffect(() => {
-      if (isVisible.value) {
+      if (props.isMobileMenuOpen) {
         menuBackgroundActive.value = true;
       } else {
         menuBackgroundActive.value = false;
@@ -98,11 +80,7 @@ export default {
     });
 
     return {
-      isVisible,
-      hide,
-      show,
       showBackground,
-      navlinkProps,
     };
   },
 };

@@ -1,6 +1,10 @@
 <template>
-  <tc-breathing class="bg-bgBanner bg-cover bg-top bg-no-repeat"></tc-breathing>
-  <codex-section></codex-section>
+  <div id="page-codex">
+    <tc-breathing
+      class="bg-bgBanner bg-cover bg-top bg-no-repeat"
+    ></tc-breathing>
+    <codex-section></codex-section>
+  </div>
 </template>
 
 <script>
