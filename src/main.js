@@ -10,6 +10,8 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import { createI18n } from "vue-i18n";
 import messages from "./locales/messages/index.js";
 
+import Vue3TouchEvents from "vue3-touch-events";
+
 // TC layouts
 import TcHero from "./components/globalLayouts/TcHero.vue";
 import TcSection from "./components/globalLayouts/TcSection.vue";
@@ -34,7 +36,11 @@ const i18n = createI18n({
   // fallbackWarn: false,
 });
 
-const app = createApp(App).use(store).use(router).use(i18n);
+const app = createApp(App)
+  .use(store)
+  .use(router)
+  .use(i18n)
+  .use(Vue3TouchEvents);
 
 app.component("TcHero", TcHero);
 app.component("TcSection", TcSection);
