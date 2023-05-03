@@ -1,12 +1,17 @@
 <template>
   <footer class="bg-tc_sky-900">
-    <div class="tc-px flex w-full flex-row items-center justify-between pt-5">
+    <div
+      id="footer-sup"
+      class="tc-px flex w-full flex-row items-center justify-between pt-5"
+    >
       <div id="footer-logo">
-        <tc-logo></tc-logo>
+        <logo-horizontal
+          class="h-5 w-auto fill-tc_sand-100 stroke-tc_sand-100 laptop:h-7"
+        ></logo-horizontal>
       </div>
       <div
         id="footer-icons"
-        class="mt-4 flex space-x-4 laptop:mt-0 laptop:justify-center"
+        class="flex space-x-4 laptop:mt-0 laptop:justify-center"
       >
         <a href="#" target="_blank">
           <email-icon
@@ -28,9 +33,10 @@
         </a>
       </div>
     </div>
+
     <hr class="my-4 mx-[3vw] border-tc_magic-sky laptop:my-8" />
 
-    <div class="tc-px pb-10">
+    <div id="footer-inf" class="tc-px pb-10">
       <span class="text-sand-100 block text-center text-xs laptop:text-sm"
         >© Terra Cognita 2023. The land of discovery.</span
       >
@@ -42,7 +48,7 @@
 import EmailIcon from "@/components/icons/EmailIcon.vue";
 import TwitterIcon from "@/components/icons/TwitterIcon.vue";
 import YoutubeIcon from "@/components/icons/YoutubeIcon.vue";
-import TcLogo from "./TcLogo.vue";
+import LogoHorizontal from "@/components/logos/LogoHorizontal.vue";
 
 export default {
   name: "Footer",
@@ -50,7 +56,7 @@ export default {
     EmailIcon,
     TwitterIcon,
     YoutubeIcon,
-    TcLogo,
+    LogoHorizontal,
   },
   setup() {
     return {};

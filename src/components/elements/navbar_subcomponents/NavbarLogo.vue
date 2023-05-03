@@ -1,13 +1,11 @@
 <template>
   <router-link :to="{ name: 'home' }">
     <logo-vertical
-      class="logo-small fill-white stroke-white"
-      :class="{ 'laptop:hidden': shrink, hidden: !shrink }"
+      class="logo-small fill-tc_sand-100 stroke-tc_sand-100 laptop:hidden"
       @click="$emit('closeMenu')"
     ></logo-vertical>
     <logo-horizontal
-      class="logo-small fill-white stroke-white"
-      :class="{ 'max-laptop:hidden': shrink }"
+      class="fill-tc_sand-100 stroke-tc_sand-100 max-laptop:hidden laptop:h-8 laptop:w-auto"
       @click="$emit('closeMenu')"
     ></logo-horizontal>
   </router-link>
@@ -22,12 +20,6 @@ export default {
   components: {
     LogoVertical,
     LogoHorizontal,
-  },
-  props: {
-    shrink: {
-      type: Boolean,
-      default: false,
-    },
   },
 };
 </script>

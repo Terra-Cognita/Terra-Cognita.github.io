@@ -6,17 +6,14 @@
   >
     <div
       id="navbar-content"
-      class="flex flex-col items-center justify-between py-2 laptop:flex-row laptop:space-x-4"
+      class="flex h-20 flex-col items-center justify-between laptop:flex-row laptop:space-x-4"
     >
       <div
         id="navbar-header"
         class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
       >
         <div id="navbar-logo">
-          <tc-logo
-            :shrink="true"
-            @close-menu="$emit('closeMobileMenu')"
-          ></tc-logo>
+          <navbar-logo @close-menu="$emit('closeMobileMenu')"></navbar-logo>
         </div>
         <navbar-burger
           class="laptop:hidden"
@@ -35,16 +32,15 @@
 </template>
 
 <script>
-import TcLogo from "./TcLogo.vue";
+import NavbarLogo from "./navbar_subcomponents/NavbarLogo.vue";
 import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
 import NavbarMenu from "./navbar_subcomponents/NavbarMenu.vue";
-
 import { ref, computed, watchEffect } from "vue";
 
 export default {
   name: "Navbar",
   components: {
-    TcLogo,
+    NavbarLogo,
     NavbarBurger,
     NavbarMenu,
   },

@@ -12,12 +12,6 @@ html {
   .tc-px {
     @apply px-10 laptop:px-[15vw];
   }
-  .logo-small {
-    @apply h-20 w-auto laptop:h-24;
-  }
-  .logo-medium {
-    @apply h-14 w-auto laptop:h-24;
-  }
   .avatar-card-small {
     @apply h-auto w-4/5;
   }
