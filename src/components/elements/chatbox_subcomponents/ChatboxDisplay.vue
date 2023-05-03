@@ -1,7 +1,7 @@
 <template>
   <div
     id="chatbox-display"
-    class="scrollbar scrollbar-track scrollbar-thumb flex touch-pan-y flex-col-reverse gap-y-2 overflow-y-scroll overscroll-contain rounded-md"
+    class="scrollbar scrollbar-track scrollbar-thumb flex touch-pan-y flex-col-reverse gap-y-2 overflow-y-scroll overscroll-contain rounded-tl-[120px]"
   >
     <chatbox-message
       v-for="message in chatHistory"

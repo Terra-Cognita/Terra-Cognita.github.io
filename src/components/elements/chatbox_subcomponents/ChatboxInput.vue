@@ -1,13 +1,13 @@
 <template>
   <div
     id="chatbox-input"
-    class="space-x-2 bg-bgChatText bg-contain bg-no-repeat"
+    class="mx-5 flex flex-row space-x-2 bg-bgChatText bg-contain bg-no-repeat"
   >
     <!-- input message -->
     <input
       type="text"
       placeholder="Write your message!"
-      class="w-8/12 rounded-md border-transparent bg-transparent p-2 text-tc_earth-500 placeholder-tc_earth-100 focus:border-transparent focus:placeholder-tc_sand-900 focus:ring-0"
+      class="w-11/12 border-transparent bg-transparent p-2 pl-6 text-tc_earth-500 placeholder-tc_earth-100 focus:border-transparent focus:placeholder-tc_sand-900 focus:ring-0"
       v-model="userInputMsg"
       :disabled="isHearingBot"
       v-focus="!isHearingBot"
