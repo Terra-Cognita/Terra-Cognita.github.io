@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar-burger">
+  <div id="navbar-burger" class="mr-4">
     <button
       id="burger-symbol"
       v-show="!isBurger"

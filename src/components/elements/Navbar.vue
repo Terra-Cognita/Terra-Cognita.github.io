@@ -1,43 +1,56 @@
 <template>
-  <nav
-    id="navbar"
-    class="tc-px fixed z-30 w-full bg-tc_sky-700 shadow transition-colors duration-500"
-    :class="{ 'bg-transparent shadow-none': !showBackground }"
-  >
+  <nav id="navbar" class="fixed z-30 w-full">
     <div
-      id="navbar-content"
-      class="flex flex-col items-center justify-between max-laptop:py-4 laptop:h-20 laptop:flex-row laptop:space-x-4"
+      id="navbar-container"
+      class="tc-px bg-tc_sky-700 shadow transition-colors duration-500"
+      :class="{ 'bg-transparent shadow-none': !showBackground }"
     >
       <div
-        id="navbar-header"
-        class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
+        id="navbar-content"
+        class="flex items-center justify-between max-laptop:py-4 laptop:h-20 laptop:flex-row laptop:space-x-4"
       >
-        <div id="navbar-logo">
-          <navbar-logo @close-menu="$emit('closeMobileMenu')"></navbar-logo>
+        <div
+          id="navbar-header"
+          class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
+        >
+          <div id="navbar-logo" class="max-laptop:basis-3/5">
+            <navbar-logo @close-menu="$emit('closeMobileMenu')"></navbar-logo>
+          </div>
+          <navbar-burger
+            class="z-[100] flex basis-2/5 justify-end laptop:hidden"
+            :isBurger="isMobileMenuOpen"
+            @open-menu="$emit('openMobileMenu')"
+            @close-menu="$emit('closeMobileMenu')"
+          ></navbar-burger>
         </div>
-        <navbar-burger
-          class="laptop:hidden"
-          :isBurger="isMobileMenuOpen"
-          @open-menu="$emit('openMobileMenu')"
-          @close-menu="$emit('closeMobileMenu')"
-        ></navbar-burger>
-      </div>
 
-      <navbar-menu
-        :class="{ hidden: !isMobileMenuOpen }"
-        @close-menu="$emit('closeMobileMenu')"
-      ></navbar-menu>
+        <navbar-menu-laptop :navLinks="navlinkProps" class="max-laptop:hidden">
+        </navbar-menu-laptop>
+      </div>
+      <player
+        class="absolute max-laptop:hidden laptop:right-[5vw] laptop:top-7"
+      ></player>
     </div>
-    <player
-      class="absolute max-laptop:hidden laptop:right-[5vw] laptop:top-7"
-    ></player>
+
+    <div
+      id="navbar-floating-container"
+      class="absolute top-3 right-10 w-2/5 laptop:hidden"
+    >
+      <navbar-menu-mobile
+        :navLinks="navlinkProps"
+        :class="{ hidden: !isMobileMenuOpen }"
+        @close-menu="$emit('closeMenu')"
+      >
+      </navbar-menu-mobile>
+    </div>
   </nav>
 </template>
 
 <script>
 import NavbarLogo from "./navbar_subcomponents/NavbarLogo.vue";
 import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
-import NavbarMenu from "./navbar_subcomponents/NavbarMenu.vue";
+import NavbarMenuLaptop from "./navbar_subcomponents/NavbarMenuLaptop.vue";
+import NavbarMenuMobile from "./navbar_subcomponents/NavbarMenuMobile.vue";
 import Player from "./Player.vue";
 import { ref, computed, watchEffect } from "vue";
 
@@ -46,7 +59,8 @@ export default {
   components: {
     NavbarLogo,
     NavbarBurger,
-    NavbarMenu,
+    NavbarMenuLaptop,
+    NavbarMenuMobile,
     Player,
   },
   props: {
@@ -56,32 +70,43 @@ export default {
     },
   },
   setup(props) {
-    let scrollBackgroundActive = ref(false);
-    let menuBackgroundActive = ref(false);
-
-    watchEffect(() => {
-      if (props.isMobileMenuOpen) {
-        menuBackgroundActive.value = true;
-      } else {
-        menuBackgroundActive.value = false;
-      }
-    });
+    let showBackground = ref(false);
 
     document.addEventListener("scroll", function () {
       let bodyTopPosition = document.body.getBoundingClientRect().top;
       if (bodyTopPosition < -150) {
-        scrollBackgroundActive.value = true;
+        showBackground.value = true;
       } else {
-        scrollBackgroundActive.value = false;
+        showBackground.value = false;
       }
     });
 
-    const showBackground = computed(() => {
-      return scrollBackgroundActive.value || menuBackgroundActive.value;
-    });
+    const navlinkProps = {
+      WELCOME: {
+        to: { name: "home", hash: "#welcome" },
+        label: "Welcome",
+      },
+      GAMEPLAY: {
+        to: { name: "home", hash: "#gameplay" },
+        label: "Gameplay",
+      },
+      TEAM: {
+        to: { name: "home", hash: "#team" },
+        label: "Team",
+      },
+      CODEX: {
+        to: { name: "codex", hash: "" },
+        label: "Codex",
+      },
+      LOGIN: {
+        to: { name: "login", hash: "" },
+        label: "Access",
+      },
+    };
 
     return {
       showBackground,
+      navlinkProps,
     };
   },
 };
