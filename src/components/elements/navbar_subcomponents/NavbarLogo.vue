@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'home' }">
     <logo-vertical
-      class="logo-small fill-tc_sand-100 stroke-tc_sand-100 laptop:hidden"
+      class="h-9 w-auto fill-tc_sand-100 stroke-tc_sand-100 laptop:hidden"
       @click="$emit('closeMenu')"
     ></logo-vertical>
     <logo-horizontal

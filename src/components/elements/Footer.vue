@@ -6,7 +6,7 @@
     >
       <div id="footer-logo">
         <logo-horizontal
-          class="h-5 w-auto fill-tc_sand-100 stroke-tc_sand-100 laptop:h-7"
+          class="h-5 w-auto fill-tc_sand-100 stroke-tc_sand-100 laptop:h-8"
         ></logo-horizontal>
       </div>
       <div
