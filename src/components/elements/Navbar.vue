@@ -6,7 +6,7 @@
   >
     <div
       id="navbar-content"
-      class="flex h-20 flex-col items-center justify-between laptop:flex-row laptop:space-x-4"
+      class="flex flex-col items-center justify-between max-laptop:py-4 laptop:h-20 laptop:flex-row laptop:space-x-4"
     >
       <div
         id="navbar-header"
@@ -28,6 +28,9 @@
         @close-menu="$emit('closeMobileMenu')"
       ></navbar-menu>
     </div>
+    <player
+      class="absolute max-laptop:hidden laptop:right-[5vw] laptop:top-7"
+    ></player>
   </nav>
 </template>
 
@@ -35,6 +38,7 @@
 import NavbarLogo from "./navbar_subcomponents/NavbarLogo.vue";
 import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
 import NavbarMenu from "./navbar_subcomponents/NavbarMenu.vue";
+import Player from "./Player.vue";
 import { ref, computed, watchEffect } from "vue";
 
 export default {
@@ -43,6 +47,7 @@ export default {
     NavbarLogo,
     NavbarBurger,
     NavbarMenu,
+    Player,
   },
   props: {
     isMobileMenuOpen: {
