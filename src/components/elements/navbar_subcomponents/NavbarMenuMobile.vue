@@ -46,7 +46,7 @@
         {{ navLinks.LOGIN.label }}
       </navbar-link>
       <hr class="border-tc_sky-300 py-1 laptop:hidden" />
-      <player class="px-4"></player>
+      <player class="px-4 py-1"></player>
     </div>
   </div>
 </template>

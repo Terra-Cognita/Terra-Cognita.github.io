@@ -16,7 +16,8 @@
     <!-- send button -->
     <button
       type="button"
-      class="inline-flex items-center justify-center p-2 transition duration-500 ease-in-out hover:bg-sky-700 focus:outline-none"
+      class="inline-flex items-center justify-center p-2 transition duration-500 ease-in-out hover:bg-transparent hover:bg-sky-700 focus:outline-none"
+      @click="onEnterMessage()"
     >
       <send-icon class="h-5 w-5 fill-tc_earth-100"></send-icon>
     </button>

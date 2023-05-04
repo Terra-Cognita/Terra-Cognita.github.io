@@ -1,7 +1,7 @@
 <template>
   <div id="chatbox-element" class="sticky bottom-4 right-0 z-50 translate-y-2">
     <chatbox-window
-      class="absolute bottom-10 right-5 laptop:bottom-20 laptop:right-5"
+      class="absolute bottom-11 right-5 laptop:bottom-20 laptop:right-16"
       v-show="isVisible"
     ></chatbox-window>
     <chatbox-button
