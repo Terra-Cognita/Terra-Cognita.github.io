@@ -1,11 +1,13 @@
-<img src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/assets/images/MD-Banner1.png" 
-     alt="Terra Cognita Welcome" 
-     width="100%">
+<img 
+  src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/assets/static_backgrounds/bgBannerReadme.png" 
+  alt="Terra Cognita Welcome" 
+  width="100%">
 
 <p align="center">
-  <img src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/assets/logos/terra-cognita_symbol.png" 
-     alt="Terra Cognita TC Symbol" 
-     width="15%">
+  <img 
+    src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/public/monogram.svg"
+    alt="Terra Cognita TC Symbol" 
+    width="15%">
 </p>
 
 # <p align="center"> Terra Cognita - Landing Page</p>
