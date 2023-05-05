@@ -5,13 +5,9 @@
         <div class="title" v-html="title"></div>
         <div class="subtitle">{{ subtitle }}</div>
         <div>{{ text }}</div>
-
         <tc-button>{{ buttonMsg }}</tc-button>
       </div>
-
-      <!-- <div class=""> -->
       <img class="mx-auto object-contain" :src="figFile" />
-      <!-- </div> -->
     </div>
   </div>
 </template>

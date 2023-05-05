@@ -47,15 +47,14 @@ module.exports = {
         },
       },
       backgroundImage: {
-        bgBanner: "url('/src/assets/backgrounds/bgBanner.png')",
-        bgCrystal: "url('/src/assets/backgrounds/bgCrystal.png')",
-        bgCrystalMasked: "url('/src/assets/backgrounds/bgCrystalMasked.png')",
+        bgBanner: "url('/src/assets/static_backgrounds/bgBanner.png')",
+        bgChatText: "url('/src/assets/static_backgrounds/bgChatText.svg')",
+        bgChatWindow: "url('/src/assets/static_backgrounds/bgChatWindow.svg')",
+        bgCrystal: "url('/src/assets/static_backgrounds/bgCrystal.png')",
+        bgCrystalMasked:
+          "url('/src/assets/static_backgrounds/bgCrystalMasked.png')",
         bgMultipleCrystals:
-          "url('/src/assets/backgrounds/bgMultipleCrystals.png')",
-        bgChatWindow: "url('/src/assets/backgrounds/bgChatWindow.svg')",
-        bgChatText: "url('/src/assets/backgrounds/bgChatText.svg')",
-        iconUndeline: "url('/src/assets/icons/underlineIcon.svg')",
-        crystalElement: "url('/src/assets/images/Crystal-Elements.png')",
+          "url('/src/assets/static_backgrounds/bgMultipleCrystals.png')",
       },
       screens: {
         tablet: "640px",
