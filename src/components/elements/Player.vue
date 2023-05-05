@@ -16,6 +16,7 @@
 <script>
 import PlayerOn from "@/components/icons/PlayerOn.vue";
 import PlayerOff from "@/components/icons/PlayerOff.vue";
+import { useAssets } from "@/composables/useAssets.js";
 import { Howl, Howler } from "howler";
 import { ref } from "vue";
 
@@ -26,9 +27,9 @@ export default {
     PlayerOff,
   },
   setup() {
-    const musicFiles = [
-      "src/assets/sounds/WelcomeToTerraCognita_PortScoretest.mp3",
-    ];
+    const { soundWelcomeToTC } = useAssets();
+
+    const musicFiles = [soundWelcomeToTC];
     const isPlaying = ref(false);
 
     const sound = ref();
