@@ -34,7 +34,7 @@
 
     <div
       id="navbar-floating-container"
-      class="absolute top-3 right-10 w-2/5 laptop:hidden"
+      class="absolute top-3 right-10 laptop:hidden"
     >
       <navbar-menu-mobile
         :navLinks="navlinkProps"
