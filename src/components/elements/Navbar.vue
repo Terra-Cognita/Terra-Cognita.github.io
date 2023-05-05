@@ -70,14 +70,27 @@ export default {
     },
   },
   setup(props) {
-    let showBackground = ref(false);
+    let scrollBackground = ref(false);
+    let menuActive = ref(false);
+
+    watchEffect(() => {
+      if (props.isMobileMenuOpen) {
+        menuActive.value = true;
+      } else {
+        menuActive.value = false;
+      }
+    });
+
+    const showBackground = computed(() => {
+      return scrollBackground.value || menuActive.value;
+    });
 
     document.addEventListener("scroll", function () {
       let bodyTopPosition = document.body.getBoundingClientRect().top;
       if (bodyTopPosition < -150) {
-        showBackground.value = true;
+        scrollBackground.value = true;
       } else {
-        showBackground.value = false;
+        scrollBackground.value = false;
       }
     });
 

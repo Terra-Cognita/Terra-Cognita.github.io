@@ -1,15 +1,15 @@
 <template>
   <div
     id="navbar-menu-mobile"
-    class="items-center text-right text-tc_sky-900 shadow-md shadow-tc_sky-900"
+    class="items-center text-right shadow-md shadow-tc_sky-900"
   >
     <div
       id="menu-header"
-      class="block rounded-t-lg bg-tc_sand-100/25 pt-2 pb-3"
+      class="block rounded-t-lg bg-tc_sand-100/[.1] pt-2 pb-3"
     >
       <span class="text-transparent">header content</span>
     </div>
-    <div id="menu-content" class="bg-tc_sand-100/[.95]">
+    <div id="menu-content" class="bg-tc_sky-700/[.95]">
       <navbar-link
         class="px-4"
         :to="navLinks.WELCOME.to"
@@ -45,7 +45,7 @@
       >
         {{ navLinks.LOGIN.label }}
       </navbar-link>
-      <hr class="border-tc_sky-300 py-1 laptop:hidden" />
+      <hr class="border-tc_sand-100 py-1 laptop:hidden" />
       <player class="px-4 py-1"></player>
     </div>
   </div>
