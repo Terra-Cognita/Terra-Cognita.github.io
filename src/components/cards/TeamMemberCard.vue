@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import AvatarCard from "@/components/cards/AvatarCard.vue";
+import AvatarCard from "@/components/cards/TeamAvatarCard.vue";
 import BehanceIcon from "@/components/icons/BehanceIcon.vue";
 import EmailIcon from "@/components/icons/EmailIcon.vue";
 import GithubIcon from "@/components/icons/GithubIcon.vue";

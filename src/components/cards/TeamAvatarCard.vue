@@ -24,16 +24,16 @@ export default {
     },
   },
   setup(props, { expose }) {
-    const { maleAvatar, femaleAvatar } = useAssets();
+    const { avatarTeamMale, avatarTeamFemale } = useAssets();
 
     const teamAvatars = {
-      VictorCorcino: maleAvatar,
-      LucioBaglione: maleAvatar,
-      PhilKhoo: maleAvatar,
-      FilipBlagojevic: maleAvatar,
-      FelipeMarcel: maleAvatar,
-      JulianaMattos: femaleAvatar,
-      MarieBarrau: femaleAvatar,
+      VictorCorcino: avatarTeamMale,
+      LucioBaglione: avatarTeamMale,
+      PhilKhoo: avatarTeamMale,
+      FilipBlagojevic: avatarTeamMale,
+      FelipeMarcel: avatarTeamMale,
+      JulianaMattos: avatarTeamFemale,
+      MarieBarrau: avatarTeamFemale,
     };
 
     let avatar = teamAvatars[props.id];

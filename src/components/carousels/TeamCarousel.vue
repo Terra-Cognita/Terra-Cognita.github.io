@@ -34,7 +34,7 @@
 <script>
 import { ref, onMounted } from "vue";
 import MemberCard from "@/components/cards/TeamMemberCard.vue";
-import AvatarCard from "@/components/cards/AvatarCard.vue";
+import AvatarCard from "@/components/cards/TeamAvatarCard.vue";
 
 export default {
   name: "TeamCarousel",

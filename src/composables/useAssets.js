@@ -1,5 +1,6 @@
 export function useAssets() {
-  const avatars = import.meta.globEager(`/src/assets/avatars/*.svg`);
+  const avatarsSvg = import.meta.globEager(`/src/assets/avatars/*.svg`);
+  const avatarsPng = import.meta.globEager(`/src/assets/avatars/*.png`);
   const images = import.meta.globEager(`/src/assets/images/*.png`);
   const sounds = import.meta.globEager(`/src/assets/sounds/*.mp3`);
 
@@ -9,8 +10,10 @@ export function useAssets() {
 
   return {
     // avatars
-    maleAvatar: avatars[avatarPath + "avatarMale.svg"].default,
-    femaleAvatar: avatars[avatarPath + "avatarFemale.svg"].default,
+    avatarChatOrimbu: avatarsPng[avatarPath + "avatarChatOrimbu.png"].default,
+    avatarChatUser: avatarsSvg[avatarPath + "avatarChatUser.svg"].default,
+    avatarTeamFemale: avatarsSvg[avatarPath + "avatarTeamFemale.svg"].default,
+    avatarTeamMale: avatarsSvg[avatarPath + "avatarTeamMale.svg"].default,
     // images
     imgCrystalElement: images[imgPath + "crystalElements.png"].default,
     imgProfileOrimbu: images[imgPath + "profileOrimbu.png"].default,

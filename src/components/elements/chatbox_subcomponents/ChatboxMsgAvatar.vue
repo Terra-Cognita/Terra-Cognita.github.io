@@ -3,11 +3,13 @@
     :src="profilePic"
     alt="Chat profile image"
     class="h-10 w-10 rounded-full"
+    :class="{ 'w-8': isOrimbu }"
   />
 </template>
 
 <script>
 import { useAssets } from "@/composables/useAssets.js";
+import { ref } from "vue";
 
 export default {
   props: {
@@ -15,12 +17,16 @@ export default {
   },
   setup(props) {
     const BOT_ID = String(import.meta.env.VITE_BOT_ID);
-    const { imgProfileOrimbu, imgProfileUser } = useAssets();
+    const { avatarChatUser, avatarChatOrimbu } = useAssets();
+
+    const isOrimbu = ref(props.senderId === BOT_ID);
     let profilePic;
-    props.senderId === BOT_ID
-      ? (profilePic = imgProfileOrimbu)
-      : (profilePic = imgProfileUser);
+
+    isOrimbu.value
+      ? (profilePic = avatarChatOrimbu)
+      : (profilePic = avatarChatUser);
     return {
+      isOrimbu,
       profilePic,
     };
   },
