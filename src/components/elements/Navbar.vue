@@ -28,7 +28,7 @@
         </navbar-menu-laptop>
       </div>
       <player
-        class="absolute max-laptop:hidden laptop:right-[5vw] laptop:top-7"
+        class="absolute max-laptop:hidden laptop:right-[5vw] laptop:top-6"
       ></player>
     </div>
 
