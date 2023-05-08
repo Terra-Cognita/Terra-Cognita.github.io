@@ -27,9 +27,12 @@
         <navbar-menu-laptop :navLinks="navlinkProps" class="max-laptop:hidden">
         </navbar-menu-laptop>
       </div>
-      <player
-        class="absolute max-laptop:hidden laptop:right-[5vw] laptop:top-6"
-      ></player>
+      <div
+        id="navbar-player-container"
+        class="absolute flex items-center max-laptop:hidden laptop:right-[5vw] laptop:top-0 laptop:h-20"
+      >
+        <player></player>
+      </div>
     </div>
 
     <div

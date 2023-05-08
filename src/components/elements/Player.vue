@@ -1,5 +1,5 @@
 <template>
-  <div id="player">
+  <div id="player" class="flex items-center">
     <button
       id="player-control"
       @click="isPlaying ? sound.pause() : sound.play()"
@@ -7,7 +7,7 @@
       <div
         id="control-toggle"
         class="flex flex-row rounded-full bg-tc_sky-300 px-0 py-0"
-        :class="{ 'bg-tc_sky-100': isPlaying }"
+        :class="{ '!bg-tc_sky-100': isPlaying }"
       >
         <div
           id="control-text"
