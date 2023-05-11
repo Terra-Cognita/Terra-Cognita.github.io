@@ -1,5 +1,9 @@
 <template>
-  <nav id="navbar" class="fixed z-30 w-full">
+  <nav
+    id="navbar"
+    class="duration-0 fixed z-30 w-full origin-top-left transition-transform"
+    :style="keyboardRespStyle"
+  >
     <div
       id="navbar-container"
       class="tc-px bg-tc_sky-700 shadow transition-colors duration-500"
@@ -55,7 +59,8 @@ import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
 import NavbarMenuLaptop from "./navbar_subcomponents/NavbarMenuLaptop.vue";
 import NavbarMenuMobile from "./navbar_subcomponents/NavbarMenuMobile.vue";
 import Player from "./Player.vue";
-import { ref, computed, watchEffect } from "vue";
+import { useKeyboard } from "../../composables/useKeyboard";
+import { ref, computed, watchEffect, watch } from "vue";
 
 export default {
   name: "Navbar",
@@ -73,6 +78,22 @@ export default {
     },
   },
   setup(props) {
+    // virtual keyboard manegement
+    const navbarTranslate = ref(0);
+    let { displayOffset } = useKeyboard();
+
+    watch(
+      () => displayOffset.value,
+      () => {
+        navbarTranslate.value = displayOffset.value;
+      }
+    );
+
+    const keyboardRespStyle = computed(
+      () => `top: ${navbarTranslate.value.toString()}px`
+    );
+
+    // background and menu management
     let scrollBackground = ref(false);
     let menuActive = ref(false);
 
@@ -97,6 +118,7 @@ export default {
       }
     });
 
+    // properties
     const navlinkProps = {
       WELCOME: {
         to: { name: "home", hash: "#welcome" },
@@ -121,6 +143,7 @@ export default {
     };
 
     return {
+      keyboardRespStyle,
       showBackground,
       navlinkProps,
     };
