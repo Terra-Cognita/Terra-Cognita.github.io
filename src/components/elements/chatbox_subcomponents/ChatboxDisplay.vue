@@ -1,10 +1,13 @@
 <template>
   <div
     id="chatbox-display"
+    ref="displayEl"
     class="scrollbar scrollbar-track scrollbar-thumb flex touch-pan-y flex-col-reverse gap-y-2 overflow-y-scroll overscroll-contain rounded-tl-[60px] laptop:rounded-tl-[80px]"
+    :class="{ '!touch-none': !hasScroll }"
   >
     <chatbox-message
       v-for="message in chatHistory"
+      :class="{ '!touch-none': !hasScroll }"
       :key="message.id"
       :id="message.id"
       :sender="message.sender"
@@ -17,6 +20,7 @@
 <script>
 import { storeToRefs } from "pinia";
 import { useChatStore } from "@/store/chat.js";
+import { ref, onUpdated, nextTick } from "vue";
 import ChatboxMessage from "./ChatboxMessage.vue";
 
 export default {
@@ -24,11 +28,24 @@ export default {
   components: {
     ChatboxMessage,
   },
+  props: {
+    isActive: Boolean,
+  },
   setup() {
     const chatStore = useChatStore();
     const { chatHistory } = storeToRefs(chatStore);
+    const displayEl = ref(null);
+    const hasScroll = ref(false);
+
+    onUpdated(async () => {
+      await nextTick();
+      hasScroll.value =
+        displayEl.value.scrollHeight > displayEl.value.clientHeight;
+    });
 
     return {
+      displayEl,
+      hasScroll,
       chatHistory,
     };
   },

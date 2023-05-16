@@ -1,7 +1,7 @@
 <template>
   <div
     id="chatbox-input"
-    class="mx-5 flex flex-row space-x-2 bg-bgChatText bg-contain bg-no-repeat"
+    class="mx-5 flex touch-none flex-row space-x-2 bg-bgChatText bg-contain bg-no-repeat"
   >
     <!-- input message -->
     <input

@@ -3,16 +3,15 @@
     id="app"
     class="touch-pan-y bg-tc_sky-700 text-base text-tc_sand-100 max-laptop:text-center laptop:text-2xl"
   >
-    <navbar-element
-      :isMobileMenuOpen="isVisible"
-      @close-mobile-menu="hide"
-      @open-mobile-menu="show"
-    ></navbar-element>
+    <navbar-element></navbar-element>
 
     <div id="page" @touchstart="hide">
       <!-- Landing Page -->
-      <router-view></router-view>
-      <chatbox-element></chatbox-element>
+      <router-view :class="{ 'touch-none': isChatOpen }"></router-view>
+      <chatbox-element
+        @is-open="isChatOpen = true"
+        @is-closed="isChatOpen = false"
+      ></chatbox-element>
     </div>
 
     <footer-element></footer-element>
@@ -24,6 +23,7 @@ import { useToggle } from "@/composables/useToggle";
 import NavbarElement from "@/components/elements/Navbar.vue";
 import FooterElement from "@/components/elements/Footer.vue";
 import ChatboxElement from "@/components/elements/Chatbox.vue";
+import { ref } from "vue";
 
 export default {
   name: "App",
@@ -33,12 +33,10 @@ export default {
     ChatboxElement,
   },
   setup() {
-    let { isVisible, hide, show } = useToggle();
+    const isChatOpen = ref(false);
 
     return {
-      isVisible,
-      hide,
-      show,
+      isChatOpen,
     };
   },
 };

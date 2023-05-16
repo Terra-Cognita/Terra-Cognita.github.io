@@ -1,7 +1,7 @@
 <template>
   <nav
     id="navbar"
-    class="duration-0 fixed z-30 w-full origin-top-left transition-transform"
+    class="fixed z-30 w-full origin-top-left touch-none"
     :style="keyboardRespStyle"
   >
     <div
@@ -18,13 +18,13 @@
           class="flex w-full flex-row items-center justify-between laptop:w-auto laptop:flex-none laptop:basis-1/2"
         >
           <div id="navbar-logo" class="max-laptop:basis-3/5">
-            <navbar-logo @close-menu="$emit('closeMobileMenu')"></navbar-logo>
+            <navbar-logo @close-menu="hide"></navbar-logo>
           </div>
           <navbar-burger
             class="z-[100] flex basis-2/5 justify-end laptop:hidden"
-            :isBurger="isMobileMenuOpen"
-            @open-menu="$emit('openMobileMenu')"
-            @close-menu="$emit('closeMobileMenu')"
+            :isBurger="isVisible"
+            @open-menu="show"
+            @close-menu="hide"
           ></navbar-burger>
         </div>
 
@@ -45,8 +45,8 @@
     >
       <navbar-menu-mobile
         :navLinks="navlinkProps"
-        :class="{ hidden: !isMobileMenuOpen }"
-        @close-menu="$emit('closeMenu')"
+        :class="{ hidden: !isVisible }"
+        @close-menu="hide"
       >
       </navbar-menu-mobile>
     </div>
@@ -59,6 +59,7 @@ import NavbarBurger from "./navbar_subcomponents/NavbarBurger.vue";
 import NavbarMenuLaptop from "./navbar_subcomponents/NavbarMenuLaptop.vue";
 import NavbarMenuMobile from "./navbar_subcomponents/NavbarMenuMobile.vue";
 import Player from "./Player.vue";
+import { useToggle } from "@/composables/useToggle";
 import { useKeyboard } from "../../composables/useKeyboard";
 import { ref, computed, watchEffect, watch } from "vue";
 
@@ -71,21 +72,15 @@ export default {
     NavbarMenuMobile,
     Player,
   },
-  props: {
-    isMobileMenuOpen: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
     // virtual keyboard manegement
+    let { displayOffsetTop } = useKeyboard();
     const navbarTranslate = ref(0);
-    let { displayOffset } = useKeyboard();
 
     watch(
-      () => displayOffset.value,
+      () => displayOffsetTop.value,
       () => {
-        navbarTranslate.value = displayOffset.value;
+        navbarTranslate.value = displayOffsetTop.value;
       }
     );
 
@@ -94,11 +89,12 @@ export default {
     );
 
     // background and menu management
+    let { isVisible, hide, show } = useToggle();
     let scrollBackground = ref(false);
     let menuActive = ref(false);
 
     watchEffect(() => {
-      if (props.isMobileMenuOpen) {
+      if (isVisible.value) {
         menuActive.value = true;
       } else {
         menuActive.value = false;
@@ -144,6 +140,9 @@ export default {
 
     return {
       keyboardRespStyle,
+      isVisible,
+      hide,
+      show,
       showBackground,
       navlinkProps,
     };

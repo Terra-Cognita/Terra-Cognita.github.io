@@ -1,13 +1,13 @@
 <template>
   <div
     id="chatbox-window"
-    class="z-40 w-[90%] bg-bgChatWindow bg-contain bg-clip-border bg-center bg-no-repeat bg-origin-border p-2 text-sm transition-all duration-200 ease-in-out laptop:!h-[70vh] laptop:w-[450px] laptop:text-base"
+    class="z-40 w-[90%] touch-none bg-bgChatWindow bg-contain bg-clip-border bg-center bg-no-repeat bg-origin-border p-2 text-sm transition-all duration-200 ease-in-out laptop:!h-[70vh] laptop:w-[450px] laptop:text-base"
     :style="keyboardRespStyle"
   >
     <div
       class="relative grid h-full grid-rows-1 place-content-stretch gap-y-1 rounded-md rounded-tl-[70px] py-4 backdrop-blur-sm laptop:rounded-tl-[100px]"
     >
-      <chatbox-display></chatbox-display>
+      <chatbox-display :isActive="isOpen"></chatbox-display>
       <chatbox-typing-warning></chatbox-typing-warning>
       <chatbox-input></chatbox-input>
     </div>
@@ -18,7 +18,7 @@
 import ChatboxDisplay from "./chatbox_subcomponents/ChatboxDisplay.vue";
 import ChatboxTypingWarning from "./chatbox_subcomponents/ChatboxTypingWarning.vue";
 import ChatboxInput from "./chatbox_subcomponents/ChatboxInput.vue";
-import { ref, computed, watch, watchEffect } from "vue";
+import { ref, computed, watch } from "vue";
 import { useKeyboard } from "../../composables/useKeyboard";
 
 export default {
@@ -28,10 +28,13 @@ export default {
     ChatboxTypingWarning,
     ChatboxInput,
   },
-  setup() {
+  props: {
+    isOpen: Boolean,
+  },
+  setup(props) {
     const SCREEN_PX_TH = 800;
 
-    let { displayHeight } = useKeyboard();
+    let { keyboardStatus, displayHeight } = useKeyboard();
 
     const isLargeScreen = computed(() =>
       window.innerHeight > SCREEN_PX_TH ? true : false
@@ -44,7 +47,7 @@ export default {
     }
 
     watch(
-      () => displayHeight.value,
+      () => keyboardStatus.value,
       () => {
         chatHeight.value = computeChatHeight(displayHeight.value);
       }
@@ -54,7 +57,10 @@ export default {
       () => `height:${chatHeight.value.toString()}px`
     );
 
+    const isOpen = computed(() => props.isOpen);
+
     return {
+      isOpen,
       keyboardRespStyle,
     };
   },

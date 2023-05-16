@@ -1,5 +1,7 @@
 <template>
-  <div class="pointer-events-none h-7 justify-self-start text-tc_forest-500">
+  <div
+    class="pointer-events-none h-7 touch-none justify-self-start text-tc_forest-500"
+  >
     <input
       v-if="isHearingBot"
       class="border-transparent bg-transparent py-0 text-sm"
