@@ -5,7 +5,7 @@
 
 <p align="center">
   <img 
-    src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/public/monogram.svg"
+    src="https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/public/monogramBlack.svg"
     alt="Terra Cognita TC Symbol" 
     width="15%">
 </p>
@@ -41,10 +41,8 @@ This application serves as the primary interface for TC end users as part of a l
   - [PROJECT ORGANIZATION](#project-organization)
     - [Project Styling](#project-styling)
     - [Project Composables](#project-composables)
-      - [Composable: useAssets](#composable-useassets)
     - [Project Components](#project-components)
       - [Components: elements](#components-elements)
-      - [Components: frames](#components-frames)
       - [Components: globalLayouts](#components-globallayouts)
       - [Components: layouts](#components-layouts)
     - [Project Sections \& Pages](#project-sections--pages)
@@ -69,7 +67,7 @@ _Recommended [VS Code](https://code.visualstudio.com/) IDE extensions setup:_
 - [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) (enable Prettier)
 </blockquote>
 
-Obs.: _A [.vscode/settings.json](https://github.com/tailwindlabs/prettier-plugin-tailwindcss/blob/main/.vscode/settings.json) file is provided to guarantee Prettier as editor formatter._
+Obs.: _A [.vscode/settings.json](https://github.com/tailwindlabs/prettier-plugin-tailwindcss/blob/main/.vscode/settings.json) file is provided to guarantee Prettier as editor formatter._ (Refer to the [VS documentation](https://code.visualstudio.com/docs/getstarted/settings) for better information on User and Workspace Settings)
 
 ### First Time Setup
 
@@ -118,6 +116,7 @@ Vite automatically resolves a config file named [vite.config.js](https://github.
 ```
 ├── public/
 ├── src/
+│   ├── api/
 │   ├── assets/
 │   ├── components/
 │   ├── composables/
@@ -136,7 +135,7 @@ Vite automatically resolves a config file named [vite.config.js](https://github.
 ├── tailwind.config.cjs
 └── vite.config.js
 
-public/:
+public/: publicly accessible folder containing website files.
 
 src/: Contains the frontend source code for the web application.
 
@@ -190,13 +189,11 @@ In such a file, one can find/define truly custom CSS rules for the project.\
 
 The [./src/composables/](https://github.com/Terra-Cognita/Terra-Cognita.github.io/tree/main/src/composables) folder holds `.js` files comprising functions leveraging Vue's Composition API to encapsulate and reuse stateful logic (refer to [Vue's Composables doc](https://vuejs.org/guide/reusability/composables.html)).
 
-#### Composable: useAssets
-
 <details>
   <summary><b>useAssets</b></summary>
 
 The [useAssets](https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/composables/useAssets.js) composable provides a solution for _dynamic image src binding_ based on [static asset import](https://vitejs.dev/guide/assets.html).
-Although this composable is not exactly _stateful_, it provides the project's assets _"state"_ of files, returning the resolved public URL of the registered files.\
+Although this composable is not exactly _stateful_, it provides the project assets' _"state"_ of files, returning the resolved public URL of the registered files.\
  **Any asset to be used in component's biding should be registered to the composable.**
 The usage in a component is as follows:
 
@@ -217,28 +214,44 @@ The usage in a component is as follows:
 ```
 
 </details>
+  
+<details>
+  <summary><b>useKeyboard</b></summary>
+
+The [useKeyboard](https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/composables/useKeyboard.js) composable provides a solution for [_virtual keyboard use in browsers with fixed layout viewport_](https://www.bram.us/2021/09/13/prevent-items-from-being-hidden-underneath-the-virtual-keyboard-by-means-of-the-virtualkeyboard-api/) (specifically in iOS Safari mobile browser).
+This composable registers a **global state** to store the `window.visualViewport.onresize event`, and exposes instance computed properties to return 'stateful' information.\
+The usage in a component is as follows:
+
+```
+<script>
+  import { useKeyboard } from '@/composables/useKeyboard.js'
+  export default {
+    setup() {
+      const { instanceProperty } = useKeyboard()
+      ...
+    }
+  }
+</script>
+```
+
+</details>
 
 ### Project Components
 
 The [./src/components/](https://github.com/Terra-Cognita/Terra-Cognita.github.io/tree/main/src/components) folder holds the `.vue` components' files of TC web application, each one encapsulating custom content and logic into an independent and reusable piece of code.\
-This project's components are organized into four different classes:
+The components' folder is organized into subfolders according to the nature of components. The names are self-explanatory.\
+We however highlight the following classes of components:
 
 #### Components: elements
 
 <blockquote>
   
   The *Elements* are components that constitute the general [App view](https://github.com/Terra-Cognita/Terra-Cognita.github.io/blob/main/src/App.vue) (alongside the App's router-view).
-  Exemple of *Elements* are: navbar, footer, and the chatbox.
-</blockquote>
-
-#### Components: frames
-
-<blockquote>
-  
-  The *Frames* are components are the components that implement frame structures 
+  Exemple of *Elements* are: navbar, footer, the chatbox and a player.
 </blockquote>
   
 #### Components: globalLayouts
+
 <blockquote>
   
 The *globalLayouts* are components that implement the basic design of TC webpage. 
