@@ -2,7 +2,7 @@
   <div :id="`avatar-image-card`">
     <img
       :src="avatar"
-      class="avatar-card-small mx-auto block"
+      class="not-draggable avatar-card-small mx-auto block"
       :class="{ 'avatar-card-medium': active }"
     />
   </div>

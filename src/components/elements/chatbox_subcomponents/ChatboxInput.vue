@@ -7,7 +7,7 @@
     <input
       type="text"
       placeholder="Write your message!"
-      class="w-11/12 border-transparent bg-transparent p-2 pl-6 text-tc_earth-500 placeholder-tc_earth-100 focus:border-transparent focus:placeholder-tc_sand-900 focus:ring-0"
+      class="w-11/12 border-transparent bg-transparent p-2 pl-6 text-tc_earth-500 placeholder-tc_earth-100 caret-tc_earth-500 focus:border-transparent focus:placeholder-tc_sand-900 focus:ring-0 disabled:placeholder-tc_sky-300"
       v-model="userInputMsg"
       :disabled="isHearingBot"
       v-focus="!isHearingBot"
@@ -27,7 +27,7 @@
 <script>
 import SendIcon from "@/components/icons/SendIcon.vue";
 import { storeToRefs } from "pinia";
-import { ref, computed, watchEffect } from "vue";
+import { ref } from "vue";
 import { useChatStore } from "@/store/chat.js";
 
 export default {
@@ -43,6 +43,11 @@ export default {
 
     function onEnterMessage() {
       if (userInputMsg.value === "") {
+        return;
+      }
+      if (userInputMsg.value.toLowerCase() === "clear") {
+        chatStore.clearHistory();
+        userInputMsg.value = "";
         return;
       }
       chatStore.sendNewMessage("user", userInputMsg.value);

@@ -1,4 +1,4 @@
-import { computed, ref, reactive, watch, watchEffect } from "vue";
+import { ref, reactive, watch } from "vue";
 import { defineStore } from "pinia";
 import { useChatHistoryStore } from "./chat_history.js";
 import bot from "@/api/bot.js";
@@ -51,16 +51,15 @@ export const useChatStore = defineStore("chat", () => {
     lastMessage.sender = message.sender;
   }
 
-  // === REMOVE ===================
-  function reset() {
+  function clearHistory() {
     chatHistoryStore.resetState();
+    lastMessage.value = updateLastMessage(chatHistoryStore.getLatestMessage);
   }
-  // ==============================
 
   return {
     isHearingBot,
     chatHistory,
     sendNewMessage,
-    reset,
+    clearHistory,
   };
 });

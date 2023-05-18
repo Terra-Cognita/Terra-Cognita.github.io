@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import { useToggle } from "@/composables/useToggle";
 import NavbarElement from "@/components/elements/Navbar.vue";
 import FooterElement from "@/components/elements/Footer.vue";
 import ChatboxElement from "@/components/elements/Chatbox.vue";

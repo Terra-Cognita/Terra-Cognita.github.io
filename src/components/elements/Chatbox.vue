@@ -2,16 +2,16 @@
   <div
     id="chatbox-element"
     ref="el"
-    class="sticky right-0 z-50 translate-y-2"
+    class="sticky right-0 z-50 translate-y-2 select-none"
     :style="keyboardRespStyle"
   >
     <chatbox-window
-      class="absolute bottom-11 right-5 laptop:bottom-20 laptop:right-16"
+      class="absolute bottom-11 right-5 select-none laptop:bottom-20 laptop:right-16"
       :isOpen="isVisible"
       v-show="isVisible"
     ></chatbox-window>
     <chatbox-button
-      class="absolute bottom-0 right-1 laptop:bottom-0 laptop:right-5"
+      class="absolute bottom-0 right-1 select-none laptop:bottom-0 laptop:right-5"
       :class="{ '!touch-none': isVisible }"
       @toggle-chat="toggle"
     ></chatbox-button>

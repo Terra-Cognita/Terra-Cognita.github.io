@@ -17,7 +17,7 @@
         </div>
 
         <img
-          class="mx-auto h-[30rem] basis-1/3 object-contain max-laptop:hidden"
+          class="not-draggable mx-auto h-[30rem] basis-1/3 object-contain max-laptop:hidden"
           :src="imgCrystalElement"
         />
       </div>

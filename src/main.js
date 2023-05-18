@@ -30,7 +30,7 @@ const i18n = createI18n({
   fallbackLocale: "en",
   messages: messages,
   legacy: false,
-  warnHtmlInMessage: "off",
+  warnHtmlMessage: false,
   // silentTranslationWarn: true,
   // missingWarn: false,
   // fallbackWarn: false,

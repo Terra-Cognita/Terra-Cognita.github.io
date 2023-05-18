@@ -1,9 +1,6 @@
 <template>
   <div id="player" class="flex items-center">
-    <button
-      id="player-control"
-      @click="isPlaying ? sound.pause() : sound.play()"
-    >
+    <button id="player-control" @click="playerControl">
       <div
         id="control-toggle"
         class="flex flex-row rounded-full bg-tc_sky-300 px-0 py-0"
@@ -37,32 +34,38 @@ export default {
     PlayIcon,
   },
   setup() {
-    const { soundWelcomeToTC } = useAssets();
+    const sound = ref(null);
 
+    const { soundWelcomeToTC } = useAssets();
     const musicFiles = [soundWelcomeToTC];
-    const isPlaying = ref(false);
+
+    const isPlaying = computed(() =>
+      sound.value ? sound.value.playing() : false
+    );
+
+    function createHowler() {
+      sound.value = new Howl({
+        src: musicFiles,
+        loop: true,
+        volume: 0.5,
+        onplay: function () {},
+        onpause: function () {},
+      });
+    }
+
+    function playerControl() {
+      if (sound.value === null) {
+        createHowler();
+      }
+      sound.value.playing() ? sound.value.pause() : sound.value.play();
+    }
 
     const playerControlText = computed(() => (isPlaying.value ? "Off" : "On"));
 
-    // Sound object
-    const sound = ref();
-    sound.value = new Howl({
-      src: musicFiles,
-      autoplay: false,
-      loop: true,
-      volume: 0.5,
-      onplay: function () {
-        isPlaying.value = true;
-      },
-      onpause: function () {
-        isPlaying.value = false;
-      },
-    });
-
     return {
-      isPlaying,
-      sound,
+      playerControl,
       playerControlText,
+      isPlaying,
     };
   },
 };
